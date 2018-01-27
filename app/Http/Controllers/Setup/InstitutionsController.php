@@ -8,6 +8,12 @@ use Validator;
 
 class InstitutionsController extends Controller
 {
+    /**
+     * Display the all institutions.
+     *
+     * @param  Request  $request
+     * @return customApiResponse
+     */
     public function index (Request $request){
         $data         =  $request->all();
         $per_page     =  isset($data['per_page'])? $data['per_page'] : 2;
@@ -16,6 +22,12 @@ class InstitutionsController extends Controller
         return customApiResponse($institutions);
     }
 
+    /**
+     * create an institution.
+     *
+     * @param  Request  $request
+     * @return customApiResponse
+     */
     public function create(Request $request){
         $data      = $request->all();
         $validator = Validator::make($data, Institution::$create_rules);
@@ -34,10 +46,10 @@ class InstitutionsController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * get an institution.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return customApiResponse
      */
     public function show($id)
     {
@@ -50,11 +62,11 @@ class InstitutionsController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * update an institution.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return customApiResponse
      */
     public function update(Request $request, $id)
     {
@@ -75,6 +87,12 @@ class InstitutionsController extends Controller
         }
     }
 
+    /**
+     * destroy/delete an institution.
+     *
+     * @param  Request  $request
+     * @return customApiResponse
+     */
     public function destroy(Request $request){
         $data        =  $request->all();
         $institution =  Institution::find($data->id);
