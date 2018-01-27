@@ -2,3 +2,7 @@
 
 SELECT * FROM users;
 
+\d institutions
+
+SELECT * FROM institutions;
+
