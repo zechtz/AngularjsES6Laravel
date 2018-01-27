@@ -21,7 +21,7 @@ class InstitutionsController extends Controller
         $institution->address = $data->address;
         $institution->email = $data->email;
         $institution->phone_number = $data->phone_number;
-        $institution->additional_information =$data->additional_information;
+        $institution->additional_information = $data->additional_information;
         $institution->save();
         $institutions = Institution::all();
         $institutions = customPaginate($institutions, 10);
@@ -36,7 +36,7 @@ class InstitutionsController extends Controller
         $institution->address = $data->address;
         $institution->email = $data->email;
         $institution->phone_number = $data->phone_number;
-        $institution->additional_information =$data->additional_information;
+        $institution->additional_information = $data->additional_information;
         $institution->save();
         $institutions = Institution::all();
         $institutions = customPaginate($institutions, 10);
