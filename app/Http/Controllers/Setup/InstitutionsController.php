@@ -8,8 +8,9 @@ use App\Http\Controllers\Controller;
 class InstitutionsController extends Controller
 {
     public function index (){
-        $institution = Institution::all();
-        return customApiResponse($institution, 'Success');
+        $institutions = Institution::all();
+        $institutions = customPaginate($institutions, 10);
+        return customApiResponse($institutions);
     }
 
     public function create(Request $request){
@@ -23,7 +24,8 @@ class InstitutionsController extends Controller
         $institution->additional_information =$data->additional_information;
         $institution->save();
         $institutions = Institution::all();
-        return customApiResponse($institutions::all(),'Sucess');
+        $institutions = customPaginate($institutions, 10);
+        return customApiResponse($institutions,'SUCCESSFULLY_CREATED');
     }
 
     public function update(Request $request){
@@ -37,7 +39,8 @@ class InstitutionsController extends Controller
         $institution->additional_information =$data->additional_information;
         $institution->save();
         $institutions = Institution::all();
-        return customApiResponse($institutions::all(),'Sucess');
+        $institutions = customPaginate($institutions, 10);
+        return customApiResponse($institutions,'SUCCESSFULLY_UPDATED');
     }
 
     public function delete(Request $request){
@@ -45,6 +48,7 @@ class InstitutionsController extends Controller
         $institution = Institution::find($data->id);
         $institution->delete();
         $institutions = Institution::all();
-        return customApiResponse($institutions::all(),'Sucess');
+        $institutions = customPaginate($institutions, 10);
+        return customApiResponse($institutions,'SUCCESSFULLY_DELETED');
     }
 }
