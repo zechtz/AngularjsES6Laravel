@@ -9,6 +9,6 @@ class InstitutionsController extends Controller
 {
     public function index (){
         $institution = Institution::all();
-        return customApiResponse($institution);
+        return customApiResponse($institution, 'Success');
     }
 }

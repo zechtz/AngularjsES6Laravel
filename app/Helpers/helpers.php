@@ -6,6 +6,8 @@ if (!function_exists('customApiResponse')) {
     /**
      * Return a new response from the application.
      *
+     * eg in controller return customApiResponse($users, 'successfully created', 201)
+     * eg in controller return customApiResponse($users, 'error', 500, ['internal server error'])
      * @param  string  $data
      * @param  string  $message
      * @param  string  $errors
