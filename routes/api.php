@@ -18,4 +18,5 @@ Route::get('/', function () {
 });
 
 Route::group(["prefix" => "v1"], function(){
+  Route::get('institutions' , 'Setup\InstitutionsController@index');
 });
