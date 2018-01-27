@@ -27,7 +27,6 @@ class InstitutionsController extends Controller
         $institutions = customPaginate($institutions, 10);
         return customApiResponse($institutions,'SUCCESSFULLY_CREATED');
     }
-
     public function update(Request $request){
         $data = json_decode($request->getContent());
         $institution = Institution::find($data->id);
@@ -44,6 +43,14 @@ class InstitutionsController extends Controller
     }
 
     public function delete(Request $request){
+        $data = json_decode($request->getContent());
+        $institution = Institution::find($data->id);
+        $institution->delete();
+        $institutions = Institution::all();
+        $institutions = customPaginate($institutions, 10);
+        return customApiResponse($institutions,'SUCCESSFULLY_DELETED');
+    }
+    public function remove(Request $request){
         $data = json_decode($request->getContent());
         $institution = Institution::find($data->id);
         $institution->delete();
