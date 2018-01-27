@@ -18,5 +18,8 @@ Route::get('/', function () {
 });
 
 Route::group(["prefix" => "v1"], function(){
-  Route::get('institutions' , 'Setup\InstitutionsController@index');
+  Route::get('institutions'         ,'Setup\InstitutionsController@index');
+  Route::post('institutions'        ,'Setup\InstitutionsController@create');
+  Route::put('institutions/{id}'    ,'Setup\InstitutionsController@update');
+  Route::delete('institutions/{id}' ,'Setup\InstitutionsController@delete');
 });
