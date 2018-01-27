@@ -1,10 +1,10 @@
-#MNRT Portal - Getting up to speed
+# MNRT Portal - Getting up to speed
 
-##The tech stack
-###Backend
+## The tech stack
+### Backend
 -PHP /  Laravel Framework(5.5LTS)
 
-###FrontEnd
+### FrontEnd
 -AngularJS
 -SASS
 
@@ -26,4 +26,3 @@ You might have to start by sudoing on linux/macos if you get an error.
 
 *Rename the appsettings.sample.json file to appsettings.json and then update it with your corrent database context
 settings credentials i.e username, password and database name
-
