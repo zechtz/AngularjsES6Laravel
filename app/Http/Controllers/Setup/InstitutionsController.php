@@ -93,9 +93,8 @@ class InstitutionsController extends Controller
      * @param  Request  $request
      * @return customApiResponse
      */
-    public function destroy(Request $request){
-        $data        =  $request->all();
-        $institution =  Institution::find($data->id);
+    public function destroy($id){
+        $institution =  Institution::find($id);
         if ($institution->delete()) {
             return customApiResponse($institution, 'SUCCESSFULLY_DELETED', 200);
         } else {
