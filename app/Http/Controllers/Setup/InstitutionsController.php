@@ -16,7 +16,7 @@ class InstitutionsController extends Controller
      */
     public function index (Request $request){
         $data         =  $request->all();
-        $per_page     =  isset($data['per_page'])? $data['per_page'] : 2;
+        $per_page     =  isset($data['per_page'])? $data['per_page'] : 15;
         $institutions =  Institution::all();
         $institutions =  customPaginate($institutions, $per_page);
         return customApiResponse($institutions);
