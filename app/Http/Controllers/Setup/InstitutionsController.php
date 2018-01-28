@@ -29,8 +29,8 @@ class InstitutionsController extends Controller
      * @return customApiResponse
      */
     public function create(Request $request){
-        $data      = $request->all();
-        $validator = Validator::make($data, Institution::$create_rules);
+        $data      =  $request->all();
+        $validator =  Validator::make($data, Institution::$create_rules);
 
         if ($validator->fails()) {
             return customApiResponse($data, "Validation Error", 400, $validator->errors()->all());
