@@ -3,6 +3,6 @@
 SELECT * FROM users;
 
 \d institutions
+\x
 
-SELECT * FROM institutions;
-
+SELECT id, name, institution_id, email, phone_number FROM institutions;
