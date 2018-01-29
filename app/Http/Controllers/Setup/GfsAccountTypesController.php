@@ -14,10 +14,10 @@ class GfsAccountTypesController extends Controller
      * @return customApiResponse
      */
     public function index (Request $request){
-        $data         =  $request->all();
-        $per_page     =  isset($data['per_page'])? $data['per_page'] : 15;
-        $gfs_account_types =  GfsAccountType::all();
-        $gfs_account_types =  customPaginate($gfs_account_types, $per_page);
+        $data               =  $request->all();
+        $per_page           =  isset($data['per_page'])? $data['per_page'] : 15;
+        $gfs_account_types  =  GfsAccountType::all();
+        $gfs_account_types  =  customPaginate($gfs_account_types, $per_page);
         return customApiResponse($gfs_account_types);
     }
 
