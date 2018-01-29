@@ -15,13 +15,13 @@ class GfsAccountType extends Model
     protected $table   =  "gfs_account_types";
 
     public static $rules = [
-        "name"  => "required|unique:gfs_account_types",
-        "description" => "required",
+        "name"          => "required|unique:gfs_account_types",
+        "description"   => "required",
     ];
 
     public static $create_rules = [
-        "name"  => "required|unique:gfs_account_types",
-        "description" => "required|unique:gfs_account_types",
+        "name"          => "required|unique:gfs_account_types",
+        "description"   => "required|unique:gfs_account_types",
     ];
 
     /**

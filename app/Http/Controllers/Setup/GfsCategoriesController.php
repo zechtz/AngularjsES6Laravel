@@ -14,8 +14,8 @@ class GfsCategoriesController extends Controller
      * @return customApiResponse
      */
     public function index (Request $request){
-        $data         =  $request->all();
-        $per_page     =  isset($data['per_page'])? $data['per_page'] : 15;
+        $data           =  $request->all();
+        $per_page       =  isset($data['per_page'])? $data['per_page'] : 15;
         $gfs_categories =  GfsCategory::all();
         $gfs_categories =  customPaginate($gfs_categories, $per_page);
         return customApiResponse($gfs_categories);

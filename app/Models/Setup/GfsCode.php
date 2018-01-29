@@ -15,13 +15,13 @@ class GfsCode extends Model
     protected $table   =  "gfs_codes";
 
     public static $rules = [
-        "code"  => "required|unique:gfs_codes",
-        "description" => "required",
+        "code"          => "required|unique:gfs_codes",
+        "description"   => "required",
     ];
 
     public static $create_rules = [
-        "code"  => "required|unique:gfs_codes",
-        "description" => "required|unique:gfs_codes",
+        "code"          => "required|unique:gfs_codes",
+        "description"   => "required|unique:gfs_codes",
     ];
 
     /**

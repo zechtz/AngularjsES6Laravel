@@ -15,13 +15,13 @@ class GfsCategory extends Model
     protected $table   =  "gfs_categories";
 
     public static $rules = [
-        "name"  => "required|unique:gfs_categories",
-        "description" => "required",
+        "name"          => "required|unique:gfs_categories",
+        "description"   => "required",
     ];
 
     public static $create_rules = [
-        "name"  => "required|unique:gfs_categories",
-        "description" => "required|unique:gfs_categories",
+        "name"          => "required|unique:gfs_categories",
+        "description"   => "required|unique:gfs_categories",
     ];
 
     /**

@@ -14,10 +14,10 @@ class GfsCodesController extends Controller
      * @return customApiResponse
      */
     public function index (Request $request){
-        $data         =  $request->all();
-        $per_page     =  isset($data['per_page'])? $data['per_page'] : 15;
-        $gfs_codes =  GfsCode::all();
-        $gfs_codes =  customPaginate($gfs_codes, $per_page);
+        $data       =  $request->all();
+        $per_page   =  isset($data['per_page'])? $data['per_page'] : 15;
+        $gfs_codes  =  GfsCode::all();
+        $gfs_codes  =  customPaginate($gfs_codes, $per_page);
         return customApiResponse($gfs_codes);
     }
 
