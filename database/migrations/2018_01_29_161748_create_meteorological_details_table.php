@@ -22,6 +22,7 @@ class CreateMeteorologicalDetailsTable extends Migration
             $table->date('last_update')->nullable();
             $table->date('attraction_site_id');
             $table->timestamps();
+            $table->foreign('attraction_site_id')->references('id')->on('attraction_sites')->onUpdate("cascade")->onDelete("restrict");
         });
     }
 
