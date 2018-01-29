@@ -10,14 +10,19 @@ curl -H "Content-Type: application/json" -X POST -d ' {
 } ' http://mnrt.test/api/v1/institutions
 ```
 
-## list all the institutions (GET request)
+## List all the institutions (GET request)
 ```sh
 curl -i http://mnr.test/api/v1/institutions
 ```
 
 ## GET an invididual institution
 ```sh
-curl -i http://mnrt.test/api/v1/institutions/id => (get id pass 1)
+curl -i http://mnrt.test/api/v1/institutions/id
+```
+
+## DELETE an institution
+```
+sh curl -X DELETE http://mnrt.test/api/v1/institutions/1
 ```
 
 ## Basic File & Folder Permissions for Laravel
@@ -27,4 +32,4 @@ sudo chgrp -R www-data storage bootstrap/cache
 ```sh
 sudo chmod -R ug+rwx storage bootstrap/cache
 ```
-[Check out the following discussion](https://laracasts.com/discuss/channels/general-discussion/laravel-framework-file-permission-security)
+[https://laracasts.com/discuss/channels/general-discussion/laravel-framework-file-permission-security](https://laracasts.com/discuss/channels/general-discussion/laravel-framework-file-permission-security)
