@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAttractionSitesCategoriesTable extends Migration
+class CreateAttractionSiteGradesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAttractionSitesCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('attraction_site_categories', function (Blueprint $table) {
+        Schema::create('attraction_site_grades', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateAttractionSitesCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attraction_site_categories');
+        Schema::dropIfExists('attraction_site_grades');
     }
 }
