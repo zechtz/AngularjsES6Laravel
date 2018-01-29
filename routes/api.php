@@ -26,4 +26,5 @@ Route::group(["prefix" => "v1"], function(){
     Route::delete('institutions/{id}'   , 'Setup\InstitutionsController@destroy');
 
     Route::resource('gfs-categories','Setup\GfsCategoriesController');
+    Route::resource('gfs-account-types','Setup\GfsAccountTypesController');
 });
