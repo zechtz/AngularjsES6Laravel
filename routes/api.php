@@ -27,4 +27,5 @@ Route::group(["prefix" => "v1"], function(){
 
     Route::resource('gfs-categories','Setup\GfsCategoriesController');
     Route::resource('gfs-account-types','Setup\GfsAccountTypesController');
+    Route::resource('gfs-codes','Setup\GfsCodesController');
 });
