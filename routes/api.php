@@ -24,4 +24,6 @@ Route::group(["prefix" => "v1"], function(){
     Route::get('institutions/{id}/edit' , 'Setup\InstitutionsController@edit');
     Route::put('institutions/{id}'      , 'Setup\InstitutionsController@update');
     Route::delete('institutions/{id}'   , 'Setup\InstitutionsController@destroy');
+
+    Route::resource('gfs-categories','Setup\GfsCategoriesController');
 });
