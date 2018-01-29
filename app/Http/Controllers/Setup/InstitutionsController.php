@@ -54,11 +54,10 @@ class InstitutionsController extends Controller
     public function show($id)
     {
         $institution = Institution::find($id);
-        if ($institution != null) {
-            return customApiResponse($institution, 'SUCCESSFULL');
-        } else {
-            return customApiResponse('', 'Institution Not Found', 404, ['Institution Not Found']);
+        if ($institution == null) {
+            return customApiResponse($institution, 'Institution Not Found', 404, 'Institution Not Found');
         }
+        return customApiResponse($institution, 'SUCCESSFULL');
     }
 
     /**
@@ -78,12 +77,16 @@ class InstitutionsController extends Controller
         }
 
         $institution =  Institution::find($id);
-        $result      =  $institution->update($data);
+        if ($institution == null) {
+            return customApiResponse($institution, 'Institution Not Found', 404, 'Institution Not Found');
+        }
+
+        $result =  $institution->update($data);
 
         if ($result) {
             return customApiResponse($result, 'SUCCESSFULLY_UPDATED', 200);
         } else {
-            return customApiResponse(' ', 'Error updating Institution ', 500);
+            return customApiResponse($data, 'Error updating Institution ', 500);
         }
     }
 
@@ -95,10 +98,15 @@ class InstitutionsController extends Controller
      */
     public function destroy($id){
         $institution =  Institution::find($id);
+
+        if ($institution == null) {
+            return customApiResponse($institution, 'Institution Not Found', 404, 'Institution Not Found');
+        }
+
         if ($institution->delete()) {
             return customApiResponse($institution, 'SUCCESSFULLY_DELETED', 200);
         } else {
-            return customApiResponse('', 'Error Deleting Institution ');
+            return customApiResponse($institution, 'Error Deleting Institution', 500);
         }
     }
 }
