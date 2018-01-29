@@ -6,10 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Institution extends Model
 {
-    protected $table    =  "institutions";
-    protected $fillable =  [
-        "name", "email", "phone_number", "institution_id", "address", "additional_information"
-    ];
+    /**
+     * The attributes that aren't mass assignable.
+     * @var array
+     */
+    protected $guarded =  ["id"];
+
+    protected $table   =  "institutions";
 
     public static $rules = [
         "name"  => "required|unique:institutions",
