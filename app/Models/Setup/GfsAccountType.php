@@ -23,4 +23,13 @@ class GfsAccountType extends Model
         "name"  => "required|unique:gfs_account_types",
         "description" => "required|unique:gfs_account_types",
     ];
+
+    /**
+     * Each GFS code has an Account Type
+     * @return [type]
+     */
+    public function gfsCode(){
+        return $this->belongsTo(GfsCode::class);
+    }
+
 }

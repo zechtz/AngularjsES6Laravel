@@ -23,4 +23,12 @@ class GfsCategory extends Model
         "name"  => "required|unique:gfs_categories",
         "description" => "required|unique:gfs_categories",
     ];
+
+    /**
+     * Each GFS code belongs to a certain category
+     * @return [type]
+     */
+    public function gfsCode(){
+        return $this->belongsTo(GfsCode::class);
+    }
 }
