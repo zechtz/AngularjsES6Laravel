@@ -33,3 +33,11 @@ Route::group(["prefix" => "v1"], function(){
     Route::put('loation_hierarchies/{id}'      , 'Setup\LocationHierarchiesController@update');
     Route::delete('loation_hierarchies/{id}'   , 'Setup\LocationHierarchiesController@destroy');
 });
+
+Route::group(["prefix" => "v1"], function(){
+    Route::get('loations'           , 'Setup\LocationsController@index');
+    Route::post('loations'          , 'Setup\LocationsController@create');
+    Route::get('loations/{id}'      , 'Setup\LocationsController@show');
+    Route::put('loations/{id}'      , 'Setup\LocationsController@update');
+    Route::delete('loations/{id}'   , 'Setup\LocationsController@destroy');
+});

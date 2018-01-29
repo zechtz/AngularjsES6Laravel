@@ -39,11 +39,8 @@ class LocationHierarchiesController extends Controller
     public function show($id){
         $location_hierarchy = LocationHierarchy::find($id);
         if($location_hierarchy == null){
-            return customApiResponse($location_hierarchy, 'Location hierarchy Not Found', 404, 'Institution Not Found');
+            return customApiResponse($id, 'Location hierarchy Not Found', 404, 'Location hierarchy Not Found');
         }
-        $per_page             = 15;
-        $location_hierarchies = LocationHierarchy::all();
-        $location_hierarchies = customPaginate($location_hierarchies,$per_page);
         return customApiResponse($location_hierarchies, 'SUCCESSFULL');
     }
 
@@ -57,7 +54,7 @@ class LocationHierarchiesController extends Controller
 
         $location_hierarchy = LocationHierarchy::find($id);
         if($location_hierarchy == null){
-            return customApiResponse($location_hierarchy,'Location Hierarchy Not Found',404,'Location Hierarchy Not Found');
+            return customApiResponse($id,'Location Hierarchy Not Found',404,'Location Hierarchy Not Found');
         }
 
         $result = $location_hierarchy->update($data);
