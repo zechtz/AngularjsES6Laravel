@@ -14,6 +14,8 @@ class AttractionSite extends Model
 
     protected $table   =  "attraction_sites";
 
+    protected $with    =  ['meteorologicalDetails'];
+
     public static $rules = [
         "name"                          => "required",
         "institution_id"                => "required",
@@ -27,4 +29,8 @@ class AttractionSite extends Model
         "attraction_site_category_id"   => "required",
         "attraction_site_grade_id"      => "required",
     ];
+
+    public function meteorologicalDetails (){
+        return $this->hasOne('App\Models\Setup\MeteorologicalDetail');
+    }
 }

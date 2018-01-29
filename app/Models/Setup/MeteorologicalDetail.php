@@ -17,4 +17,8 @@ class MeteorologicalDetail extends Model
     public static $rules = [
         "attraction_site_id" => "required",
     ];
+
+    public function meteorologicalDetails (){
+        return $this->belongsTo('App\Models\Setup\AttractionSite');
+    }
 }
