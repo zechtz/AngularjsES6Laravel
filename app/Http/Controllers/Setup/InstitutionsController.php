@@ -10,7 +10,6 @@ class InstitutionsController extends Controller
 {
     /**
      * Display the all institutions.
-     *
      * @param  Request  $request
      * @return customApiResponse
      */
@@ -24,7 +23,6 @@ class InstitutionsController extends Controller
 
     /**
      * create an institution.
-     *
      * @param  Request  $request
      * @return customApiResponse
      */
@@ -47,7 +45,6 @@ class InstitutionsController extends Controller
 
     /**
      * get an institution.
-     *
      * @param  int  $id
      * @return customApiResponse
      */
@@ -62,7 +59,6 @@ class InstitutionsController extends Controller
 
     /**
      * update an institution.
-     *
      * @param  Request  $request
      * @param  int  $id
      * @return customApiResponse
@@ -92,7 +88,6 @@ class InstitutionsController extends Controller
 
     /**
      * destroy/delete an institution.
-     *
      * @param  Request  $request
      * @return customApiResponse
      */
