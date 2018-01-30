@@ -16,11 +16,11 @@ class CreateStationsTable extends Migration
         Schema::create('stations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('station_id')->unsigned()->nullable();
             $table->integer('location_id')->unsigned();
             $table->integer('institution_id')->unsigned();
-            $table->integer('station_id')->unsigned()->nullable();
+            $table->integer('station_category_id')->unsigned();
             $table->text('description');
-            $table->integer('station_category_id');
             $table->float('latitude');
             $table->float('longitude');
             $table->string('shape_file_path');
@@ -29,9 +29,14 @@ class CreateStationsTable extends Migration
                 ->on('stations')
                 ->onUpdate("cascade")
                 ->onDelete("restrict");
-            $table->foreign('station_id')
+            $table->foreign('location_id')
                 ->references('id')
-                ->on('stations')
+                ->on('locations')
+                ->onUpdate("cascade")
+                ->onDelete("restrict");
+            $table->foreign('station_category_id')
+                ->references('id')
+                ->on('station_categories')
                 ->onUpdate("cascade")
                 ->onDelete("restrict");
             $table->timestamps();
