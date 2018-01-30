@@ -20,8 +20,9 @@ class CreateMeteorologicalDetailsTable extends Migration
             $table->float('avg_rainfall')->nullable();
             $table->float('comfortabilty_index')->nullable();
             $table->date('last_update')->nullable();
-            $table->date('attraction_site_id');
+            $table->integer('attraction_site_id')->unsigned();
             $table->timestamps();
+            $table->foreign('attraction_site_id')->references('id')->on('attraction_sites')->onUpdate("cascade")->onDelete("restrict");
         });
     }
 
