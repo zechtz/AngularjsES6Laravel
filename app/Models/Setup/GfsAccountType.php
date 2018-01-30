@@ -25,11 +25,11 @@ class GfsAccountType extends Model
     ];
 
     /**
-     * Each GFS code has an Account Type
-     * @return [type]
+     * Each Account Type has many GFS codes
+     * @return GFS Codes
      */
-    public function gfsCode(){
-        return $this->belongsTo(GfsCode::class);
+    public function codes(){
+        return $this->hasMany(GfsCode::class);
     }
 
 }
