@@ -30,8 +30,6 @@ class Institution extends Model
      */
     function tarrifs()
     {
-        return $this->belongsToMany(
-            'App\Models\Setup\InstitutionTarrif', 'institution_tarrifs', 'institution_id', 'tarrif_id'
-        );
+        return $this->hasMany('App\Models\Setup\InstitutionTarrif', 'institution_id', 'tarrif_id');
     }
 }
