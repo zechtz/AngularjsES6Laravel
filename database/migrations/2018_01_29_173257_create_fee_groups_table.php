@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInstitutionTarrifsTable extends Migration
+class CreateFeeGroupsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,16 @@ class CreateInstitutionTarrifsTable extends Migration
      */
     public function up()
     {
-        Schema::create('institution_tarrifs', function (Blueprint $table) {
+        Schema::create('fee_groups', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('institution_id')
+            $table->string('name')->notNull();
+            $table->integer('fee_group_id')
                 ->unsigned()
+                ->nullable()
                 ->references('id')
-                ->on('institutions')
+                ->on('fee_groups')
                 ->onUpdate("cascade")
                 ->onDelete("restrict");
-            $table->integer('tarrif_id')
-                ->unsigned()
-                ->references('id')
-                ->on('tarriffs')
-                ->onUpdate("cascade")
-                ->onDelete("restrict");
-            $table->index('institution_id');
-            $table->index('tarrif_id');
             $table->timestamps();
         });
     }
@@ -40,6 +34,6 @@ class CreateInstitutionTarrifsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('institution_tarrifs');
+        Schema::dropIfExists('fee_groups');
     }
 }

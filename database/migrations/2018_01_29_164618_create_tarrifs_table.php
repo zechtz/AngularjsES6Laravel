@@ -20,7 +20,7 @@ class CreateTarrifsTable extends Migration
                 ->unsigned()
                 ->nullable()
                 ->references('id')
-                ->on('gfs_codes')
+                ->on('tarrifs')
                 ->onUpdate("cascade")
                 ->onDelete("restrict");
             $table->integer('gfs_code_id')
