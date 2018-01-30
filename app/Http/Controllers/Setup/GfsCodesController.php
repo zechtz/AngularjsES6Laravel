@@ -22,11 +22,11 @@ class GfsCodesController extends Controller
     }
 
     /**
-     * Create a GFS Code.
+     * Create/Store GFS Code.
      * @param  Request  $request
      * @return customApiResponse
      */
-    public function create(Request $request){
+    public function store(Request $request){
         $data      =  $request->all();
         $validator =  Validator::make($data, GfsCode::$create_rules);
 

@@ -22,11 +22,11 @@ class GfsAccountTypesController extends Controller
     }
 
     /**
-     * Create a GFS Account Type.
+     * Create/Store GFS Account Type.
      * @param  Request  $request
      * @return customApiResponse
      */
-    public function create(Request $request){
+    public function store(Request $request){
         $data      =  $request->all();
         $validator =  Validator::make($data, GfsAccountType::$create_rules);
 

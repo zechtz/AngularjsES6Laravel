@@ -22,11 +22,11 @@ class GfsCategoriesController extends Controller
     }
 
     /**
-     * Create a GFS Category.
+     * Create/Store GFS Category.
      * @param  Request  $request
      * @return customApiResponse
      */
-    public function create(Request $request){
+    public function store(Request $request){
         $data      =  $request->all();
         $validator =  Validator::make($data, GfsCategory::$create_rules);
 
