@@ -29,3 +29,19 @@ Route::group(["prefix" => "v1"], function(){
     Route::resource('gfs-account-types' , 'Setup\GfsAccountTypesController');
     Route::resource('gfs-codes'         , 'Setup\GfsCodesController');
 });
+
+Route::group(["prefix" => "v1"], function(){
+    Route::get('loation_hierarchies'           , 'Setup\LocationHierarchiesController@index');
+    Route::post('loation_hierarchies'          , 'Setup\LocationHierarchiesController@create');
+    Route::get('loation_hierarchies/{id}'      , 'Setup\LocationHierarchiesController@show');
+    Route::put('loation_hierarchies/{id}'      , 'Setup\LocationHierarchiesController@update');
+    Route::delete('loation_hierarchies/{id}'   , 'Setup\LocationHierarchiesController@destroy');
+});
+
+Route::group(["prefix" => "v1"], function(){
+    Route::get('loations'           , 'Setup\LocationsController@index');
+    Route::post('loations'          , 'Setup\LocationsController@create');
+    Route::get('loations/{id}'      , 'Setup\LocationsController@show');
+    Route::put('loations/{id}'      , 'Setup\LocationsController@update');
+    Route::delete('loations/{id}'   , 'Setup\LocationsController@destroy');
+});
