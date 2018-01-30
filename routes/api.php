@@ -96,4 +96,11 @@ Route::group(["prefix" => "v1"], function(){
     Route::get('stations/{id}/edit' , 'Setup\StationsController@edit');
     Route::put('stations/{id}'      , 'Setup\StationsController@update');
     Route::delete('stations/{id}'   , 'Setup\StationsController@destroy');
+
+    Route::get('reserve-hierarchies'   , 'Setup\ReserveHierarchiesController@index');
+    Route::post('reserve-hierarchies'  , 'Setup\ReserveHierarchiesController@create');
+    Route::get('reserve-hierarchies/{id}'      , 'Setup\ReserveHierarchiesController@show');
+    Route::put('reserve-hierarchies/{id}'      , 'Setup\ReserveHierarchiesController@update');
+    Route::delete('reserve-hierarchies/{id}'   , 'Setup\ReserveHierarchiesController@destroy');
+
 });

@@ -15,4 +15,8 @@ class ReserveHierarchy extends Model
         "name" => "required",
         "order" => "required",
     ];
+    public static $create_rules = [
+        "name"  => "required",
+        "order" => "required",
+    ];
 }
