@@ -25,14 +25,6 @@ Route::group(["prefix" => "v1"], function(){
     Route::put('institutions/{id}'      , 'Setup\InstitutionsController@update');
     Route::delete('institutions/{id}'   , 'Setup\InstitutionsController@destroy');
 
-    Route::get('station-categories'           , 'Setup\StationCategoriesController@index');
-    Route::post('station-categories'          , 'Setup\StationCategoriesController@create');
-    Route::get('station-categories/{id}'      , 'Setup\StationCategoriesController@show');
-    Route::get('station-categories/{id}/edit' , 'Setup\StationCategoriesController@edit');
-    Route::put('station-categories/{id}'      , 'Setup\StationCategoriesController@update');
-    Route::delete('station-categories/{id}'   , 'Setup\StationCategoriesController@destroy');
-
-
     Route::resource('gfs-categories'    , 'Setup\GfsCategoriesController');
     Route::resource('gfs-account-types' , 'Setup\GfsAccountTypesController');
     Route::resource('gfs-codes'         , 'Setup\GfsCodesController');
@@ -90,4 +82,18 @@ Route::group(["prefix" => "v1"], function(){
     Route::get('countries/{id}/edit' , 'Setup\CountriesController@edit');
     Route::put('countries/{id}'      , 'Setup\CountriesController@update');
     Route::delete('countries/{id}'   , 'Setup\CountriesController@destroy');
+
+    Route::get('station-categories'           , 'Setup\StationCategoriesController@index');
+    Route::post('station-categories'          , 'Setup\StationCategoriesController@create');
+    Route::get('station-categories/{id}'      , 'Setup\StationCategoriesController@show');
+    Route::get('station-categories/{id}/edit' , 'Setup\StationCategoriesController@edit');
+    Route::put('station-categories/{id}'      , 'Setup\StationCategoriesController@update');
+    Route::delete('station-categories/{id}'   , 'Setup\StationCategoriesController@destroy');
+
+    Route::get('stations'           , 'Setup\StationsController@index');
+    Route::post('stations'          , 'Setup\StationsController@create');
+    Route::get('stations/{id}'      , 'Setup\StationsController@show');
+    Route::get('stations/{id}/edit' , 'Setup\StationsController@edit');
+    Route::put('stations/{id}'      , 'Setup\StationsController@update');
+    Route::delete('stations/{id}'   , 'Setup\StationsController@destroy');
 });
