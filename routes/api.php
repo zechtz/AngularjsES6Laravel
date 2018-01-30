@@ -25,6 +25,14 @@ Route::group(["prefix" => "v1"], function(){
     Route::put('institutions/{id}'      , 'Setup\InstitutionsController@update');
     Route::delete('institutions/{id}'   , 'Setup\InstitutionsController@destroy');
 
+    Route::get('station-categories'           , 'Setup\StationCategoriesController@index');
+    Route::post('station-categories'          , 'Setup\StationCategoriesController@create');
+    Route::get('station-categories/{id}'      , 'Setup\StationCategoriesController@show');
+    Route::get('station-categories/{id}/edit' , 'Setup\StationCategoriesController@edit');
+    Route::put('station-categories/{id}'      , 'Setup\StationCategoriesController@update');
+    Route::delete('station-categories/{id}'   , 'Setup\StationCategoriesController@destroy');
+
+
     Route::resource('gfs-categories'    , 'Setup\GfsCategoriesController');
     Route::resource('gfs-account-types' , 'Setup\GfsAccountTypesController');
     Route::resource('gfs-codes'         , 'Setup\GfsCodesController');
