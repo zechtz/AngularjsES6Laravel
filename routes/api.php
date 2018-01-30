@@ -41,12 +41,12 @@ Route::group(["prefix" => "v1"], function(){
     Route::put('loations/{id}'      , 'Setup\LocationsController@update');
     Route::delete('loations/{id}'   , 'Setup\LocationsController@destroy');
 
-    Route::get('attraction-siteCategories'           , 'Setup\AttractionSiteCategoriesController@index');
-    Route::post('attraction-siteCategories'          , 'Setup\AttractionSiteCategoriesController@create');
-    Route::get('attraction-siteCategories/{id}'      , 'Setup\AttractionSiteCategoriesController@show');
-    Route::get('attraction-siteCategories/{id}/edit' , 'Setup\AttractionSiteCategoriesController@edit');
-    Route::put('attraction-siteCategories/{id}'      , 'Setup\AttractionSiteCategoriesController@update');
-    Route::delete('attraction-siteCategories/{id}'   , 'Setup\AttractionSiteCategoriesController@destroy');
+    Route::get('attraction-site-categories'           , 'Setup\AttractionSiteCategoriesController@index');
+    Route::post('attraction-site-categories'          , 'Setup\AttractionSiteCategoriesController@create');
+    Route::get('attraction-site-categories/{id}'      , 'Setup\AttractionSiteCategoriesController@show');
+    Route::get('attraction-site-categories/{id}/edit' , 'Setup\AttractionSiteCategoriesController@edit');
+    Route::put('attraction-site-categories/{id}'      , 'Setup\AttractionSiteCategoriesController@update');
+    Route::delete('attraction-site-categories/{id}'   , 'Setup\AttractionSiteCategoriesController@destroy');
 
     Route::get('attraction-site-grades'           , 'Setup\AttractionSiteGradesController@index');
     Route::post('attractionsite-grades'           , 'Setup\AttractionSiteGradesController@create');
@@ -68,4 +68,18 @@ Route::group(["prefix" => "v1"], function(){
     Route::get('meteorological-details/{id}/edit' , 'Setup\MeteorologicalDetailsController@edit');
     Route::put('meteorological-details/{id}'      , 'Setup\MeteorologicalDetailsController@update');
     Route::delete('meteorological-details/{id}'   , 'Setup\MeteorologicalDetailsController@destroy');
+
+    Route::get('country-groups'           , 'Setup\CountryGroupsController@index');
+    Route::post('country-groups'          , 'Setup\CountryGroupsController@create');
+    Route::get('country-groups/{id}'      , 'Setup\CountryGroupsController@show');
+    Route::get('country-groups/{id}/edit' , 'Setup\CountryGroupsController@edit');
+    Route::put('country-groups/{id}'      , 'Setup\CountryGroupsController@update');
+    Route::delete('country-groups/{id}'   , 'Setup\CountryGroupsController@destroy');
+
+    Route::get('countries'           , 'Setup\CountriesController@index');
+    Route::post('countries'          , 'Setup\CountriesController@create');
+    Route::get('countries/{id}'      , 'Setup\CountriesController@show');
+    Route::get('countries/{id}/edit' , 'Setup\CountriesController@edit');
+    Route::put('countries/{id}'      , 'Setup\CountriesController@update');
+    Route::delete('countries/{id}'   , 'Setup\CountriesController@destroy');
 });
