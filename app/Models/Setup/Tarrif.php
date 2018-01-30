@@ -19,12 +19,12 @@ class Tarrif extends Model
     ];
 
     /**
-     * return all institution tarrifs
-     * @return Tarrif
+     * Tarrif has many institutions
+     * @param null
+     * @return ElloquentCollection
      */
     function institutions()
     {
-        return $this
-            ->belongsToMany('App\Models\Setup\InstitutionTarrif', 'institution_tarrifs', 'institution_id', 'tarrif_id');
+        return $this->hasMany('App\Models\Setup\InstitutionTarrif', 'tarrif_id', 'institution_tarrif_id');
     }
 }

@@ -18,11 +18,21 @@ class InstitutionTarrif extends Model
         "tarrif_id"      => "required",
     ];
 
-    public function institution(){
-        return $this->belongsTo('App\Models\Setup\Institution','institution_id', 'id');
+    /**
+     * institution tarrif belongs to many institutions
+     * @param null
+     * @return ElloquentCollection
+     */
+    public function institutions(){
+        return $this->belongsToMany('App\Models\Setup\Institution', 'institution_tarrif_id', 'institution_id');
     }
 
-    public function tarrif(){
-        return $this->belongsTo('App\Models\Setup\Tarrif','tarrif_id', 'id');
+    /**
+     * institution tarrif belongs to many tarrifs
+     * @param null
+     * @return ElloquentCollection
+     */
+    public function tarrifs(){
+        return $this->belongsToMany('App\Models\Setup\Tarrif', 'institution_tarrif_id', 'tarrif_id');
     }
 }

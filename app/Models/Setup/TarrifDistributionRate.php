@@ -27,7 +27,7 @@ class TarrifDistributionRate extends Model
      */
     public function tarrif()
     {
-        return $this->BelongsTo('App\Models\Setup\Tarrif', 'tarrif_id', 'id');
+        return $this->belongsTo('App\Models\Setup\Tarrif', 'tarrif_id', 'id');
     }
 
     /**
@@ -37,7 +37,7 @@ class TarrifDistributionRate extends Model
      */
     public function tarrifDistribution()
     {
-        return $this->BelongsTo('App\Models\Setup\TarrifDistribution', 'tarrif_distribution_id', 'id');
+        return $this->belongsTo('App\Models\Setup\TarrifDistribution', 'tarrif_distribution_id', 'id');
     }
 
 }
