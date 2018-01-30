@@ -16,14 +16,14 @@ class CreateStationsTable extends Migration
         Schema::create('stations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('station_id')->unsigned()->nullable();
-            $table->integer('location_id')->unsigned();
-            $table->integer('institution_id')->unsigned();
-            $table->integer('station_category_id')->unsigned();
             $table->text('description');
             $table->float('latitude');
             $table->float('longitude');
             $table->string('shape_file_path');
+            $table->integer('station_id')->unsigned()->nullable();
+            $table->integer('location_id')->unsigned();
+            $table->integer('institution_id')->unsigned();
+            $table->integer('station_category_id')->unsigned();
             $table->foreign('station_id')
                 ->references('id')
                 ->on('stations')
