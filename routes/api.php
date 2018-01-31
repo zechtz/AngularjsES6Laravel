@@ -103,4 +103,10 @@ Route::group(["prefix" => "v1"], function(){
     Route::put('reserve-hierarchies/{id}'      , 'Setup\ReserveHierarchiesController@update');
     Route::delete('reserve-hierarchies/{id}'   , 'Setup\ReserveHierarchiesController@destroy');
 
+    Route::get('reserve-distributions'   , 'Setup\ReserveDistributionsController@index');
+    Route::post('reserve-distributions'  , 'Setup\ReserveDistributionsController@create');
+    Route::get('reserve-distributions/{id}'      , 'Setup\ReserveDistributionsController@show');
+    Route::put('reserve-distributions/{id}'      , 'Setup\ReserveDistributionsController@update');
+    Route::delete('reserve-distributions/{id}'   , 'Setup\ReserveDistributionsController@destroy');
+
 });
