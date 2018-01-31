@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Setup;
+
 use App\Models\Setup\Institution;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

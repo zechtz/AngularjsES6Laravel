@@ -11,4 +11,8 @@
 |
 */
 
+Route::get('/', function () {
+    return view('index');
+});
+
 require_once("api.php");
