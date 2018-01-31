@@ -2,25 +2,32 @@
 
 namespace App\Http\Controllers\Setup;
 
+use App\Http\Controllers\Controller;
 use App\Models\Setup\CountryGroup;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Validator;
+
 
 class CountryGroupsController extends Controller
 {
     public function index (Request $request){
-        $data         =  $request->all();
-        $per_page     =  isset($data['per_page'])? $data['per_page'] : 15;
-        $country_groups =  CountryGroup::all();
-        $country_groups =  customPaginate($country_groups, $per_page);
+//        $data         =  $request->all();
+//        $per_page     =  isset($data['per_page'])? $data['per_page'] : 15;
+//        $country_groups =  CountryGroup::all();
+//        $country_groups =  customPaginate($country_groups, $per_page);
 
-//        $country_groups = new CountryGroup();
-//        return customApiResponse($country_groups->get_country_groups());
+        $country_groups = new CountryGroup();
+        return customApiResponse($country_groups->get_country_groups());
         return customApiResponse($country_groups);
     }
 
-    public function create(Request $request){
+    public function create(){
+
+    }
+
+    public function store(Request $request){
         $data      =  $request->all();
+
         $validator =  Validator::make($data, CountryGroup::$create_rules);
 
         if ($validator->fails()) {
@@ -47,7 +54,10 @@ class CountryGroupsController extends Controller
 
     public function update(Request $request, $id)
     {
+
         $data      = $request->all();
+
+
         $validator = Validator::make($data, CountryGroup::$rules);
 
         if ($validator->fails()) {

@@ -69,17 +69,11 @@ Route::group(["prefix" => "v1"], function(){
     Route::put('meteorological-details/{id}'      , 'Setup\MeteorologicalDetailsController@update');
     Route::delete('meteorological-details/{id}'   , 'Setup\MeteorologicalDetailsController@destroy');
 
-    Route::get('country-groups'           , 'Setup\CountryGroupsController@index');
-    Route::post('country-groups'          , 'Setup\CountryGroupsController@create');
-    Route::get('country-groups/{id}'      , 'Setup\CountryGroupsController@show');
-    Route::get('country-groups/{id}/edit' , 'Setup\CountryGroupsController@edit');
-    Route::put('country-groups/{id}'      , 'Setup\CountryGroupsController@update');
-    Route::delete('country-groups/{id}'   , 'Setup\CountryGroupsController@destroy');
+    Route::resource('country-groups'           , 'Setup\CountryGroupsController');
 
-    Route::get('countries'           , 'Setup\CountriesController@index');
-    Route::post('countries'          , 'Setup\CountriesController@create');
-    Route::get('countries/{id}'      , 'Setup\CountriesController@show');
-    Route::get('countries/{id}/edit' , 'Setup\CountriesController@edit');
-    Route::put('countries/{id}'      , 'Setup\CountriesController@update');
-    Route::delete('countries/{id}'   , 'Setup\CountriesController@destroy');
+    Route::resource('countries'           , 'Setup\CountriesController');
+
+    Route::resource('accommodation-facility-types'       , 'Setup\AccommodationFacilityTypesController');
+    Route::resource('accommodation-facilities'       , 'Setup\AccommodationFacilitiesController');
+
 });

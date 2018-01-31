@@ -13,12 +13,12 @@ class CountryGroup extends Model
 
     //
     public static $rules = [
-        "name"  => "required|unique"
+        "name"  => "required|unique:country_groups"
        
     ];
 
     public static $create_rules = [
-        "name"  => "required|unique"
+        "name"  => "required|unique:country_groups"
         
     ];
 
