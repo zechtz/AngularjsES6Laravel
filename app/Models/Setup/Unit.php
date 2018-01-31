@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models\Currency;
+namespace App\Models\Setup;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Currency extends Model
+class Unit extends Model
 {
     /**
      * The attributes that aren't mass assignable.
@@ -12,15 +12,15 @@ class Currency extends Model
      */
     protected $guarded =  ["id"];
 
-    protected $table   =  "currencies";
+    protected $table   =  "units";
 
     public static $rules = [
-        "name"  => "required|unique:currencies",
+        "name"  => "required|unique:units",
         "code"  => "required",
     ];
 
     public static $create_rules = [
-        "name"   => "required|unique:currencies",
-        "code"   => "required|unique:currencies",
+        "name"   => "required|unique:units",
+        "code"   => "required|unique:units",
     ];
 }

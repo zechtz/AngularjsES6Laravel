@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUnitsTable extends Migration
+class CreateFinancialYearsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateUnitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('units', function (Blueprint $table) {
+        Schema::create('financial_years', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('code');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateUnitsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('units');
+        Schema::dropIfExists('financial_years');
     }
 }

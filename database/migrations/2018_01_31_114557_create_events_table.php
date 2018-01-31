@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUnitsTable extends Migration
+class CreateEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateUnitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('units', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('institution_id')->unsigned();
             $table->string('name');
-            $table->string('code');
+            $table->string('description');
+            $table->foreign('institution_id')->references('id')
+                ->on('institutions')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateUnitsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('units');
+        Schema::dropIfExists('events');
     }
 }
