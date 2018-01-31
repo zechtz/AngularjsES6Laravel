@@ -29,6 +29,14 @@ Route::group(["prefix" => "v1"], function(){
     Route::resource('gfs-account-types' , 'Setup\GfsAccountTypesController');
     Route::resource('gfs-codes'         , 'Setup\GfsCodesController');
 
+
+    Route::get('units'           , 'Setup\UnitsController@index');
+    Route::post('units'          , 'Setup\UnitsController@create');
+    Route::get('units/{id}'      , 'Setup\UnitsController@show');
+    Route::get('units/{id}/edit' , 'Setup\UnitsController@edit');
+    Route::put('units/{id}'      , 'Setup\UnitsController@update');
+    Route::delete('units/{id}'   , 'Setup\UnitsController@destroy');
+
     Route::get('loation-hierarchies'           , 'Setup\LocationHierarchiesController@index');
     Route::post('loation-hierarchies'          , 'Setup\LocationHierarchiesController@create');
     Route::get('loation-hierarchies/{id}'      , 'Setup\LocationHierarchiesController@show');
