@@ -82,4 +82,12 @@ Route::group(["prefix" => "v1"], function(){
     Route::get('countries/{id}/edit' , 'Setup\CountriesController@edit');
     Route::put('countries/{id}'      , 'Setup\CountriesController@update');
     Route::delete('countries/{id}'   , 'Setup\CountriesController@destroy');
+
+    Route::get('tarrifs'           , 'Setup\TarrifsController@index');
+    Route::post('tarrifs'          , 'Setup\TarrifsController@create');
+    Route::get('tarrifs/{id}'      , 'Setup\TarrifsController@show');
+    Route::get('tarrifs/{id}/edit' , 'Setup\TarrifsController@edit');
+    Route::put('tarrifs/{id}'      , 'Setup\TarrifsController@update');
+    Route::delete('tarrifs/{id}'   , 'Setup\TarrifsController@destroy');
+
 });

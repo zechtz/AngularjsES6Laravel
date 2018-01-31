@@ -29,7 +29,7 @@ class TarrifsController extends Controller
      */
     public function create(Request $request){
         $data      =  $request->all();
-        $validator =  Validator::make($data, Tarrif::$create_rules);
+        $validator =  Validator::make($data, Tarrif::$rules);
 
         if ($validator->fails()) {
             return customApiResponse($data, "Validation Error", 400, $validator->errors()->all());
