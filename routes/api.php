@@ -82,4 +82,32 @@ Route::group(["prefix" => "v1"], function(){
     Route::get('countries/{id}/edit' , 'Setup\CountriesController@edit');
     Route::put('countries/{id}'      , 'Setup\CountriesController@update');
     Route::delete('countries/{id}'   , 'Setup\CountriesController@destroy');
+
+    Route::get('specie-categories'           , 'Setup\SpecieCategoriesController@index');
+    Route::post('specie-categories'          , 'Setup\SpecieCategoriesController@create');
+    Route::get('specie-categories/{id}'      , 'Setup\SpecieCategoriesController@show');
+    Route::get('specie-categories/{id}/edit' , 'Setup\SpecieCategoriesController@edit');
+    Route::put('specie-categories/{id}'      , 'Setup\SpecieCategoriesController@update');
+    Route::delete('specie-categories/{id}'   , 'Setup\SpecieCategoriesController@destroy');
+
+    Route::get('species'           , 'Setup\SpeciesController@index');
+    Route::post('species'          , 'Setup\SpeciesController@create');
+    Route::get('species/{id}'      , 'Setup\SpeciesController@show');
+    Route::get('species/{id}/edit' , 'Setup\SpeciesController@edit');
+    Route::put('species/{id}'      , 'Setup\SpeciesController@update');
+    Route::delete('species/{id}'   , 'Setup\SpeciesController@destroy');
+
+    Route::get('trophies'           , 'Setup\TrophiesController@index');
+    Route::post('trophies'          , 'Setup\TrophiesController@create');
+    Route::get('trophies/{id}'      , 'Setup\TrophiesController@show');
+    Route::get('trophies/{id}/edit' , 'Setup\TrophiesController@edit');
+    Route::put('trophies/{id}'      , 'Setup\TrophiesController@update');
+    Route::delete('trophies/{id}'   , 'Setup\TrophiesController@destroy');
+
+    Route::get('specimen-types'           , 'Setup\SpecimenTypesController@index');
+    Route::post('specimen-types'          , 'Setup\SpecimenTypesController@create');
+    Route::get('specimen-types/{id}'      , 'Setup\SpecimenTypesController@show');
+    Route::get('specimen-types/{id}/edit' , 'Setup\SpecimenTypesController@edit');
+    Route::put('specimen-types/{id}'      , 'Setup\SpecimenTypesController@update');
+    Route::delete('specimen-types/{id}'   , 'Setup\SpecimenTypesController@destroy');
 });
