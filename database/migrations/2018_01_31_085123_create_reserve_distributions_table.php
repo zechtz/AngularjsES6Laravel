@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStationsTable extends Migration
+class CreateReserveDistributionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,30 +13,25 @@ class CreateStationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('stations', function (Blueprint $table) {
+        Schema::create('reserve_distributions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->text('description');
-            $table->float('latitude');
-            $table->float('longitude');
-            $table->string('shape_file_path');
-            $table->integer('station_id')->unsigned()->nullable();
-            $table->integer('location_id')->unsigned();
-            $table->integer('institution_id')->unsigned();
-            $table->integer('station_category_id')->unsigned();
-            $table->foreign('station_id')
+            $table->integer('reserve_distribution_id')->unsigned()->nullable();
+            $table->integer('reserve_hierarchy_id')->unsigned();
+            $table->integer('attraction_site_id')->unsigned();
+            $table->foreign('reserve_distribution_id')
                 ->references('id')
-                ->on('stations')
+                ->on('reserve_distributions')
                 ->onUpdate("cascade")
                 ->onDelete("restrict");
-            $table->foreign('location_id')
+            $table->foreign('reserve_hierarchy_id')
                 ->references('id')
-                ->on('locations')
+                ->on('reserve_hierarchies')
                 ->onUpdate("cascade")
                 ->onDelete("restrict");
-            $table->foreign('station_category_id')
+            $table->foreign('attraction_site_id')
                 ->references('id')
-                ->on('station_categories')
+                ->on('attraction_sites')
                 ->onUpdate("cascade")
                 ->onDelete("restrict");
             $table->timestamps();
@@ -50,6 +45,6 @@ class CreateStationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stations');
+        Schema::dropIfExists('reserve_distributions');
     }
 }

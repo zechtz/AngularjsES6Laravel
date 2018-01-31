@@ -25,10 +25,10 @@ class GfsCategory extends Model
     ];
 
     /**
-     * Each GFS code belongs to a certain category
-     * @return [type]
+     * Each Category has many GFS codes
+     * @return GFS Codes
      */
-    public function gfsCode(){
-        return $this->belongsTo(GfsCode::class);
+    public function codes(){
+        return $this->hasMany(GfsCode::class);
     }
 }
