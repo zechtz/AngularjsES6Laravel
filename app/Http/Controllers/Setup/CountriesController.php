@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Setup;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Setup\Country;
-
+use Validator;
 class CountriesController extends Controller
 {
     public function index (Request $request){
@@ -15,7 +15,7 @@ class CountriesController extends Controller
         return customApiResponse($countries);
     }
 
-    public function create(Request $request){
+    public function store(Request $request){
         $data      =  $request->all();
         $validator =  Validator::make($data, Country::$create_rules);
 

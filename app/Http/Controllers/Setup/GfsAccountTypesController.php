@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Setup;
 use App\Models\Setup\GfsAccountType;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
 
@@ -10,11 +9,10 @@ class GfsAccountTypesController extends Controller
 {
     /**
      * Display all GFS Account Types.
-     * @param  Request  $request
      * @return customApiResponse
      */
-    public function index (Request $request){
-        $data               =  $request->all();
+    public function index (){
+        $data               =  request()->all();
         $per_page           =  isset($data['per_page'])? $data['per_page'] : 15;
         $gfs_account_types  =  GfsAccountType::all();
         $gfs_account_types  =  customPaginate($gfs_account_types, $per_page);
@@ -22,12 +20,11 @@ class GfsAccountTypesController extends Controller
     }
 
     /**
-     * Create a GFS Account Type.
-     * @param  Request  $request
+     * Create/Store GFS Account Type.
      * @return customApiResponse
      */
-    public function create(Request $request){
-        $data      =  $request->all();
+    public function store(){
+        $data      =  request()->all();
         $validator =  Validator::make($data, GfsAccountType::$create_rules);
 
         if ($validator->fails()) {
@@ -59,13 +56,12 @@ class GfsAccountTypesController extends Controller
 
     /**
      * Update GFS Account Type.
-     * @param  Request  $request
      * @param  int  $id
      * @return customApiResponse
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        $data      = $request->all();
+        $data      = request()->all();
         $validator = Validator::make($data, GfsAccountType::$rules);
 
         if ($validator->fails()) {
@@ -88,7 +84,6 @@ class GfsAccountTypesController extends Controller
 
     /**
      * destroy/delete GFS Account Type.
-     * @param  Request  $request
      * @return customApiResponse
      */
     public function destroy($id){

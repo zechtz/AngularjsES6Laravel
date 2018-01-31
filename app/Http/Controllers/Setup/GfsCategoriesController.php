@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Setup;
 use App\Models\Setup\GfsCategory;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
 
@@ -10,11 +9,10 @@ class GfsCategoriesController extends Controller
 {
     /**
      * Display all GFS Categories.
-     * @param  Request  $request
      * @return customApiResponse
      */
-    public function index (Request $request){
-        $data           =  $request->all();
+    public function index (){
+        $data           =  request()->all();
         $per_page       =  isset($data['per_page'])? $data['per_page'] : 15;
         $gfs_categories =  GfsCategory::all();
         $gfs_categories =  customPaginate($gfs_categories, $per_page);
@@ -22,12 +20,11 @@ class GfsCategoriesController extends Controller
     }
 
     /**
-     * Create a GFS Category.
-     * @param  Request  $request
+     * Create/Store GFS Category.
      * @return customApiResponse
      */
-    public function create(Request $request){
-        $data      =  $request->all();
+    public function store(){
+        $data      =  request()->all();
         $validator =  Validator::make($data, GfsCategory::$create_rules);
 
         if ($validator->fails()) {
@@ -59,13 +56,12 @@ class GfsCategoriesController extends Controller
 
     /**
      * Update GFS Category.
-     * @param  Request  $request
      * @param  int  $id
      * @return customApiResponse
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        $data      = $request->all();
+        $data      = request()->all();
         $validator = Validator::make($data, GfsCategory::$rules);
 
         if ($validator->fails()) {
@@ -88,7 +84,6 @@ class GfsCategoriesController extends Controller
 
     /**
      * destroy/delete GFS Category.
-     * @param  Request  $request
      * @return customApiResponse
      */
     public function destroy($id){

@@ -10,11 +10,10 @@ class GfsCodesController extends Controller
 {
     /**
      * Display all GFS Codes.
-     * @param  Request  $request
      * @return customApiResponse
      */
-    public function index (Request $request){
-        $data       =  $request->all();
+    public function index (){
+        $data       =  request()->all();
         $per_page   =  isset($data['per_page'])? $data['per_page'] : 15;
         $gfs_codes  =  GfsCode::all();
         $gfs_codes  =  customPaginate($gfs_codes, $per_page);
@@ -22,12 +21,11 @@ class GfsCodesController extends Controller
     }
 
     /**
-     * Create a GFS Code.
-     * @param  Request  $request
+     * Create/Store GFS Code.
      * @return customApiResponse
      */
-    public function create(Request $request){
-        $data      =  $request->all();
+    public function store(){
+        $data      =  request()->all();
         $validator =  Validator::make($data, GfsCode::$create_rules);
 
         if ($validator->fails()) {
@@ -59,13 +57,12 @@ class GfsCodesController extends Controller
 
     /**
      * Update GFS Code.
-     * @param  Request  $request
      * @param  int  $id
      * @return customApiResponse
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        $data      = $request->all();
+        $data      = request()->all();
         $validator = Validator::make($data, GfsCode::$rules);
 
         if ($validator->fails()) {
@@ -88,7 +85,6 @@ class GfsCodesController extends Controller
 
     /**
      * destroy/delete GFS Code.
-     * @param  Request  $request
      * @return customApiResponse
      */
     public function destroy($id){

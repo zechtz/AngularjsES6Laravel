@@ -25,19 +25,19 @@ class GfsCode extends Model
     ];
 
     /**
-     * Returns the category of the GFS code
-     * @return [type]
+     * Get the category of the GFS code
+     * @return GFS Category
      */
     public function category(){
-        return $this->hasOne(GfsCategory::class);
+        return $this->belongsTo(GfsCategory::class,'gfs_category_id');
     }
 
     /**
-     * Returns the Account Type of the GFS code
-     * @return [type]
+     * Get the Account Type of the GFS code
+     * @return GFS Account Type
      */
     public function accountType(){
-        return $this->hasOne(GfsAccountType::class);
+        return $this->belongsTo(GfsAccountType::class,'gfs_account_type_id');
     }
 
 }

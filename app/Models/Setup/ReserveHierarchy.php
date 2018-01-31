@@ -4,21 +4,19 @@ namespace App\Models\Setup;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AttractionSiteGrade extends Model
+class ReserveHierarchy extends Model
 {
     /**
-     * The attributes that aren't mass assignable.
-     * @var array
+     * The attributes that aren't mass assignable
      */
     protected $guarded =  ["id"];
-
-    protected $table   =  "attraction_site_grades";
-
+    protected $table   =  "reserve_hierarchies";
     public static $rules = [
         "name" => "required",
+        "order" => "required",
     ];
-
     public static $create_rules = [
-        "name" => "required",
+        "name"  => "required",
+        "order" => "required",
     ];
 }
