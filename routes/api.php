@@ -29,6 +29,13 @@ Route::group(["prefix" => "v1"], function(){
     Route::resource('gfs-account-types' , 'Setup\GfsAccountTypesController');
     Route::resource('gfs-codes'         , 'Setup\GfsCodesController');
 
+    Route::get('currencies'           , 'Setup\CurrenciesController@index');
+    Route::post('currencies'          , 'Setup\CurrenciesController@create');
+    Route::get('currencies/{id}'      , 'Setup\CurrenciesController@show');
+    Route::get('currencies/{id}/edit' , 'Setup\CurrenciesController@edit');
+    Route::put('currencies/{id}'      , 'Setup\CurrenciesController@update');
+    Route::delete('currencies/{id}'   , 'Setup\CurrenciesController@destroy');
+
     Route::get('loation-hierarchies'           , 'Setup\LocationHierarchiesController@index');
     Route::post('loation-hierarchies'          , 'Setup\LocationHierarchiesController@create');
     Route::get('loation-hierarchies/{id}'      , 'Setup\LocationHierarchiesController@show');
