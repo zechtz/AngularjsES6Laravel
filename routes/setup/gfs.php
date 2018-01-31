@@ -1,10 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
-| API Routes
+| GFS Code Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register API routes for your application. These
@@ -12,10 +10,9 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
  */
-require_once("setup/attraction_site.php");
-require_once("setup/country.php");
-require_once("setup/gfs.php");
-require_once("setup/institution.php");
-require_once("setup/location.php");
-require_once("setup/meteorogical_detail.php");
-require_once("setup/tarrif.php");
+
+Route::group(["prefix" => "v1"], function(){
+    Route::resource('gfs-categories'    , 'Setup\GfsCategoriesController');
+    Route::resource('gfs-account-types' , 'Setup\GfsAccountTypesController');
+    Route::resource('gfs-codes'         , 'Setup\GfsCodesController');
+});
