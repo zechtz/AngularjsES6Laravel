@@ -1,4 +1,5 @@
 <?php
+
 require_once("accommodation.php");
 require_once("attraction_site.php");
 require_once("country.php");
