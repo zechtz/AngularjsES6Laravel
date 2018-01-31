@@ -16,3 +16,4 @@ require_once("specimen.php");
 require_once("station.php");
 require_once("tarrif.php");
 require_once("unit.php");
+require_once("plot.php");
