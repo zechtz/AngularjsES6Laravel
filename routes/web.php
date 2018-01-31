@@ -10,9 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('index');
-});
+use \App\Models\Setup\ReserveHierarchy;
 
 require_once("api.php");
