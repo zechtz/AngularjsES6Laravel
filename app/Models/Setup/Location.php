@@ -11,8 +11,8 @@ class Location extends Model
     protected $table    = "locations";
 
     public static $rules = [
-        'name'                 => 'required|max:100',
+        'name'                  => 'required|max:100',
         'location_hierarchy_id' => 'required|integer',
-        'parent_id'            => 'integer',
+        'parent_id'             => 'integer',
     ];
 }
