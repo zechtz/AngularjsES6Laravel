@@ -21,7 +21,7 @@ class InstitutionTarrif extends Model
     /**
      * institution tarrif belongs to many institutions
      * @param null
-     * @return ElloquentCollection
+     * @return Elloquent Collection
      */
     public function institutions(){
         return $this->belongsToMany('App\Models\Setup\Institution', 'institution_tarrif_id', 'institution_id');
