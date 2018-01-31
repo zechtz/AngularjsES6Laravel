@@ -4,7 +4,7 @@ namespace App\Models\Currency;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Unit extends Model
+class Currency extends Model
 {
     /**
      * The attributes that aren't mass assignable.
