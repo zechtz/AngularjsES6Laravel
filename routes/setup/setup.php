@@ -17,3 +17,5 @@ require_once("station.php");
 require_once("tarrif.php");
 require_once("unit.php");
 require_once("plot.php");
+require_once("merit.php");
+require_once("application.php");
