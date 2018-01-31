@@ -28,7 +28,7 @@ class ReserveDistribution extends Model
      * @return Reserve Hierarchy
      */
     public function reserveHierarchy(){
-        return $this->hasOne(ReserveHierarchy::class);
+        return $this->belongsTo(ReserveHierarchy::class,'reserve_hierarchy_id');
     }
 
     /**
@@ -36,6 +36,6 @@ class ReserveDistribution extends Model
      * @return [type]
      */
     public function attractionSite(){
-        return $this->hasOne(AttractionSite::class);
+        return $this->belongsTo(AttractionSite::class,'attraction_site_id');
     }
 }

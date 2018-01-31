@@ -10,5 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use \App\Models\Setup\ReserveHierarchy;
 
+Route::get("test",function(){
+    dd(ReserveHierarchy::count());
+});
 require_once("api.php");

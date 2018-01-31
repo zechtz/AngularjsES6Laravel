@@ -19,4 +19,9 @@ class ReserveHierarchy extends Model
         "name"  => "required",
         "order" => "required",
     ];
+
+    public function reserveDistributions()
+    {
+        return $this->hasMany(ReserveDistribution::class);
+    }
 }
