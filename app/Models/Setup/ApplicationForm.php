@@ -16,7 +16,6 @@ class ApplicationForm extends Model
 
     public static $rules = [
         "name"  => "required",
-        "application_type_id" => "required",
     ];
 
     public static $create_rules = [
@@ -25,8 +24,8 @@ class ApplicationForm extends Model
     ];
 
     /**
-     *
-     * @return BelongsTo
+     *Application type relation
+     * @return Application type
      */
     public function applicationType()
     {

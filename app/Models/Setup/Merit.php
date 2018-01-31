@@ -16,8 +16,6 @@ class Merit extends Model
 
     public static $rules = [
         "name"  => "required",
-        "description"=>"required",
-        "image_path"=>"required",
     ];
 
     public static $create_rules = [
@@ -27,8 +25,8 @@ class Merit extends Model
     ];
 
     /**
-     * return all institution tarrifs
-     * @return Tarrif
+     *
+     * @return Institution
      */
     function institution()
     {

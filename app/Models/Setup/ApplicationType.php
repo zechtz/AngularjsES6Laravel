@@ -16,10 +16,6 @@ class ApplicationType extends Model
 
     public static $rules = [
         "name"  => "required",
-        "institution_id" => "required",
-        "require_approval" => "required",
-        "require_fee" => "required",
-        "validity_period" => "required",
     ];
 
     public static $create_rules = [
@@ -31,7 +27,7 @@ class ApplicationType extends Model
     ];
 
     /**
-     * return all institution Institution
+     * Institution relationship
      * @return Institution
      */
     public function institution()

@@ -15,4 +15,9 @@ class Location extends Model
         'location_hierarchy_id' => 'required|integer',
         'parent_id'            => 'integer',
     ];
+
+    public function stations()
+    {
+        return $this->hasMany(Station::class);
+    }
 }
