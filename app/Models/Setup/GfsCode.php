@@ -39,5 +39,4 @@ class GfsCode extends Model
     public function accountType(){
         return $this->belongsTo(GfsAccountType::class,'gfs_account_type_id');
     }
-
 }

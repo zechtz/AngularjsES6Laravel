@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Specie extends Model
 {
-    /*
+    /**
     * the attribute that are not assignable
-    */
+    **/
     protected $gurded   = ['id'];
     protected $fillable = [
         'common_name',

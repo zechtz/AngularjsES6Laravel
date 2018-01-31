@@ -11,15 +11,12 @@ class CountryGroup extends Model
 
     protected $table   =  "country_groups";
 
-    //
     public static $rules = [
         "name"  => "required|unique:country_groups"
-       
     ];
 
     public static $create_rules = [
         "name"  => "required|unique:country_groups"
-        
     ];
 
     public function get_country_groups(){
@@ -27,6 +24,5 @@ class CountryGroup extends Model
         $per_page     =  isset($country_groups['per_page'])? $country_groups['per_page'] : 15;
         $country_groups = customPaginate($country_groups, $per_page);
       return $country_groups;
-
     }
 }
