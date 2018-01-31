@@ -16,10 +16,10 @@ class CreateTableLocations extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('parent_id')->unsigned()->nullable();
+            $table->integer('location_id')->unsigned()->nullable();
             $table->integer('location_hierarchy_id')->unsigned();
             $table->timestamps();
-            $table->foreign('parent_id')
+            $table->foreign('location_id')
                 ->references('id')
                 ->on('locations')
                 ->onUpdate("cascade")

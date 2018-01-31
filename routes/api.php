@@ -116,4 +116,30 @@ Route::group(["prefix" => "v1"], function(){
     Route::get('specimen-types/{id}/edit' , 'Setup\SpecimenTypesController@edit');
     Route::put('specimen-types/{id}'      , 'Setup\SpecimenTypesController@update');
     Route::delete('specimen-types/{id}'   , 'Setup\SpecimenTypesController@destroy');
+
+    Route::get('station-categories'           , 'Setup\StationCategoriesController@index');
+    Route::post('station-categories'          , 'Setup\StationCategoriesController@create');
+    Route::get('station-categories/{id}'      , 'Setup\StationCategoriesController@show');
+    Route::get('station-categories/{id}/edit' , 'Setup\StationCategoriesController@edit');
+    Route::put('station-categories/{id}'      , 'Setup\StationCategoriesController@update');
+    Route::delete('station-categories/{id}'   , 'Setup\StationCategoriesController@destroy');
+
+    Route::get('stations'           , 'Setup\StationsController@index');
+    Route::post('stations'          , 'Setup\StationsController@create');
+    Route::get('stations/{id}'      , 'Setup\StationsController@show');
+    Route::get('stations/{id}/edit' , 'Setup\StationsController@edit');
+    Route::put('stations/{id}'      , 'Setup\StationsController@update');
+    Route::delete('stations/{id}'   , 'Setup\StationsController@destroy');
+
+    Route::get('reserve-hierarchies'   , 'Setup\ReserveHierarchiesController@index');
+    Route::post('reserve-hierarchies'  , 'Setup\ReserveHierarchiesController@create');
+    Route::get('reserve-hierarchies/{id}'      , 'Setup\ReserveHierarchiesController@show');
+    Route::put('reserve-hierarchies/{id}'      , 'Setup\ReserveHierarchiesController@update');
+    Route::delete('reserve-hierarchies/{id}'   , 'Setup\ReserveHierarchiesController@destroy');
+
+    Route::get('reserve-distributions'   , 'Setup\ReserveDistributionsController@index');
+    Route::post('reserve-distributions'  , 'Setup\ReserveDistributionsController@create');
+    Route::get('reserve-distributions/{id}'      , 'Setup\ReserveDistributionsController@show');
+    Route::put('reserve-distributions/{id}'      , 'Setup\ReserveDistributionsController@update');
+    Route::delete('reserve-distributions/{id}'   , 'Setup\ReserveDistributionsController@destroy');
 });
