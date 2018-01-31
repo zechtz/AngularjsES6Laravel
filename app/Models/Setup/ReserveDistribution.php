@@ -28,7 +28,7 @@ class ReserveDistribution extends Model
      * @return Reserve Hierarchy
      */
     public function reserveHierarchy(){
-        return $this->belongsTo(ReserveHierarchy::class,'reserve_hierarchy_id');
+        return $this->belongsTo(ReserveHierarchy::class);
     }
 
     /**
