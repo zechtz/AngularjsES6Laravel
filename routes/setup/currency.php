@@ -10,7 +10,6 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
  */
-
 Route::group(["prefix" => "v1"], function(){
     Route::get('currencies'           , 'Setup\CurrenciesController@index');
     Route::post('currencies'          , 'Setup\CurrenciesController@create');
