@@ -13,5 +13,4 @@ use Illuminate\Http\Request;
 |
  */
 
-require('setup\setup.php');
-
+require_once('setup/setup.php');
