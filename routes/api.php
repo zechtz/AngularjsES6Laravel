@@ -82,4 +82,34 @@ Route::group(["prefix" => "v1"], function(){
     Route::get('countries/{id}/edit' , 'Setup\CountriesController@edit');
     Route::put('countries/{id}'      , 'Setup\CountriesController@update');
     Route::delete('countries/{id}'   , 'Setup\CountriesController@destroy');
+
+    Route::get('financial-years'           , 'Setup\FinancialYearController@index');
+    Route::post('financial-years'          , 'Setup\FinancialYearController@create');
+    Route::get('financial-years/{id}'      , 'Setup\FinancialYearController@show');
+    Route::get('financial-years/{id}/edit' , 'Setup\FinancialYearController@edit');
+    Route::put('financial-years/{id}'      , 'Setup\FinancialYearController@update');
+    Route::delete('financial-years/{id}'   , 'Setup\FinancialYearController@destroy');
+
+    Route::get('events'           , 'Setup\EventController@index');
+    Route::post('events'          , 'Setup\EventController@create');
+    Route::get('events/{id}'      , 'Setup\EventController@show');
+    Route::get('events/{id}/edit' , 'Setup\EventController@edit');
+    Route::put('events/{id}'      , 'Setup\EventController@update');
+    Route::delete('events/{id}'   , 'Setup\EventController@destroy');
+
+    Route::get('calendar-events'           , 'Setup\CalendarEventController@index');
+    Route::post('calendar-events'          , 'Setup\CalendarEventController@create');
+    Route::get('calendar-events/{id}'      , 'Setup\CalendarEventController@show');
+    Route::get('calendar-events/{id}/edit' , 'Setup\CalendarEventController@edit');
+    Route::put('calendar-events/{id}'      , 'Setup\CalendarEventController@update');
+    Route::delete('calendar-events/{id}'   , 'Setup\CalendarEventController@destroy');
+
+    Route::get('expirations'           , 'Setup\ExpirationController@index');
+    Route::post('expirations'          , 'Setup\ExpirationController@create');
+    Route::get('expirations/{id}'      , 'Setup\ExpirationController@show');
+    Route::get('expirations/{id}/edit' , 'Setup\ExpirationController@edit');
+    Route::put('expirations/{id}'      , 'Setup\ExpirationController@update');
+    Route::delete('expirations/{id}'   , 'Setup\ExpirationController@destroy');
+
+
 });
