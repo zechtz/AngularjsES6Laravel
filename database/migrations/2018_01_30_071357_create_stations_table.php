@@ -16,10 +16,10 @@ class CreateStationsTable extends Migration
         Schema::create('stations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->text('description');
-            $table->float('latitude');
-            $table->float('longitude');
-            $table->string('shape_file_path');
+            $table->text('description')->nullable();;
+            $table->float('latitude')->nullable();;
+            $table->float('longitude')->nullable();;
+            $table->string('shape_file_path')->nullable();
             $table->integer('station_id')->unsigned()->nullable();
             $table->integer('location_id')->unsigned();
             $table->integer('institution_id')->unsigned();
