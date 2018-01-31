@@ -23,11 +23,7 @@ class CreateInstitutionsTable extends Migration
             $table->string('phone_number')->nullable();
             $table->text('additional_information')->nullable();
             $table->timestamps();
-            $table->foreign('institution_id')
-                ->references('id')
-                ->on('institutions')
-                ->onUpdate("cascade")
-                ->onDelete("restrict");
+            $table->foreign('institution_id')->references('id')->on('institutions')->onUpdate("cascade")->onDelete("restrict");
         });
     }
 
