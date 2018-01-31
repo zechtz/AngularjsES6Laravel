@@ -11,7 +11,7 @@ class PlotsController extends Controller
 {
     public function index(Request $request){
         $data     = $request->all();
-        $per_page = isset($data['per_page'])?$data['per_page']:$data['per_page'];
+        $per_page = isset($data['per_page'])?$data['per_page']:15;
         $plots    = Plot::all();
         $plots    = customPaginate($plots,$per_page);
         return customApiResponse($plots,'SUCCESS');
