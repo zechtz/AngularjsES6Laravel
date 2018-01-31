@@ -30,4 +30,11 @@ Route::group(["prefix" => "v1"], function(){
     Route::get('attraction-sites/{id}/edit' , 'Setup\AttractionSitesController@edit');
     Route::put('attraction-sites/{id}'      , 'Setup\AttractionSitesController@update');
     Route::delete('attraction-sites/{id}'   , 'Setup\AttractionSitesController@destroy');
+
+    Route::get('attraction-site-geographical-details'           , 'Setup\AttractionSiteGeographicalDetailsController@index');
+    Route::post('attraction-site-geographical-details'          , 'Setup\AttractionSiteGeographicalDetailsController@create');
+    Route::get('attraction-site-geographical-details/{id}'      , 'Setup\AttractionSiteGeographicalDetailsController@show');
+    Route::get('attraction-site-geographical-details/{id}/edit' , 'Setup\AttractionSiteGeographicalDetailsController@edit');
+    Route::put('attraction-site-geographical-details/{id}'      , 'Setup\AttractionSiteGeographicalDetailsController@update');
+    Route::delete('attraction-site-geographical-details/{id}'   , 'Setup\AttractionSiteGeographicalDetailsController@destroy');
 });
