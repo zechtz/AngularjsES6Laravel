@@ -31,4 +31,14 @@ class ApplicationForm extends Model
     {
         return $this->belongsTo(ApplicationType::class,'application_type_id');
     }
+
+    public function applicationFormField()
+    {
+        return $this->hasMany(ApplicationFormField::class);
+    }
+
+    public function applicationFormFieldOption()
+    {
+        return $this->hasMany(ApplicationFormFieldOption::class);
+    }
 }

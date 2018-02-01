@@ -17,9 +17,9 @@ class ApplicationFormsController extends Controller
     public function index (Request $request){
         $data         =  $request->all();
         $per_page     =  isset($data['per_page'])? $data['per_page'] : 15;
-        $application_types =  ApplicationForm::all();
-        $application_types =  customPaginate($application_types, $per_page);
-        return customApiResponse($application_types);
+        $applicationForm =  ApplicationForm::all();
+        $applicationForm =  customPaginate($applicationForm, $per_page);
+        return customApiResponse($applicationForm);
     }
 
     /**
