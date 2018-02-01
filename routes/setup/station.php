@@ -17,10 +17,10 @@ Route::group(["prefix" => "v1"], function(){
     Route::put('station-categories/{id}'      , 'Setup\StationCategoriesController@update');
     Route::delete('station-categories/{id}'   , 'Setup\StationCategoriesController@destroy');
 
-    Route::get('stations'           , 'Setup\StationsController@index');
-    Route::post('stations'          , 'Setup\StationsController@create');
-    Route::get('stations/{id}'      , 'Setup\StationsController@show');
-    Route::get('stations/{id}/edit' , 'Setup\StationsController@edit');
-    Route::put('stations/{id}'      , 'Setup\StationsController@update');
-    Route::delete('stations/{id}'   , 'Setup\StationsController@destroy');
+    Route::get('stations'                     , 'Setup\StationsController@index');
+    Route::post('stations'                    , 'Setup\StationsController@create');
+    Route::get('stations/{id}'                , 'Setup\StationsController@show');
+    Route::get('stations/{id}/edit'           , 'Setup\StationsController@edit');
+    Route::put('stations/{id}'                , 'Setup\StationsController@update');
+    Route::delete('stations/{id}'             , 'Setup\StationsController@destroy');
 });

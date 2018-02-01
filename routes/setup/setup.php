@@ -1,5 +1,15 @@
 <?php
 
+/*
+|--------------------------------------------------------------------------
+| Include All Setup Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+ */
 require_once("accommodation.php");
 require_once("attraction_site.php");
 require_once("country.php");

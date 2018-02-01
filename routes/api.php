@@ -1,10 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
-| API Routes
+| Include All API Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register API routes for your application. These
@@ -12,5 +11,4 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
  */
-
 require_once('setup/setup.php');
