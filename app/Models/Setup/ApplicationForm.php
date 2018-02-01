@@ -36,4 +36,9 @@ class ApplicationForm extends Model
     {
         return $this->hasMany(ApplicationFormField::class);
     }
+
+    public function applicationFormFieldOption()
+    {
+        return $this->hasMany(ApplicationFormFieldOption::class);
+    }
 }
