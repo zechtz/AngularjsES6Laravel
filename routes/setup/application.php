@@ -17,4 +17,10 @@ Route::group(["prefix" => "v1"]              , function(){
     Route::get('application-forms/{id}'      , 'Setup\ApplicationFormsController@show');
     Route::put('application-forms/{id}'      , 'Setup\ApplicationFormsController@update');
     Route::delete('application-forms/{id}'   , 'Setup\ApplicationFormsController@destroy');
+
+    Route::get('application-form-fields'   , 'Setup\ApplicationFormFieldsController@index');
+    Route::post('application-form-fields'  , 'Setup\ApplicationFormFieldsController@create');
+    Route::get('application-form-fields/{id}'      , 'Setup\ApplicationFormFieldsController@show');
+    Route::put('application-form-fields/{id}'      , 'Setup\ApplicationFormFieldsController@update');
+    Route::delete('application-form-fields/{id}'   , 'Setup\ApplicationFormFieldsController@destroy');
 });
