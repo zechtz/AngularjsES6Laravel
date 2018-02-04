@@ -34,5 +34,3 @@ export default class MasterController {
 }
 
 MasterController.$inject = ['$mdSidenav', '$mdMedia'];
-
-
