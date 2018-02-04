@@ -19,6 +19,7 @@
   <body layout="row" class="dashboard" ng-cloak>
     <div ng-show="preloader" class="preloader">
 .</div>
+    <a ui-sref="institutions">Institutions</a>
     {{ 1 + 1 }}
     <ui-view layout="row" flex></ui-view>
     <!-- inject:js -->
