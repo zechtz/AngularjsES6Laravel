@@ -1,0 +1,52 @@
+<md-toolbar class="sidebar-toolbar">
+  <div layout-sm="row" class="md-toolbar-tools" flex>
+    <app-header></app-header>
+  </div>
+</md-toolbar>
+<perfect-scrollbar class="scroller" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+  <md-toolbar class="md-tall md-hue-2">
+    <avatar-with-text></avatar-with-text>
+  </md-toolbar>
+
+  <md-list>
+
+    <md-sidemenu locked="true">
+      <div ng-repeat="item in menu">
+        <md-sidemenu-content ng-if="(item.type !== 'group')" md-icon="{{item.icon}}"
+          md-heading="{{ item.name }}" ui-sref="{{item.state || false }}">
+        </md-sidemenu-content>
+
+        <md-sidemenu-group ng-if="(item.type === 'group')">
+          <md-sidemenu-content md-icon="{{item.icon}}" md-heading="{{item.name}}" md-arrow="true">
+            <md-sidemenu-button ng-repeat="page in item.menu">
+              <a ng-if="page.state !== ''" ui-sref="{{page.state || false }}" layout="row">
+                <div class="inset"><ng-md-icon icon="{{page.icon}}"></ng-md-icon></div>
+                <div class="inset">{{page.name}}</div>
+              </a>
+            </md-sidemenu-button>
+          </md-sidemenu-content>
+        </md-sidemenu-group>
+      </div>
+
+      <md-divider></md-divider>
+
+      <md-item ng-repeat="item in admin">
+        <a ui-sref="{{item.state || false }}">
+          <md-item-content md-ink-ripple layout="row" layout-align="start center">
+            <div class="inset"><ng-md-icon icon="{{item.icon}}"></ng-md-icon> </div>
+            <div class="inset">{{item.name}}</div>
+          </md-item-content>
+        </a>
+      </md-item>
+
+      <md-item ng-repeat="item in logout">
+        <md-item-content md-ink-ripple layout="row" layout-align="start center" ng-click="logOut()" class="logout-menu">
+          <div class="inset"><ng-md-icon icon="{{item.icon}}"></ng-md-icon> </div>
+          <div class="inset">{{item.title}}</div>
+        </md-item-content>
+      </md-item>
+
+        </md-sidemenu>
+    </md-list>
+</perfect-scrollbar>
+<!--<pre> {{ menu | json }} </pre>-->

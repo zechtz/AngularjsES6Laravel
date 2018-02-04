@@ -4,13 +4,13 @@
   md-component-id="left"
   md-is-locked-open="$mdMedia('gt-md') && leftSidebar"
   layout="column"
-  ng-include src="'/templates/includes/sidebar.html'" >
+  ng-include src="'./shared/sidebar.html'" >
 </md-sidenav>
   <!--left sidebar section ends-->
 
   <section layout="column" flex>
     <!--top toolbar section goes here-->
-    <md-toolbar class="md-secondary" ng-include src="'/templates/includes/toolbar-top.html'" ></md-toolbar>
+    <md-toolbar class="md-secondary" ng-include src="'./shared/toolbar-top.html'" ></md-toolbar>
     <!--<pre>loading? {{ loading | json }} </pre>-->
     <md-progress-linear ng-if="loading" class="md-hue-3 loader" md-mode="indeterminate"></md-progress-linear>
       <!--top toolbar section ends here-->
