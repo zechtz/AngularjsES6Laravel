@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="mnrtPortal">
+<html lang="en" ng-app="portal">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,7 +22,7 @@
     {{ 1 + 1 }}
     <ui-view layout="row" flex></ui-view>
     <!-- inject:js -->
-    <script src="/js/app.bundle.js"></script>
+    <script src="/src/js/app.bundle.js"></script>
     <!-- endinject -->
   </body>
 </html>

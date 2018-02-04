@@ -1,0 +1,27 @@
+<!--left sidebar section starts-->
+<md-sidenav
+  class="md-sidenav-left md-whiteframe-z2"
+  md-component-id="left"
+  md-is-locked-open="$mdMedia('gt-md') && leftSidebar"
+  layout="column"
+  ng-include src="'/templates/includes/sidebar.html'" >
+</md-sidenav>
+  <!--left sidebar section ends-->
+
+  <section layout="column" flex>
+    <!--top toolbar section goes here-->
+    <md-toolbar class="md-secondary" ng-include src="'/templates/includes/toolbar-top.html'" ></md-toolbar>
+    <!--<pre>loading? {{ loading | json }} </pre>-->
+    <md-progress-linear ng-if="loading" class="md-hue-3 loader" md-mode="indeterminate"></md-progress-linear>
+      <!--top toolbar section ends here-->
+
+      <md-content id="content" flex layout-padding>
+        <div layout="column">
+          <md-content layout-padding layout="row" layout-align="center">
+            <div flex-gt-md="100" flex-md="100" flex-xs="100" class="master-layout">
+              <ui-view></ui-view>
+            </div>
+          </md-content>
+        </div>
+      </md-content>
+  </section>
