@@ -7,5 +7,11 @@ export default function routes($stateProvider) {
       template   : require('./views/index.html'),
       parent     : 'root',
       controller : 'InstitutionController as vm'
+    })
+    .state('institutions.new', {
+      url        : '/institutions/new',
+      template   : require('./views/new.html'),
+      parent     : 'root',
+      controller : 'InstitutionController as vm'
     });
 }
