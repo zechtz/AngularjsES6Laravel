@@ -13,7 +13,6 @@ import 'angular-sanitize';
 import 'angular-messages';
 import 'angular-resource';
 import 'angular-animate';
-import 'md-data-table';
 import 'checklist-model';
 import '@uirouter/angularjs';
 import 'angular-material-data-table';
