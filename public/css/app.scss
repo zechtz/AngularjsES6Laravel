@@ -1,0 +1,91 @@
+@import 'includes/scrollbar';
+@import 'includes/sidebar';
+@import 'includes/toolbar';
+@import 'includes/form';
+@import 'includes/scroller';
+@import 'includes/receipt';
+@import 'includes/master';
+@import 'includes/md';
+@import 'includes/grid';
+@import 'includes/sidemenu';
+@import 'includes/breadcrumbs';
+@import 'includes/md-fab';
+@import 'includes/facility';
+@import 'includes/typeahead';
+@import 'includes/print';
+@import 'includes/reconciliation-options';
+@import 'includes/header';
+@import 'includes/search-form';
+@import 'includes/table';
+@import 'includes/login';
+@import 'includes/graphs';
+@import 'includes/voucher';
+@import 'includes/menu';
+@import 'includes/md-chips';
+@import 'includes/preloader';
+@import 'includes/chips';
+@import 'includes/md-cards';
+@import 'includes/user';
+
+.button-container {
+  position: absolute;
+}
+
+.gfscode-table {
+  .gfs-row {
+    td {
+      text-align: left;
+    }
+  }
+}
+
+body {
+  font-family: "Roboto", 'Helvetica Neue, Helvetica, Arial', sans-serif;
+  background: rgb(63,81,181);
+  counter-reset: item;
+}
+
+.md-sidemenu-content {
+  display: block;
+}
+
+img.logo {
+  display: none;
+  @media print {
+    display: block;
+    border-radius: 100%;
+    border: 4px solid rgba(40, 64, 154, 0.22)
+  }
+}
+
+#select-input { color: #000; }
+
+/*-----------------------------------------------------
+ * hides page title, date, url and footer when printing
+ -----------------------------------------------------*/
+@page {
+  size: auto;
+  margin: 0mm auto;
+}
+
+/**
+* Don't cut-off page breaks
+*/
+@media print {
+  table tr td, table tr th {
+    page-break-inside: avoid;
+  }
+}
+
+g[class$="creditgroup"] {
+  display: none !important;
+}
+
+.md-sidemenu .md-button {
+  padding: 0 16px !important;
+}
+
+form.login-dialog {
+  width: 100%;
+  padding: 1em;
+}
