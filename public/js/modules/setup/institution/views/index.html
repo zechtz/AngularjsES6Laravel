@@ -7,94 +7,10 @@
   <md-progress-circular ng-if="loading" class="md-hue-3 loader" md-mode="indeterminate">
   </md-progress-circular>
 </div>
-<div>
+<div layout="row">
   <h4 set-head-title>{{ vm.title }}</h4>
+  <md-button class="md-raised md-primary add-balance" ng-click="vm.showAddInstitutionDialog($event)">Add New Institution</md-button>
   <hr>
 </div>
-<md-content laout="column" flex md-progress="loading">
-  <md-progress-linear ng-if="loading" class="md-hue-3 loader" md-mode="indeterminate"></md-progress-linear>
-  <md-card>
-    <div class="actions-container" layout="row" layout-padding>
-      <md-table-pagination md-limit="query.itemsPerPage"
-                           md-limit-options="limitOptions"
-                           md-page="query.page"
-                           md-total="{{activity.total}}"
-                           md-page-select="options.pageSelect"
-                           md-boundary-links="options.boundaryLinks"
-                           md-on-paginate="loadData">
-      </md-table-pagination>
-    </div>
 
-    <md-table-container>
-      <table md-table md-row-select="options.rowSelection"
-                      multiple="{{options.multiSelect}}"
-                      ng-model="selected"
-                      md-progress-linear ng-if="!promise">
-        <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
-          <tr md-row>
-            <th style="text-align: left;"><span style="padding-left: 20px;">Code</span></th>
-            <th style="text-align: left;"><span>Activity Description</span></th>
-            <th style="text-align: left;"><span>Actions</span></th>
-          </tr>
-        </thead>
-        <tbody md-body>
-          <tr md-row md-select="entry"
-                     md-on-select="logItem(entry)"
-                     md-auto-select="options.autoSelect"
-                     ng-disabled="false"
-                     ng-repeat="entry in activity.data">
-            <td md-cell>{{ entry.code }} </td>
-            <td md-cell>{{entry.description}}</td>
-            <td md-cell layout="row" class="action-table-data">
-              <a ng-click="delete($event, entry.id)" aria-label="Delete" class="delete">
-                <ng-md-icon icon="close"</ng-md-icon>
-                <md-tooltip md-direction="top" md-visible="false" autohide="true">Delete Entry</md-tooltip>
-              </a>
-              <a ng-href="/#!/plans/{{entry.id}}/edit" aria-label="Edit" class="edit">
-                <ng-md-icon icon="mode_edit"</ng-md-icon>
-                <md-tooltip md-direction="top" md-visible="false" autohide="true">Edit</md-tooltip>
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </md-table-container>
-    <md-table-pagination md-limit="query.itemsPerPage"
-                         md-limit-options="limitOptions"
-                         md-page="query.page"
-                         md-total="{{activity.total}}"
-                         md-page-select="options.pageSelect"
-                         md-boundary-links="options.boundaryLinks"
-                         md-on-paginate="loadData">
-    </md-table-pagination>
-  </md-card>
-
-  <div class="new-button md-fab lock-size"
-       layout="row"
-       layout-align="center center"
-       ng-cloak>
-    <md-fab-speed-dial md-open="isOpen"
-                       md-direction="{{ selectedDirection }}"
-                       ng-class="selectedMode">
-      <md-fab-trigger>
-        <md-button aria-label="menu" class="md-fab md-primary">
-          <ng-md-icon icon="menu"</ng-md-icon>
-        </md-button>
-      </md-fab-trigger>
-
-      <md-fab-actions>
-        <md-button ng-click="import($event, entry.id)" aria-label="Add" class="md-fab md-raised md-mini md-primary">
-          <ng-md-icon icon="link"</ng-md-icon>
-          <md-tooltip md-direction="left" md-visible="false" autohide="true">Import From File</md-tooltip>
-        </md-button>
-
-        <md-button ui-sref="plans.new" aria-label="Add" class="md-fab md-raised md-mini md-primary">
-          <ng-md-icon icon="add"</ng-md-icon>
-          <md-tooltip md-direction="left" md-visible="false" autohide="true">Add New Plan</md-tooltip>
-        </md-button>
-
-      </md-fab-actions>
-    </md-fab-speed-dial>
-  </div>
-</md-content>
-<!--<pre>{{ activity | json }}</pre>-->
+<pre>{{ vm.institutions | json }}</pre>

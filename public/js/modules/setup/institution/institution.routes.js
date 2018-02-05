@@ -10,8 +10,13 @@ export default function routes($stateProvider) {
     })
     .state('institutions.new', {
       url        : '/institutions/new',
-      template   : require('./views/new.html'),
+      template   : require('./views/index.html'),
+      controller : 'InstitutionController as vm'
+    })
+    .state('attractions', {
+      url        : '/institutions/new',
       parent     : 'root',
+      template   : require('./views/index.html'),
       controller : 'InstitutionController as vm'
     });
 }

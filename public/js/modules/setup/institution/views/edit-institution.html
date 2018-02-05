@@ -1,0 +1,44 @@
+<md-dialog aria-label="Confirm Payment" style="width: 440px; height: 315px;" ng-cloak>
+  <form>
+    <md-toolbar class="md-dialog-header">
+      <div class="md-toolbar-tools">
+        <h6>EDIT BANK ACCOUNT</h6>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="closeDialog($event)">
+          <ng-md-icon icon="close" aria-label="Close dialog"></ng-md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <div style="padding: 0px 5px;">
+      <md-dialog-content>
+        <md-content layout-padding layout="column" layout-fill>
+          <input ng-model="id" type="hidden">
+          <md-input-container flex>
+            <label>Account Description</label>
+            <input type="text"
+                   name="bank_name"
+                   ng-model="bank_name"
+                   required/>
+            <div ng-messages="form.bank_name.$error">
+              <div ng-message="required">Cannot be blank.</div>
+            </div>
+          </md-input-container>
+
+          <md-input-container flex>
+            <input type="text"
+                   name="reference"
+                   placeholder="Enter Account Number"
+                   ng-model="account" />
+          </md-input-container>
+        </md-content>
+      </md-dialog-content>
+
+      <md-dialog-actions class="row">
+        <md-button ng-click="updateAccount(account)" class="md-primary">
+          UPDATE BANK ACCOUNT
+        </md-button>
+      </md-dialog-actions>
+    </div>
+  </form>
+</md-dialog>

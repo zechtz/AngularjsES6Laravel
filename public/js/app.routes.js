@@ -3,7 +3,7 @@ routes.$inject = ['$stateProvider', '$mdThemingProvider', '$urlRouterProvider'];
 export default function routes($stateProvider, $mdThemingProvider, $urlRouterProvider) {
 
   $mdThemingProvider.theme('default')
-    .primaryPalette('blue')
+    .primaryPalette('green')
     .accentPalette('indigo')
     .warnPalette('red')
     .backgroundPalette('grey');
