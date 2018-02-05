@@ -10,21 +10,23 @@ class ApplicationType extends Model
      * The attributes that aren't mass assignable.
      * @var array
      */
-    protected $guarded =  ["id"];
+    protected $guarded = ["id"];
 
-    protected $table   =  "application_types";
+    protected $table = "application_types";
 
-    public static $rules = [
-        "name"  => "required",
-    ];
+    public static $rules
+        = [
+            "name" => "required",
+        ];
 
-    public static $create_rules = [
-        "name"  => "required",
-        "institution_id" => "required",
-        "require_approval" => "required",
-        "require_fee" => "required",
-        "validity_period" => "required",
-    ];
+    public static $create_rules
+        = [
+            "name" => "required",
+            "institution_id" => "required",
+            "require_approval" => "required",
+            "require_fee" => "required",
+            "validity_period" => "required",
+        ];
 
     /**
      * Institution relationship
@@ -32,6 +34,11 @@ class ApplicationType extends Model
      */
     public function institution()
     {
-        return $this->belongsTo(Institution::class,'institution_id');
+        return $this->belongsTo(Institution::class, 'institution_id');
+    }
+
+    public function decisionLevel()
+    {
+        return $this->hasMany(DecisionLevel::class);
     }
 }
