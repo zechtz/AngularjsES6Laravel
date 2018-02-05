@@ -15,7 +15,7 @@ export default class InstitutionController {
 
     this.options = {
       rowSelection    : false,
-      multiSelect     : false,
+      multiSelect     : true,
       autoSelect      : false,
       decapitate      : false,
       largeEditDialog : false,
@@ -164,13 +164,5 @@ export default class InstitutionController {
         this.Notification.status(response.message);
       });
     });
-  }
-
-  loadInstitutions() {
-    return this.timeout(function() {
-      this.Institution.get(this.query, response =>  {
-        this.results = response.data.data;
-      });
-    }, 650);
   }
 }
