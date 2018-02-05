@@ -2,10 +2,12 @@
 
 export default class InstitutionController {
   constructor(Institution) {
-    this.title = 'Institution Title';
-    console.log('Hello');
-    Institution.get({}, function(response) {
-      console.log(response);
+    this.Institution  =  Institution;
+  }
+
+  $onInit() {
+    this.institutions =  this.Institution.get({}, function(response) {
+      return response.data;
     });
   }
 }

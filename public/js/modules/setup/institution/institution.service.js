@@ -1,4 +1,8 @@
 'use strict';
 
-import angular    from 'angular';
-import ngResource from 'angular-resource';
+export default ['$resource', function ($resource) {
+    return $resource('api/v1/institutions/:id', {}, {
+      update : { method : 'PUT', params  : {id : '@id'}},
+    }
+  );
+}];

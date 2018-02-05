@@ -33,6 +33,8 @@ module.exports = function makeWebpackConfig() {
     app: './public/js/app.module.js'
   };
 
+  config.watch = true;
+
   /**
    * Output
    * Reference: http://webpack.github.io/docs/configuration.html#output

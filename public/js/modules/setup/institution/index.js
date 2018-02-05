@@ -1,13 +1,13 @@
 'use strict';
 
-import angular  from 'angular';
-import uirouter from '@uirouter/angularjs';
+import angular               from 'angular';
+import uirouter              from '@uirouter/angularjs';
+import routes                from './institution.routes';
 
-import instituionRoutes      from './institution.routes';
-import institutionService    from './institution.service';
-import InstitutionController from './controllers/InstitutionController';
+import Institution           from './institution.service';
+import InstitutionController from './controllers/institution.controller';
 
 export default angular.module('institution', ['ui.router'])
-    .config(instituionRoutes)
-    .factory(institutionService)
-    .controller('InstitutionController', InstitutionController);
+  .config(routes)
+  .factory('Institution', Institution)
+  .controller('InstitutionController', InstitutionController);

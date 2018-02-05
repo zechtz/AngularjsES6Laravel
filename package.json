@@ -32,7 +32,7 @@
     "node-libs-browser": "2.0.0",
     "null-loader": "^0.1.1",
     "phantomjs-prebuilt": "^2.1.4",
-    "postcss-loader": "1.2.2",
+    "postcss-loader": "^1.2.2",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.5.1",
     "style-loader": "^0.13.0",
@@ -64,10 +64,12 @@
     "angular-aria": "^1.6.8",
     "angular-material": "^1.1.6",
     "angular-material-icons": "^0.7.1",
+    "angular-material-sidemenu": "^1.0.2",
     "angular-messages": "^1.6.9",
     "angular-resource": "^1.6.9",
     "angular-sanitize": "^1.6.9",
     "checklist-model": "^0.11.0",
-    "md-data-table": "^2.2.0"
+    "md-data-table": "^2.2.0",
+    "ng-inject": "^1.0.0"
   }
 }

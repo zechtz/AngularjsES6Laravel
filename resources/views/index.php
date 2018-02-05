@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title head-title>MNRT Portal</title>
-    <!-- inject:css -->
-    <!-- endinject -->
+    <title head-title>Portal</title>
     <style type="text/css">
       /**
        * hide when angular is not yet loaded and initialized
@@ -16,14 +14,11 @@
       }
     </style>
   </head>
-  <body layout="row" class="dashboard" ng-cloak>
+  <body layout="row" ng-controller="MainController" class="dashboard" ng-cloak>
     <div ng-show="preloader" class="preloader">
+      <img src="../../images/preload.svg"/>
 .</div>
-    <a ui-sref="institutions">Institutions</a>
-    {{ 1 + 1 }}
     <ui-view layout="row" flex></ui-view>
-    <!-- inject:js -->
-    <script src="/src/js/app.bundle.js"></script>
-    <!-- endinject -->
+  <script src="/src/js/app.bundle.js"></script>
   </body>
 </html>
