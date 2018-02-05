@@ -36,6 +36,7 @@ angular.module('portal', [
   'ngResource',
   'md.data.table',
   'ngMaterialSidemenu',
+  'checklist-model',
   'directives',
   'helpers',
   'setup'
