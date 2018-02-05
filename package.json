@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "npm run development",
+    "dev": "gulp watch",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch-poll": "npm run watch -- --watch-poll",
@@ -19,6 +19,7 @@
     "css-loader": "0.26.1",
     "extract-text-webpack-plugin": "2.0.0-beta.5",
     "file-loader": "^0.9.0",
+    "gulp": "^3.9.1",
     "html-webpack-plugin": "^2.7.1",
     "istanbul-instrumenter-loader": "^1.0.0",
     "jasmine-core": "^2.3.4",
@@ -30,11 +31,13 @@
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "2.0.1",
     "node-libs-browser": "2.0.0",
+    "node-sass": "^4.7.2",
     "null-loader": "^0.1.1",
     "phantomjs-prebuilt": "^2.1.4",
     "postcss-loader": "^1.2.2",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.5.1",
+    "sass-loader": "^6.0.6",
     "style-loader": "^0.13.0",
     "webpack": "2.2.0",
     "webpack-dev-server": "2.2.0"
@@ -68,7 +71,9 @@
     "angular-messages": "^1.6.9",
     "angular-resource": "^1.6.9",
     "angular-sanitize": "^1.6.9",
+    "angularjs-perfect-scrollbar": "0.0.5",
     "checklist-model": "^0.11.0",
+    "lato-font": "^3.0.0",
     "md-data-table": "^2.2.0",
     "ng-inject": "^1.0.0"
   }

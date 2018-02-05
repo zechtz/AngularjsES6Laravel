@@ -5,14 +5,13 @@
 </md-toolbar>
 <perfect-scrollbar class="scroller" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
   <md-toolbar class="md-tall md-hue-2">
-    <avatar-with-text></avatar-with-text>
+    <avatar></avatar>
   </md-toolbar>
 
   <md-list>
-
     <md-sidemenu locked="true">
-      <div ng-repeat="item in menu">
-        <md-sidemenu-content ng-if="(item.type !== 'group')" md-icon="{{item.icon}}"
+      <div ng-repeat="item in ctrl.menu">
+        <md-sidemenu-content ng-if="(item.type !== 'category')" md-icon="{{item.icon}}"
           md-heading="{{ item.name }}" ui-sref="{{item.state || false }}">
         </md-sidemenu-content>
 

@@ -14,11 +14,11 @@
       }
     </style>
   </head>
-  <body layout="row" ng-controller="MainController" class="dashboard" ng-cloak>
+  <body layout="row" ng-controller="MainController as ctrl" class="dashboard" ng-cloak>
     <div ng-show="preloader" class="preloader">
       <img src="../../images/preload.svg"/>
-.</div>
+      .</div>
     <ui-view layout="row" flex></ui-view>
-  <script src="/src/js/app.bundle.js"></script>
+    <script src="/src/js/app.bundle.js"></script>
   </body>
 </html>

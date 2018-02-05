@@ -2,7 +2,7 @@
 <md-sidenav
   class="md-sidenav-left md-whiteframe-z2"
   md-component-id="left"
-  md-is-locked-open="$mdMedia('gt-md') && leftSidebar"
+  md-is-locked-open="$mdMedia('gt-md') && ctrl.leftSidebar"
   layout="column"
   ng-include src="'/js/modules/layouts/shared/sidebar.html'" >
 </md-sidenav>
@@ -11,7 +11,6 @@
   <section layout="column" flex>
     <!--top toolbar section goes here-->
     <md-toolbar class="md-secondary" ng-include src="'/js/modules/layouts/shared/toolbar-top.html'" ></md-toolbar>
-    <!--<pre>loading? {{ loading | json }} </pre>-->
     <md-progress-linear ng-if="loading" class="md-hue-3 loader" md-mode="indeterminate"></md-progress-linear>
       <!--top toolbar section ends here-->
 

@@ -1,1 +1,29 @@
-<h1> top toolbar tempate </h1>
+<hamburger></hamburger>
+<span flex></span>
+<md-button aria-label="Search" class="search" ng-click="showSearch = !showSearch">
+  <ng-md-icon icon="search"></ng-md-icon>
+</md-button>
+<md-button class="notifications" layout-align="center center">
+  <ng-md-icon icon="notifications"></ng-md-icon>
+  <span class="badge bg-red">6</span>
+</md-button>
+<md-button class="messages">
+  <ng-md-icon icon="message"></ng-md-icon>
+  <span class="badge bg-green">60</span>
+</md-button>
+<md-menu md-position-mode="target-right target" >
+  <ng-md-icon icon="more_vert" class="top-toolbar-user-avatar" ng-click="$mdMenu.open($event)">
+  </ng-md-icon>
+  <md-menu-content width="4" >
+    <perfect-scrollbar class="scroller" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+      <md-menu-item ng-repeat="item in menu">
+        <md-button ng-click="ctrl.announceClick($index)">
+          <md-item-content md-ink-ripple layout="row" layout-align="start center">
+            <div class="inset"><ng-md-icon icon="{{item.icon}}"></ng-md-icon> </div>
+            <div class="inset">{{item.title}}</div>
+          </md-item-content>
+        </md-button>
+      </md-menu-item>
+    </perfect-scrollbar>
+  </md-menu-content>
+</md-menu>

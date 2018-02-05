@@ -47,7 +47,7 @@ module.exports = function makeWebpackConfig() {
 
     // Output path from the view of the page
     // Uses webpack-dev-server in development
-    publicPath: isProd ? '/' : 'http://localhost:8080/',
+    publicPath: isProd ? '/' : 'http://mnrt.test',
 
     // Filename for entry points
     // Only adds hash in build mode
@@ -108,6 +108,7 @@ module.exports = function makeWebpackConfig() {
         fallbackLoader: 'style-loader',
         loader: [
           {loader: 'css-loader', query: {sourceMap: true}},
+          {loader: 'sass-loader', query: {sourceMap: true}},
           {loader: 'postcss-loader'}
         ],
       })
@@ -167,7 +168,9 @@ module.exports = function makeWebpackConfig() {
       options: {
         postcss: {
           plugins: [autoprefixer]
-        }
+        },
+        include: './public/css/includes',
+        loaders: ["css", "sass"]
       }
     })
   ];

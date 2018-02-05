@@ -8,20 +8,20 @@ export default function routes($stateProvider, $mdThemingProvider, $urlRouterPro
     .warnPalette('red')
     .backgroundPalette('grey');
 
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/institutions');
 
   $stateProvider
     .state('root', {
       abstract    : true,
       views: {
         '@': {
-          templateUrl : 'js/modules/layouts/app-dashboard.html',
+          template : require('./modules/layouts/app-dashboard.html'),
         },
         '@sidebar': {
-          templateUrl : 'js/modules/layouts/shared/sidebar.html'
+          template : require('./modules/layouts/shared/sidebar.html')
         },
         '@toolbar': {
-          templateUrl : 'js/modules/layouts/shared/top-toolbar.html'
+          template : require('./modules/layouts/shared/top-toolbar.html')
         }
       }
     });

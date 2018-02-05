@@ -3,11 +3,7 @@
      layout-align="start center">
   <img class="user-avatar" viewBox="0 0 128 128" height="64" width="64" src="../../images/coat_of_arms.svg.png"/>
   <div class="descriptions" layout="column" flex="70">
-    <h3>{{ currentUser.name }}</h3>
-    <a href="#" ng-if="isSuperAdmin(currentUser)">(PORALG-TAMISEMI)</a>
-    <a href="#" ng-if="isCouncilAdmin(currentUser)" class="facility-name">({{ currentUser.location.name }})</a>
-    <a href="#" ng-if="isRegionAdmin(currentUser)" class="facility-name">({{ currentUser.location.name }})</a>
-    <a href="#" ng-if="currentUser.facility">{{ currentUser.facility.name }}</a>
-    <a href="#" ng-if="isFacilityUser(currentUser)" class="facility-name">({{ currentUser.facility.type.name }})</a>
+    <h3>John Doe</h3>
+    SUPER ADMIN
   </div>
 </div>
