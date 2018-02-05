@@ -38,7 +38,7 @@ export default class MainController {
   }
 
   swipeLeft() {
-    this.$mdSidenav('left').toggle().then(function(){
+    this.$mdSidenav('left').toggle().then(() => {
     });
   }
 
@@ -48,12 +48,12 @@ export default class MainController {
 
   showLeft() {
     this.leftSidebar = true;
-    this.$mdSidenav('left').open().then(function() {
+    this.$mdSidenav('left').open().then( () =>  {
     });
   }
 
   closeLeft() {
-    this.$mdSidenav('left').close().then(function() {
+    this.$mdSidenav('left').close().then( () =>  {
       this.leftSidebar = false;
     });
   }
