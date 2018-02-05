@@ -91,9 +91,9 @@
       </md-dialog-content>
 
       <md-dialog-actions class="row">
-        <md-button ng-click="vm.createInstitution(institution)" class="md-primary">
-          CREATE
-        </md-button>
+        <md-button ng-disabled="(form.$invalid || isDisabled)"
+                   class="md-raised"
+                   ng-click="vm.createInstitution(institution)">Create </md-button>
       </md-dialog-actions>
     </div>
   </form>

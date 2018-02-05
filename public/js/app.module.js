@@ -2,9 +2,10 @@
 
 import angular from 'angular';
 
-import 'angular-material/angular-material.css';
-import 'md-data-table/dist/md-data-table-style.css';
 import 'lato-font/css/lato-font.min.css';
+import 'angular-material/angular-material.css';
+import 'angular-material-data-table/dist/md-data-table.css';
+
 import 'angular-material-sidemenu';
 import 'angular-material-icons';
 import 'angular-material';
@@ -15,6 +16,7 @@ import 'angular-animate';
 import 'md-data-table';
 import 'checklist-model';
 import '@uirouter/angularjs';
+import 'angular-material-data-table';
 import 'ng-inject';
 import 'angularjs-perfect-scrollbar';
 import '../css/app.css';
@@ -33,6 +35,7 @@ angular.module('portal', [
   'ngAnimate',
   'ngSanitize',
   'ngResource',
+  'md.data.table',
   'ngMaterialSidemenu',
   'directives',
   'helpers',
