@@ -1,0 +1,81 @@
+td.no-border {
+  border: none !important;
+  table.no-border-table {
+    border : none !important;
+    float: right;
+    th {
+      text-align: left;
+      border-right: 1px solid #ccc;
+    }
+    td {
+      border-right: 1px solid #ccc;
+    }
+  }
+  thead.topless {
+    border-top: 1px solid #ccc;
+  }
+}
+thead.no-border {
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+h4 {
+  @media print {
+    display: none;
+  }
+}
+
+td.no-border {
+  table {
+    width: 100%;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    td {
+      border: none;
+    }
+  }
+}
+
+thead.top-border {
+  border-top: 1px solid #ccc;
+}
+
+tr.heading {
+  border-bottom: 1px solid #ccc;
+  th{
+    &:first-child{
+      border-right: 1px solid #ccc;
+    }
+  }
+}
+
+tr.first {
+  @extend tr.heading;
+  th {
+    border-right: 1px solid #ccc;
+  }
+}
+
+tr.total {
+  @extend tr.first;
+}
+
+thead.table-header{
+  th {
+    text-transform: uppercase;
+    background-color: #eee;
+    color: #000 !important;
+    &.border {
+      border-right: 1px solid #ccc;
+    }
+  }
+}
+
+.voucher-table {
+  margin-right: 20px;
+}
+
+th.highlighted {
+  background: #e4e3e3;
+}

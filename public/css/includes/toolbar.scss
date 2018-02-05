@@ -1,0 +1,64 @@
+md-toolbar{
+  fill: #fff;
+}
+
+.new-button {
+  position: fixed;
+  right: 35px;
+  bottom: 35px;
+}
+
+
+md-menu-content.toolbar-menu-content {
+  top: 64px !important;
+}
+
+.notifications {
+  position: relative;
+  fill: #fff;
+  color: #428bca;
+  top: -8px;
+  ng-md-icon {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+  }
+  span.badge {
+    position: absolute;
+    top: 2px;
+    color: #fff;
+    right: 16px;
+    padding: 4px 7px;
+    line-height: 1;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 100%;
+  }
+
+  .bg-red {
+    background-color: #f7412c !important;
+    color: #fff !important;
+  }
+  .bg-green {
+    background-color: #f7412c !important;
+    color: #fff !important;
+  }
+  .bg-green {
+    @extend .bg-red;
+    background-color: #16a02d !important;
+  }
+}
+
+.messages {
+  @extend .notifications;;
+}
+
+md-menu-content {
+  padding: 0 0;
+  fill: #757575;
+}
+
+h2.admin-title {
+  font-weight: bold;
+}
