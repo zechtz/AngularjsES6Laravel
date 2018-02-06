@@ -128,10 +128,6 @@ class InstitutionController {
 
     this.Institution.get({id: id}, response => {
 
-      let bank_name =  response.data.bank_name;
-      let account   =  response.data.account;
-      id            =  id;
-
       this.mdDialog.show({
         controller          : this,
         template            : require('../views/edit-institution.html'),
