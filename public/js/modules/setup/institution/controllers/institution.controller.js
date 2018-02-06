@@ -103,6 +103,7 @@ class InstitutionController {
       phone_number           : institution.phone,
       sp_code                : institution.code,
       email                  : institution.email,
+      address                : institution.address,
       additional_information : institution.additional,
     };
 
