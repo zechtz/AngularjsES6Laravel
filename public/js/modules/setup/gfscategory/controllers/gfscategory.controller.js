@@ -129,7 +129,7 @@ class GfsCategoryController {
 
       this.mdDialog.show({
         controller          : this,
-        template            : require('../views/edit-GfsCategory.html'),
+        template            : require('../views/edit-gfscategory.html'),
         clickOutsideToClose : false,
         preserveScope       : true,
         fullscreen          : true // Only for -xs, -sm breakpoints.
