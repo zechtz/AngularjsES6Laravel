@@ -1,8 +1,8 @@
 'use strict';
 
-class InstitutionController {
-  constructor(Institution, Notification, $mdDialog, $state, $scope, $timeout) {
-    this.Institution      =  Institution;
+class GfsCategoryController {
+  constructor(GfsCategory, Notification, $mdDialog, $state, $scope, $timeout) {
+    this.GfsCategory      =  GfsCategory;
     this.Notification     =  Notification;
     this.mdDialog         =  $mdDialog;
     this.state            =  $state;
@@ -31,16 +31,16 @@ class InstitutionController {
   }
 
   $onInit() {
-    this.title = "Institutions Module";
-    this.Institution.get(this.query, response =>  {
-      this.institution = response.data;
+    this.title = "GFS Code Categories";
+    this.GfsCategory.get(this.query, response =>  {
+      this.gfsCategory = response.data;
     });
   }
 
   loadData(page, limit) {
     console.log("query: " + this.query);
-    this.Institution.get(this.query, response =>  {
-      this.institution = response.data;
+    this.GfsCategory.get(this.query, response =>  {
+      this.gfsCategory = response.data;
     });
   }
 
@@ -49,64 +49,60 @@ class InstitutionController {
     this.mdDialog.hide();
   }
 
-  showAddInstitutionDialog(event){
+  showAddGfsCategoryDialog(event){
     console.log('the event is', event);
     this.mdDialog.show({
-      controller          : InstitutionController,
+      controller          : GfsCategoryController,
       controllerAs        : 'vm',
-      template            : require('../views/add-new-institution.html'),
+      template            : require('../views/add-new-gfscategory.html'),
       clickOutsideToClose : false,
       preserveScope       : true,
       fullscreen          : true // Only for -xs, -sm breakpoints.
     });
   }
 
-  showUpdateInstitutionDialog(id){
+  showUpdateGfsCategoryDialog(id){
 
-    this.Institution.get({id: id}, response => {
+    this.GfsCategory.get({id: id}, response => {
       this.result = response.data;
 
       this.mdDialog.show({
-        ccontroller         : InstitutionController,
+        ccontroller         : GfsCategoryController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,
-        template            : require('../views/edit-institution.html'),
+        template            : require('../views/edit-gfscategory.html'),
         clickOutsideToClose : false,
         fullscreen          : true // Only for -xs, -sm breakpoints.
       });
     });
   }
 
-  updateInstitution(institution){
-    this.Institution.update(institution, response => {
+  updateGfsCategory(GfsCategory){
+    this.GfsCategory.update(GfsCategory, response => {
       let message = response.message;
       if (response.status === 200) {
         this.mdDialog.hide();
         this.Notification.status(message);
-        this.state.reload();
+        this.state.reload('gfs-categories');
       } else {
         this.Notification.status(message);
-        this.state.reload();
+        this.state.reload('gfs-categories');
       }
     }, response => {
       this.Notification.status(response.data.errors);
-      this.state.reload();
+      this.state.reload('gfs-categories');
     });
   }
 
-  createInstitution(institution) {
-    let data, name, parent, phone, code, address, additional, email;
+  createGfsCategory(category) {
+    let data, name, description;
     data = {
-      name                   : institution.name,
-      institution_id         : institution.parent,
-      phone_number           : institution.phone,
-      sp_code                : institution.code,
-      email                  : institution.email,
-      additional_information : institution.additional,
+      name        : category.name,
+      description : category.description,
     };
 
-    this.Institution.save(data, response => {
+    this.GfsCategory.save(data, response => {
       console.log(response);
       var message = response.message;
       if (response.status === 201) {
@@ -123,9 +119,9 @@ class InstitutionController {
     });
   }
 
-  editInstitution(id){
+  editGfsCategory(id){
 
-    this.Institution.get({id: id}, response => {
+    this.GfsCategory.get({id: id}, response => {
 
       let bank_name =  response.data.bank_name;
       let account   =  response.data.account;
@@ -133,7 +129,7 @@ class InstitutionController {
 
       this.mdDialog.show({
         controller          : this,
-        template            : require('../views/edit-institution.html'),
+        template            : require('../views/edit-GfsCategory.html'),
         clickOutsideToClose : false,
         preserveScope       : true,
         fullscreen          : true // Only for -xs, -sm breakpoints.
@@ -143,14 +139,14 @@ class InstitutionController {
 
   delete(e, id) {
     let confirm = this.mdDialog.confirm()
-      .title('Deleting Institution')
-      .content('The Institution Will Be Deleted')
+      .title('Deleting GfsCategory')
+      .content('The GfsCategory Will Be Deleted')
       .ok('Delete!')
       .cancel('Cancel')
       .targetEvent(e);
 
     this.mdDialog.show(confirm).then(() =>  {
-      this.Institution.remove({id: id}, response => {
+      this.GfsCategory.remove({id: id}, response => {
         let message = response.message;
         if (response.status === 200) {
           this.state.reload();
@@ -170,14 +166,14 @@ class InstitutionController {
     console.log("query: " + this.query);
   }
 
-  loadInstitutions() {
+  loadGfsCategorys() {
     return this.timeout(function() {
-      this.Institution.get(this.query, response =>  {
+      this.GfsCategory.get(this.query, response =>  {
         this.results = response.data.data;
       });
     }, 650);
   }
 }
 
-InstitutionController.$inject = ['Institution', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
-export default InstitutionController;
+GfsCategoryController.$inject = ['GfsCategory', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
+export default GfsCategoryController;

@@ -27,9 +27,9 @@ export default class MainController {
             "icon"  : "launch"
           },
           {
-            "link"  : "/#!/attractions",
-            "title" : "Attractions",
-            "state" : "attractions",
+            "link"  : "/#!/gfs-categories",
+            "title" : "GFS Categories",
+            "state" : "gfs-categories",
             "icon"  : "flip_to_back"
           }
         ]
