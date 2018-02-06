@@ -1,12 +1,10 @@
 'use strict';
 
-import angular from 'angular';
-
-export default class InstitutionController {
-  constructor(Institution, Notification, $mdDialog, $state, $scope) {
+class InstitutionController {
+  constructor(Institution, Notification, $mdDialog, $state, $scope, $timeout) {
     this.Institution  =  Institution;
     this.Notification =  Notification;
-    this.$mdDialog    =  $mdDialog;
+    this.mdDialog     =  $mdDialog;
     this.state        =  $state;
     this.scope        =  $scope;
     this.limitOptions =  [10, 15, 20, 50, 100, 200, 500];
@@ -39,7 +37,6 @@ export default class InstitutionController {
   }
 
   loadData() {
-    console.log(this.query);
     this.Institution.get(this.query, response =>  {
       this.institution = response.data;
     });
@@ -47,12 +44,12 @@ export default class InstitutionController {
 
   closeDialog(e) {
     e.preventDefault();
-    this.$mdDialog.hide();
+    this.mdDialog.hide();
   }
 
   showAddInstitutionDialog(event){
     console.log('the event is', event);
-    this.$mdDialog.show({
+    this.mdDialog.show({
       controller          : InstitutionController,
       controllerAs        : 'vm',
       template            : require('../views/add-new-institution.html'),
@@ -67,7 +64,7 @@ export default class InstitutionController {
     this.Institution.get({id: id}, response => {
       this.result = response.data;
 
-      this.$mdDialog.show({
+      this.mdDialog.show({
         ccontroller         : InstitutionController,
         controllerAs        : 'vm',
         scope               : this.scope,
@@ -130,7 +127,7 @@ export default class InstitutionController {
       let account   =  response.data.account;
       id            =  id;
 
-      this.$mdDialog.show({
+      this.mdDialog.show({
         controller          : this,
         template            : require('../views/edit-institution.html'),
         clickOutsideToClose : false,
@@ -141,14 +138,14 @@ export default class InstitutionController {
   }
 
   delete(e, id) {
-    let confirm = this.$mdDialog.confirm()
+    let confirm = this.mdDialog.confirm()
       .title('Deleting Institution')
       .content('The Institution Will Be Deleted')
       .ok('Delete!')
       .cancel('Cancel')
       .targetEvent(e);
 
-    this.$mdDialog.show(confirm).then(() =>  {
+    this.mdDialog.show(confirm).then(() =>  {
       this.Institution.remove({id: id}, response => {
         let message = response.message;
         if (response.status === 200) {
@@ -159,9 +156,24 @@ export default class InstitutionController {
           this.Notification.status(message);
         }
       }, response  =>  {
-        this.state.reload();
+        console.log(response);
         this.Notification.status(response.data.message);
       });
     });
   }
+
+  onPaginate(page, limit) {
+    console.log("query: " + this.query);
+  }
+
+  loadInstitutions() {
+    return this.timeout(function() {
+      this.Institution.get(this.query, response =>  {
+        this.results = response.data.data;
+      });
+    }, 650);
+  }
 }
+
+InstitutionController.$inject = ['Institution', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
+export default InstitutionController;
