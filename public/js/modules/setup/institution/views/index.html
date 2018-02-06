@@ -24,32 +24,6 @@
                          md-on-paginate="vm.loadData">
     </md-table-pagination>
 
-    <form name="form" class="simple-form" layout="column" layout-fill novalidate>
-      <md-content layout-padding
-                                          flex
-                                          layout="row"
-                                          ng-show="true && selected.length"
-                                          layout-align="space-between center"
-                                          layout-fill>
-        <md-input-container layout="row">
-          <md-select placeholder="Select Bank Account" ng-model="bank_account" required name="account">
-            <md-option ng-repeat="account in accounts" value="{{account.id}}">
-              {{account.account}} - {{ account.bank_name }}
-            </md-option>
-          </md-select>
-          <div ng-messages="form.account.$error" class="error-messages" role="alert" multiple>
-            <div ng-message="required">This field is required</div>
-          </div>
-        </md-input-container>
-        <md-button class="md-raised md-primary export-button"
-                   ng-disabled="(form.$invalid || isDisabled)"
-                   ng-click="changeAccount()">
-          <ng-md-icon icon="import_export"></ng-md-icon>
-          Change Bank Account
-        </md-button>
-      </md-content>
-    </form>
-
     <md-table-container>
       <table md-table md-row-select="true"
                       multiple="{{vm.options.multiSelect}}"
