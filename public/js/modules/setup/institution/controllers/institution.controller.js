@@ -96,10 +96,10 @@ class InstitutionController {
   }
 
   createInstitution(institution) {
-    let data, name, parent, phone, code, address, additional, email;
+    let data, name, institution_id, phone, code, address, additional, email;
     data = {
       name                   : institution.name,
-      institution_id         : institution.parent,
+      institution_id         : institution.institution_id,
       phone_number           : institution.phone,
       sp_code                : institution.code,
       email                  : institution.email,

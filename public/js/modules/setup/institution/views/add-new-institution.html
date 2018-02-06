@@ -25,10 +25,12 @@
           </md-input-container>
 
           <md-input-container flex>
-            <label>Institution Parent</label>
-            <input type="text"
-                   name="parent"
-                   ng-model="institution.parent"/>
+              <label>Institution Parent</label>
+              <md-select placeholder="Institution Parent"
+                         ng-model="institution.institution_id"
+                         style="min-width: 200px;">
+                  <md-option ng-value="institution.id" ng-repeat="institution in vm.institution.data">{{institution.name}}</md-option>
+              </md-select>
           </md-input-container>
 
           <md-content layout="row">
