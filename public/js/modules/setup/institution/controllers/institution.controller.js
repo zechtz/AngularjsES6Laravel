@@ -3,13 +3,12 @@
 import angular from 'angular';
 
 export default class InstitutionController {
-  constructor(Institution, Notification, $mdDialog, $state, $scope, $timeout) {
+  constructor(Institution, Notification, $mdDialog, $state, $scope) {
     this.Institution  =  Institution;
     this.Notification =  Notification;
     this.$mdDialog    =  $mdDialog;
     this.state        =  $state;
     this.scope        =  $scope;
-    this.timeout      =  $timeout;
     this.limitOptions =  [10, 15, 20, 50, 100, 200, 500];
     this.selected     =  [];
 
@@ -161,7 +160,7 @@ export default class InstitutionController {
         }
       }, response  =>  {
         this.state.reload();
-        this.Notification.status(response.message);
+        this.Notification.status(response.data.message);
       });
     });
   }
