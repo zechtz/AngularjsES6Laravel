@@ -38,6 +38,12 @@ export default class MainController {
             "title" : "Station Categories",
             "state" : "station-categories",
             "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/attraction-site-categories",
+            "title" : "Attraction Site Categories",
+            "state" : "attraction-site-categories",
+            "icon"  : "flip_to_back"
           }
         ]
       },
