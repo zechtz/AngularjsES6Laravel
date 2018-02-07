@@ -31,6 +31,12 @@ export default class MainController {
             "title" : "GFS Categories",
             "state" : "gfs-categories",
             "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/station-categories",
+            "title" : "Station Categories",
+            "state" : "station-categories",
+            "icon"  : "flip_to_back"
           }
         ]
       },
