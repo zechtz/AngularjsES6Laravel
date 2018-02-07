@@ -38,6 +38,36 @@ export default class MainController {
             "title" : "Station Categories",
             "state" : "station-categories",
             "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/location-hierarchies",
+            "title" : "Location Hierarchies",
+            "state" : "location-hierarchies",
+            "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/locations",
+            "title" : "Locations",
+            "state" : "locations",
+            "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/stations",
+            "title" : "stations",
+            "state" : "stations",
+            "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/country-groups",
+            "title" : "Country Groups",
+            "state" : "country-groups",
+            "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/countries",
+            "title" : "Countries",
+            "state" : "countries",
+            "icon"  : "flip_to_back"
           }
         ]
       },
