@@ -6,4 +6,4 @@ import gfscategory            from './gfscategory';
 import stationcategory        from './stationcategory';
 import attractionSiteCategory from './attractionsitecategory';
 
-export default angular.module('setup', ['institution', 'gfscategory','stationcategory','abc']);
+export default angular.module('setup', ['institution', 'gfscategory','stationcategory','attractionSiteCategory ']);
