@@ -1,15 +1,18 @@
 'use strict';
 
 class LocationController {
-  constructor(Location, Notification, $mdDialog, $state, $scope, $timeout) {
-    this.Location      =  Location;
-    this.Notification     =  Notification;
-    this.mdDialog         =  $mdDialog;
-    this.state            =  $state;
-    this.scope            =  $scope;
-    this.limitOptions     =  [10, 15, 20, 50, 100, 200, 500];
-    this.selected         =  [];
-    this.scope.onPaginate =  () => this.loadData();
+  constructor(Location, LocationHierarchy, Notification, $mdDialog, $state, $scope, $timeout) {
+    this.Location          =  Location;
+    this.LocationHierarchy =  LocationHierarchy;
+    this.Notification      =  Notification;
+    this.mdDialog          =  $mdDialog;
+    this.state             =  $state;
+    this.scope             =  $scope;
+    this.timeout           =  $timeout;
+    this.limitOptions      =  [10, 15, 20, 50, 100, 200, 500];
+    this.selected          =  [];
+    this.scope.onPaginate  =  () => this.loadData();
+    this.result            =  [];
 
     this.options = {
       rowSelection    : false,
@@ -42,6 +45,15 @@ class LocationController {
     this.Location.get(this.query, response =>  {
       this.location = response.data;
     });
+  }
+
+  getLocationHierachies() {
+    return this.timeout(() =>  {
+      this.LocationHierarchy.get({}, response => {
+        this.result =  response.data;
+        return this.result;
+      });
+    }, 650);
   }
 
   closeDialog(e) {
@@ -98,9 +110,9 @@ class LocationController {
   createLocation(location) {
     let data, name,location_id,location_hierarchy_id;
     data = {
-      name        : location.name,
-        location_id        : location.location_id,
-        location_hierarchy_id        : location.location_hierarchy_id,
+      name                  : location.name,
+      location_id           : location.location_id,
+      location_hierarchy_id : location.location_hierarchy_id,
     };
 
     this.Location.save(data, response => {
@@ -159,5 +171,5 @@ class LocationController {
   }
 }
 
-LocationController.$inject = ['Location', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
+LocationController.$inject = ['Location', 'LocationHierarchy', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
 export default LocationController;

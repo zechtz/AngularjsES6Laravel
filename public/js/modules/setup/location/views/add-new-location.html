@@ -33,10 +33,13 @@
           </md-input-container>
           <md-input-container flex>
             <label>Location Hierarchy</label>
-            <md-select placeholder="Location Hierarchy"
+            <md-select placeholder="Location Hierarchy "
                        ng-model="location.location_hierarchy_id"
-                       style="min-width: 200px;">
-              <md-option ng-value="locationHierarchy.id" ng-repeat="locationHierarchy in vm.locationHierarchy.data">{{locationHierarchy.name}}</md-option>
+                       md-on-open="vm.getLocationHierachies()" style="min-width: 200px;">
+              <md-option ng-value="hierarchy.id"
+                         ng-repeat="hierarchy in vm.result.data">
+                {{ hierarchy.name }}
+              </md-option>
             </md-select>
           </md-input-container>
         </md-content>
