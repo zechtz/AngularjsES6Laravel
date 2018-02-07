@@ -112,8 +112,9 @@
   font-weight: bold; }
 
 md-sidenav .sidebar-toggle {
+  top: -3px;
   fill: #fff;
-  right: -135px; }
+  right: -146px; }
 
 md-sidenav .avatar-holder {
   margin-top: 25px;
@@ -203,6 +204,7 @@ md-menu-content {
   fill: #757575; }
 
 h2.admin-title {
+  padding-top: 9px;
   font-weight: bold; }
 
 .form-container h1 {
@@ -1249,7 +1251,6 @@ h6.permission-header {
 
 body {
   font-family: "Roboto", 'Helvetica Neue, Helvetica, Arial', sans-serif;
-  background: #3f51b5;
   counter-reset: item; }
 
 .md-sidemenu-content {

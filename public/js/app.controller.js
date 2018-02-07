@@ -12,11 +12,12 @@ export default class MainController {
     this.availableModes    =  ['md-fling', 'md-scale'];
     this.selectedMode      =  'md-fling';
     this.selectedDirection =  'up';
+    this.title             =  "Setup Module";
     this.menu              =  [
       {
-        "link"  : "#",
+        "link"  : "/",
         "title" : "Setup Module",
-        "state" : "",
+        "state" : "institutions",
         "icon"  : "home",
         "type"  : "group",
         "pages" : [
@@ -30,6 +31,12 @@ export default class MainController {
             "link"  : "/#!/gfs-categories",
             "title" : "GFS Categories",
             "state" : "gfs-categories",
+            "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/station-categories",
+            "title" : "Station Categories",
+            "state" : "station-categories",
             "icon"  : "flip_to_back"
           }
         ]

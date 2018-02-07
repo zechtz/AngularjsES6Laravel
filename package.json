@@ -75,6 +75,7 @@
     "angularjs-perfect-scrollbar": "0.0.5",
     "checklist-model": "^0.11.0",
     "lato-font": "^3.0.0",
+    "material-icons": "^0.1.0",
     "ng-inject": "^1.0.0"
   }
 }

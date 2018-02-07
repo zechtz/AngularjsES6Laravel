@@ -1,8 +1,8 @@
 'use strict';
 
-class GfsCategoryController {
-  constructor(GfsCategory, Notification, $mdDialog, $state, $scope, $timeout) {
-    this.GfsCategory      =  GfsCategory;
+class StationCategoryController {
+  constructor(StationCategory, Notification, $mdDialog, $state, $scope, $timeout) {
+    this.StationCategory      =  StationCategory;
     this.Notification     =  Notification;
     this.mdDialog         =  $mdDialog;
     this.state            =  $state;
@@ -31,16 +31,16 @@ class GfsCategoryController {
   }
 
   $onInit() {
-    this.title = "GFS Code Categories";
-    this.GfsCategory.get(this.query, response =>  {
-      this.gfsCategory = response.data;
+    this.title = "Station Categories";
+    this.StationCategory.get(this.query, response =>  {
+      this.stationCategory = response.data;
     });
   }
 
   loadData(page, limit) {
     console.log("query: " + this.query);
-    this.GfsCategory.get(this.query, response =>  {
-      this.gfsCategory = response.data;
+    this.StationCategory.get(this.query, response =>  {
+      this.stationCategory = response.data;
     });
   }
 
@@ -49,60 +49,59 @@ class GfsCategoryController {
     this.mdDialog.hide();
   }
 
-  showAddGfsCategoryDialog(event){
+  showAddStationCategoryDialog(event){
     console.log('the event is', event);
     this.mdDialog.show({
-      controller          : GfsCategoryController,
+      controller          : StationCategoryController,
       controllerAs        : 'vm',
-      template            : require('../views/add-new-gfscategory.html'),
+      template            : require('../views/add-new-stationcategory.html'),
       clickOutsideToClose : false,
       preserveScope       : true,
       fullscreen          : true // Only for -xs, -sm breakpoints.
     });
   }
 
-  showUpdateGfsCategoryDialog(id){
+  showUpdateStationCategoryDialog(id){
 
-    this.GfsCategory.get({id: id}, response => {
+    this.StationCategory.get({id: id}, response => {
       this.result = response.data;
 
       this.mdDialog.show({
-        ccontroller         : GfsCategoryController,
+        ccontroller         : StationCategoryController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,
-        template            : require('../views/edit-gfscategory.html'),
+        template            : require('../views/edit-stationcategory.html'),
         clickOutsideToClose : false,
         fullscreen          : true // Only for -xs, -sm breakpoints.
       });
     });
   }
 
-  updateGfsCategory(GfsCategory){
-    this.GfsCategory.update(GfsCategory, response => {
+  updateStationCategory(StationCategory){
+    this.StationCategory.update(StationCategory, response => {
       let message = response.message;
       if (response.status === 200) {
         this.mdDialog.hide();
         this.Notification.status(message);
-        this.state.reload('gfs-categories');
+        this.state.reload('station-categories');
       } else {
         this.Notification.status(message);
-        this.state.reload('gfs-categories');
+        this.state.reload('station-categories');
       }
     }, response => {
       this.Notification.status(response.data.errors);
-      this.state.reload('gfs-categories');
+      this.state.reload('station-categories');
     });
   }
 
-  createGfsCategory(category) {
-    let data, name, description;
+  createStationCategory(category) {
+    let data, name;
     data = {
       name        : category.name,
-      description : category.description,
     };
 
-    this.GfsCategory.save(data, response => {
+    this.StationCategory.save(data, response => {
       console.log(response);
       var message = response.message;
       if (response.status === 201) {
@@ -119,12 +118,12 @@ class GfsCategoryController {
     });
   }
 
-  editGfsCategory(id){
+  editStationCategory(id){
 
-    this.GfsCategory.get({id: id}, response => {
+    this.StationCategory.get({id: id}, response => {
       this.mdDialog.show({
         controller          : this,
-        template            : require('../views/edit-gfscategory.html'),
+        template            : require('../views/edit-stationcategory.html'),
         clickOutsideToClose : false,
         preserveScope       : true,
         fullscreen          : true // Only for -xs, -sm breakpoints.
@@ -134,14 +133,14 @@ class GfsCategoryController {
 
   delete(e, id) {
     let confirm = this.mdDialog.confirm()
-      .title('Deleting GfsCategory')
-      .content('The GfsCategory Will Be Deleted')
+      .title('Deleting Station Category')
+      .content('The Station Category Will Be Deleted')
       .ok('Delete!')
       .cancel('Cancel')
       .targetEvent(e);
 
     this.mdDialog.show(confirm).then(() =>  {
-      this.GfsCategory.remove({id: id}, response => {
+      this.StationCategory.remove({id: id}, response => {
         let message = response.message;
         if (response.status === 200) {
           this.state.reload();
@@ -158,5 +157,5 @@ class GfsCategoryController {
   }
 }
 
-GfsCategoryController.$inject = ['GfsCategory', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
-export default GfsCategoryController;
+StationCategoryController.$inject = ['StationCategory', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
+export default StationCategoryController;

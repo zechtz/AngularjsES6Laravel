@@ -9,19 +9,24 @@
   </md-toolbar>
   <md-list>
     <md-sidemenu locked="true">
-      <md-sidemenu-group>
-        <div ng-repeat="item in ctrl.menu">
-          <md-sidemenu-content
-            md-heading="{{item.title}}" md-arrow="false">
-            <div-sidemenu-button ng-repeat="page in item.pages">
+      <div ng-repeat="item in ctrl.menu">
+        <md-sidemenu-content ng-if="!item.pages"
+                             md-icon="{{item.icon}}"
+                             md-heading="{{ item.title }}"
+                             ui-sref="{{item.state}}">
+        </md-sidemenu-content>
+
+        <md-sidemenu-group ng-if="item.pages">
+          <md-sidemenu-content md-icon="{{item.icon}}" md-heading="{{item.title}}" md-arrow="true">
+            <md-button ng-repeat="page in item.pages">
               <a ui-sref="{{page.state}}" layout="row">
                 <div class="inset"><ng-md-icon icon="{{page.icon}}"></ng-md-icon></div>
                 <div class="inset">{{page.title}}</div>
               </a>
-            </div>
+            </md-button>
           </md-sidemenu-content>
-        </div>
-      </md-sidemenu-group>
+        </md-sidemenu-group>
+      </div>
     </md-sidemenu>
   </md-list>
 </perfect-scrollbar>
