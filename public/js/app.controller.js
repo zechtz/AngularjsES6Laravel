@@ -12,6 +12,7 @@ export default class MainController {
     this.availableModes    =  ['md-fling', 'md-scale'];
     this.selectedMode      =  'md-fling';
     this.selectedDirection =  'up';
+    this.title             =  "Setup Module";
     this.menu              =  [
       {
         "link"  : "/",
