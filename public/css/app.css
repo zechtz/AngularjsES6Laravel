@@ -112,8 +112,9 @@
   font-weight: bold; }
 
 md-sidenav .sidebar-toggle {
+  top: -3px;
   fill: #fff;
-  right: -135px; }
+  right: -146px; }
 
 md-sidenav .avatar-holder {
   margin-top: 25px;
