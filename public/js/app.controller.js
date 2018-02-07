@@ -14,9 +14,9 @@ export default class MainController {
     this.selectedDirection =  'up';
     this.menu              =  [
       {
-        "link"  : "#",
+        "link"  : "/",
         "title" : "Setup Module",
-        "state" : "",
+        "state" : "institutions",
         "icon"  : "home",
         "type"  : "group",
         "pages" : [

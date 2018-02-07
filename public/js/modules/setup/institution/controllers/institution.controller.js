@@ -37,8 +37,8 @@ class InstitutionController {
     });
   }
 
-  loadData(page, limit) {
-    console.log("query: " + this.query);
+  loadData() {
+    console.log("query: " + this.options);
     this.Institution.get(this.query, response =>  {
       this.institution = response.data;
     });
@@ -161,18 +161,6 @@ class InstitutionController {
         this.Notification.status(response.data.message);
       });
     });
-  }
-
-  onPaginate(page, limit) {
-    console.log("query: " + this.query);
-  }
-
-  loadInstitutions() {
-    return this.timeout(function() {
-      this.Institution.get(this.query, response =>  {
-        this.results = response.data.data;
-      });
-    }, 650);
   }
 }
 

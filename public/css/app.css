@@ -203,6 +203,7 @@ md-menu-content {
   fill: #757575; }
 
 h2.admin-title {
+  padding-top: 9px;
   font-weight: bold; }
 
 .form-container h1 {
@@ -1249,7 +1250,6 @@ h6.permission-header {
 
 body {
   font-family: "Roboto", 'Helvetica Neue, Helvetica, Arial', sans-serif;
-  background: #3f51b5;
   counter-reset: item; }
 
 .md-sidemenu-content {
