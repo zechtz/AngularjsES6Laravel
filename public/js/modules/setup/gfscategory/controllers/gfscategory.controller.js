@@ -156,18 +156,6 @@ class GfsCategoryController {
       });
     });
   }
-
-  onPaginate(page, limit) {
-    console.log("query: " + this.query);
-  }
-
-  loadGfsCategorys() {
-    return this.timeout(function() {
-      this.GfsCategory.get(this.query, response =>  {
-        this.results = response.data.data;
-      });
-    }, 650);
-  }
 }
 
 GfsCategoryController.$inject = ['GfsCategory', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];

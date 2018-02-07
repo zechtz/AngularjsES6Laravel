@@ -8,6 +8,8 @@ import 'angular-material-data-table/dist/md-data-table.css';
 import 'angular-material-sidemenu/dest/angular-material-sidemenu.css';
 import 'angular-material-icons/angular-material-icons.css';
 import 'material-icons/css/material-icons.min.css';
+import '../../public/css/material-icons.css';
+import '../../public/css/material-indigo-blue.css';
 
 import 'angular-material-sidemenu';
 import 'angular-material-icons';
