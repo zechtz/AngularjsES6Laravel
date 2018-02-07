@@ -53,7 +53,7 @@ export default class MainController {
           },
           {
             "link"  : "/#!/stations",
-            "title" : "stations",
+            "title" : "Stations",
             "state" : "stations",
             "icon"  : "flip_to_back"
           },
