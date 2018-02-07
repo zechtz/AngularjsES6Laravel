@@ -15,7 +15,7 @@ class GfsCategory extends Model
     protected $table   =  "gfs_categories";
 
     public static $rules = [
-        "name"          => "required|unique:gfs_categories",
+        "name"          => "required",
         "description"   => "required",
     ];
 

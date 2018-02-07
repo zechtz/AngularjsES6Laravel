@@ -13,10 +13,14 @@ class ReserveHierarchy extends Model
     protected $table   =  "reserve_hierarchies";
     public static $rules = [
         "name" => "required",
-        "order" => "required",
     ];
     public static $create_rules = [
         "name"  => "required",
         "order" => "required",
     ];
+
+    public function reserveDistributions()
+    {
+        return $this->hasMany(ReserveDistribution::class);
+    }
 }

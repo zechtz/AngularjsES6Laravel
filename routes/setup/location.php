@@ -11,15 +11,15 @@
 |
  */
 Route::group(["prefix" => "v1"]              , function(){
-    Route::get('loation-hierarchies'         , 'Setup\LocationHierarchiesController@index');
-    Route::post('loation-hierarchies'        , 'Setup\LocationHierarchiesController@create');
-    Route::get('loation-hierarchies/{id}'    , 'Setup\LocationHierarchiesController@show');
-    Route::put('loation-hierarchies/{id}'    , 'Setup\LocationHierarchiesController@update');
-    Route::delete('loation-hierarchies/{id}' , 'Setup\LocationHierarchiesController@destroy');
+    Route::get('location-hierarchies'         , 'Setup\LocationHierarchiesController@index');
+    Route::post('location-hierarchies'        , 'Setup\LocationHierarchiesController@create');
+    Route::get('location-hierarchies/{id}'    , 'Setup\LocationHierarchiesController@show');
+    Route::put('location-hierarchies/{id}'    , 'Setup\LocationHierarchiesController@update');
+    Route::delete('location-hierarchies/{id}' , 'Setup\LocationHierarchiesController@destroy');
 
-    Route::get('loations'                    , 'Setup\LocationsController@index');
-    Route::post('loations'                   , 'Setup\LocationsController@create');
-    Route::get('loations/{id}'               , 'Setup\LocationsController@show');
-    Route::put('loations/{id}'               , 'Setup\LocationsController@update');
-    Route::delete('loations/{id}'            , 'Setup\LocationsController@destroy');
+    Route::get('locations'                    , 'Setup\LocationsController@index');
+    Route::post('locations'                   , 'Setup\LocationsController@create');
+    Route::get('locations/{id}'               , 'Setup\LocationsController@show');
+    Route::put('locations/{id}'               , 'Setup\LocationsController@update');
+    Route::delete('locations/{id}'            , 'Setup\LocationsController@destroy');
 });

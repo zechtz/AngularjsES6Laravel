@@ -1,0 +1,108 @@
+<md-dialog aria-label="Add New Institution" style="width: 640px; height: auto;" ng-cloak>
+  <form name="form" class="simple-form" layout="column" layout-fill novalidate ng-show="!loading">
+    <md-toolbar class="md-dialog-header">
+      <div class="md-toolbar-tools">
+        <h6>UPDATE INSTITUTION</h6>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="vm.closeDialog($event)">
+          <ng-md-icon icon="close" aria-label="Close dialog"></ng-md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <div style="padding: 0px 5px;">
+      <md-dialog-content>
+        <md-content layout-padding layout="column" layout-fill>
+          <md-input-container flex>
+            <label>Institution Name</label>
+            <input type="text"
+                   name="name"
+                   ng-model="vm.result.name"
+                   required/>
+            <div ng-messages="form.name.$error">
+              <div ng-message="required">Cannot be blank.</div>
+            </div>
+          </md-input-container>
+
+          <md-input-container flex>
+              <label>Institution Parent</label>
+              <md-select placeholder="Institution Parent"
+                         ng-model="vm.result.institution_id"
+                         style="min-width: 200px;">
+                  <md-option ng-value="institution.id" ng-repeat="institution in vm.institution.data">{{institution.name}}</md-option>
+              </md-select>
+          </md-input-container>
+
+          <md-content layout="row">
+              <md-input-container flex>
+                <input type="text"
+                       name="phone"
+                       placeholder="Phone #"
+                       ng-model="vm.result.phone_number"
+                       required />
+                <div ng-messages="form.phone.$error">
+                  <div ng-message="required">Cannot be blank.</div>
+                </div>
+              </md-input-container>
+
+              <md-input-container flex>
+                <input type="email"
+                       name="email"
+                       placeholder="Email Address"
+                       ng-model="vm.result.email"
+                       required />
+                <div ng-messages="form.email.$error">
+                  <div ng-message="required">Cannot be blank.</div>
+                </div>
+              </md-input-container>
+          </md-content>
+
+          <md-content layout="row">
+            <md-input-container flex>
+              <input type="text"
+                     name="code"
+                     placeholder="Institution Code"
+                     ng-model="vm.result.sp_code"
+                     required />
+              <div ng-messages="form.code.$error">
+                <div ng-message="required">Cannot be blank.</div>
+              </div>
+            </md-input-container>
+
+            <md-input-container flex>
+              <input type="text"
+                     name="address"
+                     placeholder="Address"
+                     ng-model="vm.result.address"
+                     required />
+              <div ng-messages="form.address.$error">
+                <div ng-message="required">Cannot be blank.</div>
+              </div>
+            </md-input-container>
+          </md-content>
+
+          <md-input-container>
+            <label>Additional Information</label>
+            <textarea
+                name="additional"
+                ng-model="vm.result.additional_information"
+                required md-maxlength="150"></textarea>
+            <div ng-messages="form.additional.$error" ng-show="form.additional.$dirty">
+              <div ng-message="required">This is required!</div>
+              <div ng-message="md-maxlength">That's too long!</div>
+            </div>
+          </md-input-container>
+        </md-content>
+      </md-dialog-content>
+
+      <md-dialog-actions class="row">
+        <md-button
+            ng-click="vm.updateInstitution(vm.result)" class="md-primary">
+            UPDATE
+        </md-button>
+      </md-dialog-actions>
+    </div>
+  </form>
+  <!--<pre>{{ vm.result | json }}</pre>-->
+</md-dialog>
+

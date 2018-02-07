@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Setup;
 use App\Models\Setup\ReserveDistribution;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
 
 class ReserveDistributionsController extends Controller
 {
