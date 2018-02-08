@@ -1,14 +1,17 @@
 'use strict';
 
-class AttractionSiteCategoryController {
-  constructor(AttractionSiteCategory, Notification, $mdDialog, $state, $scope, $timeout) {
-    this.AttractionSiteCategory      =  AttractionSiteCategory;
-    this.Notification     =  Notification;
-    this.mdDialog         =  $mdDialog;
-    this.state            =  $state;
-    this.scope            =  $scope;
-    this.limitOptions     =  [10, 15, 20, 50, 100, 200, 500];
-    this.selected         =  [];
+class LocationController {
+  constructor(Location, LocationHierarchy, Notification, $mdDialog, $state, $scope, $timeout) {
+    this.Location          =  Location;
+    this.LocationHierarchy =  LocationHierarchy;
+    this.Notification      =  Notification;
+    this.mdDialog          =  $mdDialog;
+    this.state             =  $state;
+    this.scope             =  $scope;
+    this.timeout           =  $timeout;
+    this.limitOptions      =  [10, 15, 20, 50, 100, 200, 500];
+    this.selected          =  [];
+    this.result            =  [];
     this.loadData         =  this.loadData.bind(this);
 
     this.options = {
@@ -31,17 +34,26 @@ class AttractionSiteCategoryController {
   }
 
   $onInit() {
-    this.title = "Attraction Site Categories";
-    this.AttractionSiteCategory.get(this.query, response =>  {
-      this.attractionasitecategory = response.data;
+    this.title = "Locations";
+    this.Location.get(this.query, response =>  {
+      this.location = response.data;
     });
   }
 
-  loadData() {
-    console.log("query: " + this.options);
-    this.AttractionSiteCategory.get(this.query, response =>  {
-      this.attractionasitecategory = response.data;
+  loadData(page, limit) {
+    console.log("query: " + this.query);
+    this.Location.get(this.query, response =>  {
+      this.location = response.data;
     });
+  }
+
+  getLocationHierachies() {
+    return this.timeout(() =>  {
+      this.LocationHierarchy.get({}, response => {
+        this.result =  response.data;
+        return this.result;
+      });
+    }, 650);
   }
 
   closeDialog(e) {
@@ -49,59 +61,61 @@ class AttractionSiteCategoryController {
     this.mdDialog.hide();
   }
 
-  showAddCategoryDialog(event){
+  showAddLocationDialog(event){
     console.log('the event is', event);
     this.mdDialog.show({
-      controller          : AttractionSiteCategoryController,
+      controller          : LocationController,
       controllerAs        : 'vm',
-      template            : require('../views/add-attraction-site-category.html'),
+      template            : require('../views/add-new-location.html'),
       clickOutsideToClose : false,
       preserveScope       : true,
       fullscreen          : true // Only for -xs, -sm breakpoints.
     });
   }
 
-  showUpdateCategoryDialog(id){
+  showUpdateLocationDialog(id){
 
-    this.Institution.get({id: id}, response => {
+    this.Location.get({id: id}, response => {
       this.result = response.data;
 
       this.mdDialog.show({
-        ccontroller         : AttractionSiteCategoryController,
+        ccontroller         : LocationController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,
-        template            : require('../views/edit-attraction-site-category.html'),
+        template            : require('../views/edit-location.html'),
         clickOutsideToClose : false,
         fullscreen          : true // Only for -xs, -sm breakpoints.
       });
     });
   }
 
-  updateAttractionSiteCategory(attractionSiteCategory){
-    this.AttractionSiteCategory.update(attractionSiteCategory, response => {
+  updateLocation(Location){
+    this.Location.update(Location, response => {
       let message = response.message;
       if (response.status === 200) {
         this.mdDialog.hide();
         this.Notification.status(message);
-        this.state.reload();
+        this.state.reload('locations');
       } else {
         this.Notification.status(message);
-        this.state.reload();
+        this.state.reload('locations');
       }
     }, response => {
       this.Notification.status(response.data.errors);
-      this.state.reload();
+      this.state.reload('locations');
     });
   }
 
-  createCategory(category) {
-    let data, name;
+  createLocation(location) {
+    let data, name,location_id,location_hierarchy_id;
     data = {
-      name : category.name,
+      name                  : location.name,
+      location_id           : location.location_id,
+      location_hierarchy_id : location.location_hierarchy_id,
     };
 
-    this.AttractionSiteCategory.save(data, response => {
+    this.Location.save(data, response => {
       console.log(response);
       var message = response.message;
       if (response.status === 201) {
@@ -118,13 +132,12 @@ class AttractionSiteCategoryController {
     });
   }
 
-  editCategory(id){
+  editLocation(id){
 
-    this.Institution.get({id: id}, response => {
-
+    this.Location.get({id: id}, response => {
       this.mdDialog.show({
         controller          : this,
-        template            : require('../views/edit-attraction-site-category.html'),
+        template            : require('../views/edit-location.html'),
         clickOutsideToClose : false,
         preserveScope       : true,
         fullscreen          : true // Only for -xs, -sm breakpoints.
@@ -134,14 +147,14 @@ class AttractionSiteCategoryController {
 
   delete(e, id) {
     let confirm = this.mdDialog.confirm()
-      .title('Deleting Category')
-      .content('The Category Will Be Deleted')
+      .title('Deleting Location')
+      .content('The Location Will Be Deleted')
       .ok('Delete!')
       .cancel('Cancel')
       .targetEvent(e);
 
     this.mdDialog.show(confirm).then(() =>  {
-      this.AttractionSiteCategory.remove({id: id}, response => {
+      this.Location.remove({id: id}, response => {
         let message = response.message;
         if (response.status === 200) {
           this.state.reload();
@@ -158,5 +171,5 @@ class AttractionSiteCategoryController {
   }
 }
 
-AttractionSiteCategoryController.$inject = ['AttractionSiteCategory', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
-export default AttractionSiteCategoryController;
+LocationController.$inject = ['Location', 'LocationHierarchy', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
+export default LocationController;

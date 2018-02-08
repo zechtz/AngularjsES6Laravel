@@ -1,0 +1,55 @@
+<md-dialog aria-label="Add New Institution" style="width: 640px; height: auto;" ng-cloak>
+  <form name="form" class="simple-form" layout="column" layout-fill novalidate ng-show="!loading">
+    <md-toolbar class="md-dialog-header">
+      <div class="md-toolbar-tools">
+        <h6>CREATE LOCATION</h6>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="vm.closeDialog($event)">
+          <ng-md-icon icon="close" aria-label="Close dialog"></ng-md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <div style="padding: 0px 5px;">
+      <md-dialog-content>
+        <md-content layout-padding layout="column" layout-fill>
+          <md-input-container flex>
+            <label>Location Name</label>
+            <input type="text"
+                   name="name"
+                   ng-model="location.name"
+                   required/>
+            <div ng-messages="form.name.$error">
+              <div ng-message="required">Cannot be blank.</div>
+            </div>
+          </md-input-container>
+          <md-input-container flex>
+            <label>Location Parent</label>
+            <md-select placeholder="Location Parent"
+                       ng-model="location.location_id"
+                       style="min-width: 200px;">
+              <md-option ng-value="location.id" ng-repeat="location in vm.location.data">{{location.name}}</md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container flex>
+            <label>Location Hierarchy</label>
+            <md-select placeholder="Location Hierarchy "
+                       ng-model="location.location_hierarchy_id"
+                       md-on-open="vm.getLocationHierachies()" style="min-width: 200px;">
+              <md-option ng-value="hierarchy.id"
+                         ng-repeat="hierarchy in vm.result.data">
+                {{ hierarchy.name }}
+              </md-option>
+            </md-select>
+          </md-input-container>
+        </md-content>
+      </md-dialog-content>
+
+      <md-dialog-actions class="row">
+        <md-button ng-disabled="(form.$invalid || isDisabled)"
+                   class="md-raised"
+                   ng-click="vm.createLocation(location)">Create </md-button>
+      </md-dialog-actions>
+    </div>
+  </form>
+</md-dialog>

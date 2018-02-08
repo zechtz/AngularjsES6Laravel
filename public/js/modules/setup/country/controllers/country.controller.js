@@ -1,8 +1,8 @@
 'use strict';
 
-class AttractionSiteCategoryController {
-  constructor(AttractionSiteCategory, Notification, $mdDialog, $state, $scope, $timeout) {
-    this.AttractionSiteCategory      =  AttractionSiteCategory;
+class StationCategoryController {
+  constructor(StationCategory, Notification, $mdDialog, $state, $scope, $timeout) {
+    this.StationCategory      =  StationCategory;
     this.Notification     =  Notification;
     this.mdDialog         =  $mdDialog;
     this.state            =  $state;
@@ -31,16 +31,16 @@ class AttractionSiteCategoryController {
   }
 
   $onInit() {
-    this.title = "Attraction Site Categories";
-    this.AttractionSiteCategory.get(this.query, response =>  {
-      this.attractionasitecategory = response.data;
+    this.title = "Station Categories";
+    this.StationCategory.get(this.query, response =>  {
+      this.stationCategory = response.data;
     });
   }
 
-  loadData() {
-    console.log("query: " + this.options);
-    this.AttractionSiteCategory.get(this.query, response =>  {
-      this.attractionasitecategory = response.data;
+  loadData(page, limit) {
+    console.log("query: " + this.query);
+    this.StationCategory.get(this.query, response =>  {
+      this.stationCategory = response.data;
     });
   }
 
@@ -49,59 +49,59 @@ class AttractionSiteCategoryController {
     this.mdDialog.hide();
   }
 
-  showAddCategoryDialog(event){
+  showAddStationCategoryDialog(event){
     console.log('the event is', event);
     this.mdDialog.show({
-      controller          : AttractionSiteCategoryController,
+      controller          : StationCategoryController,
       controllerAs        : 'vm',
-      template            : require('../views/add-attraction-site-category.html'),
+      template            : require('../views/add-new-stationcategory.html'),
       clickOutsideToClose : false,
       preserveScope       : true,
       fullscreen          : true // Only for -xs, -sm breakpoints.
     });
   }
 
-  showUpdateCategoryDialog(id){
+  showUpdateStationCategoryDialog(id){
 
-    this.Institution.get({id: id}, response => {
+    this.StationCategory.get({id: id}, response => {
       this.result = response.data;
 
       this.mdDialog.show({
-        ccontroller         : AttractionSiteCategoryController,
+        ccontroller         : StationCategoryController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,
-        template            : require('../views/edit-attraction-site-category.html'),
+        template            : require('../views/edit-stationcategory.html'),
         clickOutsideToClose : false,
         fullscreen          : true // Only for -xs, -sm breakpoints.
       });
     });
   }
 
-  updateAttractionSiteCategory(attractionSiteCategory){
-    this.AttractionSiteCategory.update(attractionSiteCategory, response => {
+  updateStationCategory(StationCategory){
+    this.StationCategory.update(StationCategory, response => {
       let message = response.message;
       if (response.status === 200) {
         this.mdDialog.hide();
         this.Notification.status(message);
-        this.state.reload();
+        this.state.reload('station-categories');
       } else {
         this.Notification.status(message);
-        this.state.reload();
+        this.state.reload('station-categories');
       }
     }, response => {
       this.Notification.status(response.data.errors);
-      this.state.reload();
+      this.state.reload('station-categories');
     });
   }
 
-  createCategory(category) {
+  createStationCategory(category) {
     let data, name;
     data = {
-      name : category.name,
+      name        : category.name,
     };
 
-    this.AttractionSiteCategory.save(data, response => {
+    this.StationCategory.save(data, response => {
       console.log(response);
       var message = response.message;
       if (response.status === 201) {
@@ -118,13 +118,12 @@ class AttractionSiteCategoryController {
     });
   }
 
-  editCategory(id){
+  editStationCategory(id){
 
-    this.Institution.get({id: id}, response => {
-
+    this.StationCategory.get({id: id}, response => {
       this.mdDialog.show({
         controller          : this,
-        template            : require('../views/edit-attraction-site-category.html'),
+        template            : require('../views/edit-stationcategory.html'),
         clickOutsideToClose : false,
         preserveScope       : true,
         fullscreen          : true // Only for -xs, -sm breakpoints.
@@ -134,14 +133,14 @@ class AttractionSiteCategoryController {
 
   delete(e, id) {
     let confirm = this.mdDialog.confirm()
-      .title('Deleting Category')
-      .content('The Category Will Be Deleted')
+      .title('Deleting Station Category')
+      .content('The Station Category Will Be Deleted')
       .ok('Delete!')
       .cancel('Cancel')
       .targetEvent(e);
 
     this.mdDialog.show(confirm).then(() =>  {
-      this.AttractionSiteCategory.remove({id: id}, response => {
+      this.StationCategory.remove({id: id}, response => {
         let message = response.message;
         if (response.status === 200) {
           this.state.reload();
@@ -158,5 +157,5 @@ class AttractionSiteCategoryController {
   }
 }
 
-AttractionSiteCategoryController.$inject = ['AttractionSiteCategory', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
-export default AttractionSiteCategoryController;
+StationCategoryController.$inject = ['StationCategory', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
+export default StationCategoryController;

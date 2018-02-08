@@ -40,9 +40,39 @@ export default class MainController {
             "icon"  : "flip_to_back"
           },
           {
-            "link"  : "/#!/attraction-site-categories",
-            "title" : "Attraction Site Categories",
-            "state" : "attraction-site-categories",
+            "link"  : "/#!/location-hierarchies",
+            "title" : "Location Hierarchies",
+            "state" : "location-hierarchies",
+            "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/locations",
+            "title" : "Locations",
+            "state" : "locations",
+            "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/stations",
+            "title" : "Stations",
+            "state" : "stations",
+            "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/country-groups",
+            "title" : "Country Groups",
+            "state" : "country-groups",
+            "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/countries",
+            "title" : "Countries",
+            "state" : "countries",
+            "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/specie-categories",
+            "title" : "Specie Categories",
+            "state" : "specie-categories",
             "icon"  : "flip_to_back"
           }
         ]

@@ -1,8 +1,8 @@
 'use strict';
 
-class AttractionSiteCategoryController {
-  constructor(AttractionSiteCategory, Notification, $mdDialog, $state, $scope, $timeout) {
-    this.AttractionSiteCategory      =  AttractionSiteCategory;
+class SpecieCategoryController {
+  constructor(SpecieCategory, Notification, $mdDialog, $state, $scope, $timeout) {
+    this.SpecieCategory      =  SpecieCategory;
     this.Notification     =  Notification;
     this.mdDialog         =  $mdDialog;
     this.state            =  $state;
@@ -31,16 +31,16 @@ class AttractionSiteCategoryController {
   }
 
   $onInit() {
-    this.title = "Attraction Site Categories";
-    this.AttractionSiteCategory.get(this.query, response =>  {
-      this.attractionasitecategory = response.data;
+    this.title = "Specie Categories";
+    this.SpecieCategory.get(this.query, response =>  {
+      this.specieCategory = response.data;
     });
   }
 
-  loadData() {
-    console.log("query: " + this.options);
-    this.AttractionSiteCategory.get(this.query, response =>  {
-      this.attractionasitecategory = response.data;
+  loadData(page, limit) {
+    console.log("query: " + this.query);
+    this.SpecieCategory.get(this.query, response =>  {
+      this.SpecieCategory = response.data;
     });
   }
 
@@ -49,59 +49,59 @@ class AttractionSiteCategoryController {
     this.mdDialog.hide();
   }
 
-  showAddCategoryDialog(event){
+  showAddSpecieCategoryDialog(event){
     console.log('the event is', event);
     this.mdDialog.show({
-      controller          : AttractionSiteCategoryController,
+      controller          : SpecieCategoryController,
       controllerAs        : 'vm',
-      template            : require('../views/add-attraction-site-category.html'),
+      template            : require('../views/add-new-speciecategory.html'),
       clickOutsideToClose : false,
       preserveScope       : true,
       fullscreen          : true // Only for -xs, -sm breakpoints.
     });
   }
 
-  showUpdateCategoryDialog(id){
+  showUpdateSpecieCategoryDialog(id){
 
-    this.Institution.get({id: id}, response => {
+    this.SpecieCategory.get({id: id}, response => {
       this.result = response.data;
 
       this.mdDialog.show({
-        ccontroller         : AttractionSiteCategoryController,
+        ccontroller         : SpecieCategoryController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,
-        template            : require('../views/edit-attraction-site-category.html'),
+        template            : require('../views/edit-speciecategory.html'),
         clickOutsideToClose : false,
         fullscreen          : true // Only for -xs, -sm breakpoints.
       });
     });
   }
 
-  updateAttractionSiteCategory(attractionSiteCategory){
-    this.AttractionSiteCategory.update(attractionSiteCategory, response => {
+  updateSpecieCategory(SpecieCategory){
+    this.SpecieCategory.update(SpecieCategory, response => {
       let message = response.message;
       if (response.status === 200) {
         this.mdDialog.hide();
         this.Notification.status(message);
-        this.state.reload();
+        this.state.reload('specie-categories');
       } else {
         this.Notification.status(message);
-        this.state.reload();
+        this.state.reload('specie-categories');
       }
     }, response => {
       this.Notification.status(response.data.errors);
-      this.state.reload();
+      this.state.reload('specie-categories');
     });
   }
 
-  createCategory(category) {
+  createSpecieCategory(category) {
     let data, name;
     data = {
-      name : category.name,
+      name: category.name,
     };
 
-    this.AttractionSiteCategory.save(data, response => {
+    this.SpecieCategory.save(data, response => {
       console.log(response);
       var message = response.message;
       if (response.status === 201) {
@@ -118,30 +118,17 @@ class AttractionSiteCategoryController {
     });
   }
 
-  editCategory(id){
-
-    this.Institution.get({id: id}, response => {
-
-      this.mdDialog.show({
-        controller          : this,
-        template            : require('../views/edit-attraction-site-category.html'),
-        clickOutsideToClose : false,
-        preserveScope       : true,
-        fullscreen          : true // Only for -xs, -sm breakpoints.
-      });
-    });
-  }
 
   delete(e, id) {
     let confirm = this.mdDialog.confirm()
-      .title('Deleting Category')
-      .content('The Category Will Be Deleted')
+      .title('Deleting Specie Category')
+      .content('The Specie Category Will Be Deleted')
       .ok('Delete!')
       .cancel('Cancel')
       .targetEvent(e);
 
     this.mdDialog.show(confirm).then(() =>  {
-      this.AttractionSiteCategory.remove({id: id}, response => {
+      this.SpecieCategory.remove({id: id}, response => {
         let message = response.message;
         if (response.status === 200) {
           this.state.reload();
@@ -158,5 +145,5 @@ class AttractionSiteCategoryController {
   }
 }
 
-AttractionSiteCategoryController.$inject = ['AttractionSiteCategory', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
-export default AttractionSiteCategoryController;
+SpecieCategoryController.$inject = ['SpecieCategory', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
+export default SpecieCategoryController;

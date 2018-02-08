@@ -1,3 +1,5 @@
+'use strict';
+
 routes.$inject = ['$stateProvider', '$mdThemingProvider', '$urlRouterProvider'];
 
 export default function routes($stateProvider, $mdThemingProvider, $urlRouterProvider) {
@@ -15,13 +17,13 @@ export default function routes($stateProvider, $mdThemingProvider, $urlRouterPro
       abstract    : true,
       views: {
         '@': {
-          template : require('./modules/layouts/app-dashboard.html'),
+          template : require('./layouts/app-dashboard.html'),
         },
         '@sidebar': {
-          template : require('./modules/layouts/shared/sidebar.html')
+          template : require('./layouts/shared/sidebar.html')
         },
         '@toolbar': {
-          template : require('./modules/layouts/shared/top-toolbar.html')
+          template : require('./layouts/shared/top-toolbar.html')
         }
       }
     });
