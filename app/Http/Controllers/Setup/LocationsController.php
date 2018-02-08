@@ -13,6 +13,11 @@ class LocationsController extends Controller
         $data      = $request->all();
         $per_page  = isset($data['per_page'])?$data['per_page']:15;
         $locations = Location::all();
+
+        foreach ($locations as $location) {
+            $location->hierarchy;
+        }
+
         $locations = customPaginate($locations,$per_page);
         return customApiResponse($locations);
     }

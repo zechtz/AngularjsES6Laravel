@@ -18,4 +18,12 @@ class StationCategory extends Model
     public static $create_rules = [
         "name"  => "required",
     ];
+
+    /**
+     *
+     */
+    public function stations()
+    {
+        return $this->hasMany(Station::class);
+    }
 }

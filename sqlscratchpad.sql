@@ -6,3 +6,5 @@ SELECT * FROM users;
 \x
 
 SELECT id, name, institution_id, email, phone_number FROM institutions;
+
+\d gfs_categories

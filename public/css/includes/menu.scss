@@ -1,0 +1,6 @@
+.md-sidemenu-wrapper {
+  height: 0;
+  &.md-active {
+  height: auto;
+  }
+}

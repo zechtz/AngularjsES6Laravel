@@ -1,0 +1,28 @@
+.container_logo{
+  background: #fff !important;
+  padding: 20px 0;
+  display: none;
+  @media print {
+    display: block;
+  }
+}
+
+.container_logo img{
+  width:88px;
+  height:88px;
+}
+
+h4.header-title {
+  margin: 0;
+  line-height: 0;
+}
+
+.content-container {
+  text-align: right;
+  float: right;
+  padding-right: 0px;
+}
+
+span.facility-name{
+  text-transform: uppercase;
+}

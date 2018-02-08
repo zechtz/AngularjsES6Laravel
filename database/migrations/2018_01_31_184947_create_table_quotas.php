@@ -13,7 +13,7 @@ class CreateTableQuotas extends Migration
      */
     public function up()
     {
-        Schema::create('plots', function (Blueprint $table) {
+        Schema::create('quotas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('calendar_event_id')->unsigned();
             $table->integer('specie_id')->unsigned();
