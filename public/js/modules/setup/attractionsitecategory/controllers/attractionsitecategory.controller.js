@@ -31,16 +31,16 @@ class AttractionSiteCategoryController {
   }
 
   $onInit() {
-    this.title = "Attraction Site Categories Module";
+    this.title = "Attraction Site Categories";
     this.AttractionSiteCategory.get(this.query, response =>  {
-      this.attractionaitecategory = response.data;
+      this.attractionasitecategory = response.data;
     });
   }
 
   loadData() {
     console.log("query: " + this.options);
     this.AttractionSiteCategory.get(this.query, response =>  {
-      this.attractionaitecategory = response.data;
+      this.attractionasitecategory = response.data;
     });
   }
 
@@ -49,7 +49,7 @@ class AttractionSiteCategoryController {
     this.mdDialog.hide();
   }
 
-  showAddICategoryDialog(event){
+  showAddCategoryDialog(event){
     console.log('the event is', event);
     this.mdDialog.show({
       controller          : AttractionSiteCategoryController,
