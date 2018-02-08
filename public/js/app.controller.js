@@ -68,6 +68,12 @@ export default class MainController {
             "title" : "Countries",
             "state" : "countries",
             "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/specie-categories",
+            "title" : "Specie Categories",
+            "state" : "specie-categories",
+            "icon"  : "flip_to_back"
           }
         ]
       },
