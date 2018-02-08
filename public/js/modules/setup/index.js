@@ -8,6 +8,7 @@ import attractionsitecategory from './attractionsitecategory';
 import locationhierarchy      from './locationhierarchy';
 import location               from './location';
 import speciecategory         from './speciecategory';
+import plot                   from './plot';
 
 export default angular.module('setup', [
   'institution',
@@ -15,5 +16,6 @@ export default angular.module('setup', [
   'stationcategory',
   'attractionsitecategory',
   'locationhierarchy',
-  'location'
+  'location',
+  'plot'
 ]);
