@@ -62,12 +62,11 @@ class AttractionSiteCategoryController {
   }
 
   showUpdateCategoryDialog(id){
-
-    this.Institution.get({id: id}, response => {
+    this.AttractionSiteCategory.get({id: id}, response => {
       this.result = response.data;
 
       this.mdDialog.show({
-        ccontroller         : AttractionSiteCategoryController,
+        controller         : AttractionSiteCategoryController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,
@@ -78,7 +77,7 @@ class AttractionSiteCategoryController {
     });
   }
 
-  updateAttractionSiteCategory(attractionSiteCategory){
+  updateCategory(attractionSiteCategory){
     this.AttractionSiteCategory.update(attractionSiteCategory, response => {
       let message = response.message;
       if (response.status === 200) {
@@ -119,9 +118,7 @@ class AttractionSiteCategoryController {
   }
 
   editCategory(id){
-
-    this.Institution.get({id: id}, response => {
-
+    this.AttractionSiteCategory.get({id: id}, response => {
       this.mdDialog.show({
         controller          : this,
         template            : require('../views/edit-attraction-site-category.html'),
