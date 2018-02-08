@@ -41,7 +41,7 @@ class LocationHierarchiesController extends Controller
         if($location_hierarchy == null){
             return customApiResponse($id, 'Location hierarchy Not Found', 404, 'Location hierarchy Not Found');
         }
-        return customApiResponse($location_hierarchies, 'SUCCESSFULL');
+        return customApiResponse($location_hierarchy, 'SUCCESSFULL');
     }
 
     public function update(Request $request, $id){
