@@ -21,11 +21,9 @@ class CountryGroupsController extends Controller
         return customApiResponse($country_groups);
     }
 
-    public function create(){
 
-    }
 
-    public function store(Request $request){
+    public function create(Request $request){
         $data      =  $request->all();
 
         $validator =  Validator::make($data, CountryGroup::$create_rules);

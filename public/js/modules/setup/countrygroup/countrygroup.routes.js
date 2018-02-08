@@ -11,10 +11,10 @@ export default function routes($stateProvider, $mdThemingProvider) {
     .backgroundPalette('grey');
 
   $stateProvider
-    .state('station-categories', {
-      url        : '/station-categories',
+    .state('country-groups', {
+      url        : '/country-groups',
       template   : require('./views/index.html'),
       parent     : 'root',
-      controller : 'StationCategoryController as vm'
+      controller : 'CountryGroupController as vm'
     });
 }

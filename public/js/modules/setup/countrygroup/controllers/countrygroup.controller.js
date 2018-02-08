@@ -1,12 +1,13 @@
 'use strict';
 
-class StationCategoryController {
-  constructor(StationCategory, Notification, $mdDialog, $state, $scope, $timeout) {
-    this.StationCategory      =  StationCategory;
+class CountryGroupController {
+  constructor(CountryGroup, Notification, $mdDialog, $state, $scope, $timeout) {
+    this.CountryGroup      =  CountryGroup;
     this.Notification     =  Notification;
     this.mdDialog         =  $mdDialog;
     this.state            =  $state;
     this.scope            =  $scope;
+    this.timeout          =  $timeout;
     this.limitOptions     =  [10, 15, 20, 50, 100, 200, 500];
     this.selected         =  [];
     this.scope.onPaginate =  () => this.loadData();
@@ -31,16 +32,16 @@ class StationCategoryController {
   }
 
   $onInit() {
-    this.title = "Station Categories";
-    this.StationCategory.get(this.query, response =>  {
-      this.stationCategory = response.data;
+    this.title = "Country Groups";
+    this.CountryGroup.get(this.query, response =>  {
+      this.countryGroup = response.data;
     });
   }
 
   loadData(page, limit) {
     console.log("query: " + this.query);
-    this.StationCategory.get(this.query, response =>  {
-      this.stationCategory = response.data;
+    this.CountryGroup.get(this.query, response =>  {
+      this.countryGroup = response.data;
     });
   }
 
@@ -49,59 +50,59 @@ class StationCategoryController {
     this.mdDialog.hide();
   }
 
-  showAddStationCategoryDialog(event){
+  showAddCountryGroupDialog(event){
     console.log('the event is', event);
     this.mdDialog.show({
-      controller          : StationCategoryController,
+      controller          : CountryGroupController,
       controllerAs        : 'vm',
-      template            : require('../views/add-new-stationcategory.html'),
+      template            : require('../views/add-new-countrygroup.html'),
       clickOutsideToClose : false,
       preserveScope       : true,
       fullscreen          : true // Only for -xs, -sm breakpoints.
     });
   }
 
-  showUpdateStationCategoryDialog(id){
+  showUpdateCountryGroupDialog(id){
 
-    this.StationCategory.get({id: id}, response => {
+    this.CountryGroup.get({id: id}, response => {
       this.result = response.data;
-
+//console.log(this.result); 
       this.mdDialog.show({
-        ccontroller         : StationCategoryController,
+        controller         : CountryGroupController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,
-        template            : require('../views/edit-stationcategory.html'),
+        template            : require('../views/edit-countrygroup.html'),
         clickOutsideToClose : false,
         fullscreen          : true // Only for -xs, -sm breakpoints.
       });
     });
   }
 
-  updateStationCategory(StationCategory){
-    this.StationCategory.update(StationCategory, response => {
+  updateCountryGroup(CountryGroup){
+    this.CountryGroup.update(CountryGroup, response => {
       let message = response.message;
       if (response.status === 200) {
         this.mdDialog.hide();
         this.Notification.status(message);
-        this.state.reload('station-categories');
+        this.state.reload();
       } else {
         this.Notification.status(message);
-        this.state.reload('station-categories');
+        this.state.reload();
       }
     }, response => {
       this.Notification.status(response.data.errors);
-      this.state.reload('station-categories');
+      this.state.reload();
     });
   }
 
-  createStationCategory(category) {
+  createCountryGroup(countryGroup) {
     let data, name;
     data = {
-      name        : category.name,
+      name        : countryGroup.name,
     };
 
-    this.StationCategory.save(data, response => {
+    this.CountryGroup.save(data, response => {
       console.log(response);
       var message = response.message;
       if (response.status === 201) {
@@ -118,12 +119,12 @@ class StationCategoryController {
     });
   }
 
-  editStationCategory(id){
+  editCountryGroup(id){
 
-    this.StationCategory.get({id: id}, response => {
+    this.CountryGroup.get({id: id}, response => {
       this.mdDialog.show({
         controller          : this,
-        template            : require('../views/edit-stationcategory.html'),
+        template            : require('../views/edit-countrygroup.html'),
         clickOutsideToClose : false,
         preserveScope       : true,
         fullscreen          : true // Only for -xs, -sm breakpoints.
@@ -134,13 +135,13 @@ class StationCategoryController {
   delete(e, id) {
     let confirm = this.mdDialog.confirm()
       .title('Deleting Station Category')
-      .content('The Station Category Will Be Deleted')
+      .content('The Country Group Will Be Deleted')
       .ok('Delete!')
       .cancel('Cancel')
       .targetEvent(e);
 
     this.mdDialog.show(confirm).then(() =>  {
-      this.StationCategory.remove({id: id}, response => {
+      this.CountryGroup.remove({id: id}, response => {
         let message = response.message;
         if (response.status === 200) {
           this.state.reload();
@@ -157,5 +158,5 @@ class StationCategoryController {
   }
 }
 
-StationCategoryController.$inject = ['StationCategory', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
-export default StationCategoryController;
+CountryGroupController.$inject = ['CountryGroup', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
+export default CountryGroupController;
