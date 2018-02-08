@@ -75,7 +75,8 @@ class LocationController {
 
   showUpdateLocationDialog(id){
 
-    this.Location.get({id: id}, response => {
+    this.Location.edit({id: id}, response => {
+
       this.result = response.data;
 
       this.mdDialog.show({

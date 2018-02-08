@@ -20,4 +20,8 @@ class Location extends Model
     {
         return $this->hasMany(Station::class);
     }
+
+    public function hierarchy() {
+        return $this->belongsTo('App\Models\Setup\LocationHierarchy', 'location_hierarchy_id');
+    }
 }
