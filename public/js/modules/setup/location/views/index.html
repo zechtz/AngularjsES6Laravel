@@ -42,7 +42,7 @@
                      ng-disabled="false"
                      ng-repeat="location in vm.location.data">
             <td md-cell> {{location.name}} </td>
-            <td md-cell> {{location.location_hierarchy_id}} </td>
+            <td md-cell> {{location.hierarchy.name}} </td>
             <td md-cell class="action-td">
               <div layout="row">
                 <a ng-click="vm.delete($event, location.id)" aria-label="Delete" class="delete">
@@ -69,4 +69,4 @@
     </md-table-pagination>
   </md-card>
 </md-content>
-<!--<pre> {{ vm.query | json }} </pre>-->
+<!--<pre> {{ vm.location | json }} </pre>-->
