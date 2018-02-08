@@ -1,0 +1,73 @@
+.print-button {
+  padding: 0 0 0 20px;
+  @media print {
+    display: none;
+  }
+}
+
+.print-button a {
+  text-decoration: none;
+  background: #fafafa;
+  padding: 5px 15px;
+  border: 1px solid #ccc;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  ng-md-icon {
+    fill: rgba(0,0,0,0.54);
+    margin-right: 10px;
+    &:hover {
+      fill: #000;
+    }
+  }
+  span {
+    padding-left: 10px;
+    color: #737373;
+    padding-top: 3px;
+    font-weight: bold;
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+.voucher-no {
+}
+
+.voucher-title {
+  margin-bottom: 10px;
+}
+
+title {
+  @media print {
+    display: none;
+  }
+}
+
+tbody.reconciliation-table {
+  td {
+    border-left: 1px solid #ccc;
+    background : rgba(221, 221, 221, 0.19);
+  }
+}
+
+th.amount {
+  border-left: 1px solid #ccc;
+  width: auto;
+  background : rgba(221, 221, 221, 0.19);
+}
+
+@media print {
+  #scrollableDiv{
+    width: 100%;
+    height: 100%;
+  }
+  .visible-print{
+    display: block;
+    width: auto;
+    height: auto;
+    overflow: visible;
+  }
+}

@@ -1,0 +1,18 @@
+.md-sidemenu-wrapper.md-sidemenu-wrapper-icons .md-button {
+  padding-left: 20px;
+}
+
+.md-sidemenu-toggle > div {
+  font-weight: bold;
+  .material-icons {
+    font-size: 22px;
+  }
+}
+
+.md-sidemenu-toggle.md-active {
+  background: #ccc;
+}
+
+.md-sidemenu md-divider {
+  margin: 1px 0;
+}

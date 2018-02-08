@@ -1,0 +1,40 @@
+<div class="md-toolbar-tools">
+  <md-button class="search" ng-click="showSearch = !showSearch" aria-label="Back">
+    <ng-md-icon icon="arrow_back"></ng-md-icon>
+  </md-button>
+  <span flex></span>
+  <md-autocomplete
+                md-search-text="searchText"
+                md-items="item in getMatches(searchText)"
+                md-item-text="item.name"
+                md-min-length="3"
+                placeholder="search projects...">
+    <md-item-template>
+      <span md-highlight-text="searchText">{{item.name}}</span>
+    </md-item-template>
+    <md-not-found>
+      No projects marching {{searchText}} were found
+    </md-not-found>
+  </md-autocomplete>
+  <md-button class="notifications">
+    <ng-md-icon icon="notifications"></ng-md-icon>
+    <span class="badge bg-red">6</span>
+  </md-button>
+  <md-button class="messages">
+    <ng-md-icon icon="message"></ng-md-icon>
+    <span class="badge bg-green">60</span>
+  </md-button>
+  <md-menu class="toolbar-menu-content">
+    <ng-md-icon icon="more_vert" class="top-toolbar-user-avatar" ng-click="$mdMenu.open($event)"></ng-md-icon>
+    <md-menu-content width="4">
+      <md-menu-item ng-repeat="item in menu">
+        <md-button ng-click="ctrl.announceClick($index)">
+          <md-item-content md-ink-ripple layout="row" layout-align="start center">
+            <div class="inset"><ng-md-icon icon="{{item.icon}}"></ng-md-icon> </div>
+            <div class="inset">{{item.title}}</div>
+          </md-item-content>
+        </md-button>
+      </md-menu-item>
+    </md-menu-content>
+  </md-menu>
+</div>

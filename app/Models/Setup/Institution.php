@@ -15,7 +15,7 @@ class Institution extends Model
     protected $table   =  "institutions";
 
     public static $rules = [
-        "name"  => "required|unique:institutions",
+        "name"  => "required",
         "email" => "required",
     ];
 
