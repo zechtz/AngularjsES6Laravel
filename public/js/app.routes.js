@@ -1,3 +1,5 @@
+'use strict';
+
 routes.$inject = ['$stateProvider', '$mdThemingProvider', '$urlRouterProvider'];
 
 export default function routes($stateProvider, $mdThemingProvider, $urlRouterProvider) {
