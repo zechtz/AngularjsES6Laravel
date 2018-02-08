@@ -9,7 +9,7 @@ class SpecieCategoryController {
     this.scope            =  $scope;
     this.limitOptions     =  [10, 15, 20, 50, 100, 200, 500];
     this.selected         =  [];
-    this.scope.onPaginate =  () => this.loadData();
+    this.loadData         =  this.loadData.bind(this);
 
     this.options = {
       rowSelection    : false,
@@ -118,7 +118,7 @@ class SpecieCategoryController {
     });
   }
 
- 
+
   delete(e, id) {
     let confirm = this.mdDialog.confirm()
       .title('Deleting Specie Category')
