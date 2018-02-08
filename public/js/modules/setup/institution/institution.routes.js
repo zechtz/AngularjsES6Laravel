@@ -1,14 +1,8 @@
 'use strict';
 
-routes.$inject = ['$stateProvider', '$mdThemingProvider'];
+routes.$inject = ['$stateProvider'];
 
-export default function routes($stateProvider, $mdThemingProvider) {
-
-  $mdThemingProvider.theme('default')
-    .primaryPalette('blue')
-    .accentPalette('indigo')
-    .warnPalette('red')
-    .backgroundPalette('grey');
+export default function routes($stateProvider) {
 
   $stateProvider
     .state('institutions', {
