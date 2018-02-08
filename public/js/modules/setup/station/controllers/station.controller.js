@@ -54,7 +54,7 @@ class StationCategoryController {
     this.mdDialog.show({
       controller          : StationCategoryController,
       controllerAs        : 'vm',
-      template            : require('../views/add-new-stationcategory.html'),
+      template            : require('../views/add-new-geographical-detail.html'),
       clickOutsideToClose : false,
       preserveScope       : true,
       fullscreen          : true // Only for -xs, -sm breakpoints.
@@ -71,7 +71,7 @@ class StationCategoryController {
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,
-        template            : require('../views/edit-stationcategory.html'),
+        template            : require('../views/edit-geographical-detail.html'),
         clickOutsideToClose : false,
         fullscreen          : true // Only for -xs, -sm breakpoints.
       });
@@ -123,7 +123,7 @@ class StationCategoryController {
     this.StationCategory.get({id: id}, response => {
       this.mdDialog.show({
         controller          : this,
-        template            : require('../views/edit-stationcategory.html'),
+        template            : require('../views/edit-geographical-detail.html'),
         clickOutsideToClose : false,
         preserveScope       : true,
         fullscreen          : true // Only for -xs, -sm breakpoints.

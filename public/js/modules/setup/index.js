@@ -8,5 +8,6 @@ import attractionsitecategory from './attractionsitecategory';
 import locationhierarchy from './locationhierarchy';
 import location          from './location';
 import speciecategory    from './speciecategory';
+import geographicaldetail from './attractionsitegeographicaldetail';
 
-export default angular.module('setup', ['institution', 'gfscategory','stationcategory','attractionsitecategory']);
+export default angular.module('setup', ['institution', 'gfscategory','stationcategory','attractionsitecategory','geographicaldetail']);

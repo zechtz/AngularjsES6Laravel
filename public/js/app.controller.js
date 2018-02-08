@@ -80,6 +80,12 @@ export default class MainController {
             "title" : "Attraction Site Categories",
             "state" : "attraction-site-categories",
             "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/attraction-site-geographical-details",
+            "title" : "Attraction Site Geographical Details",
+            "state" : "attraction-site-geographical-details",
+            "icon"  : "flip_to_back"
           }
         ]
       },

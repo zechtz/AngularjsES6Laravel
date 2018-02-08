@@ -1,15 +1,16 @@
 'use strict';
 
-class StationCategoryController {
-  constructor(StationCategory, Notification, $mdDialog, $state, $scope, $timeout) {
-    this.StationCategory      =  StationCategory;
-    this.Notification     =  Notification;
-    this.mdDialog         =  $mdDialog;
-    this.state            =  $state;
-    this.scope            =  $scope;
-    this.limitOptions     =  [10, 15, 20, 50, 100, 200, 500];
-    this.selected         =  [];
-    this.loadData         =  this.loadData.bind(this);
+class GeographicalDetailController {
+  constructor(GeographicalDetail,AttractionSite, Notification, $mdDialog, $state, $scope, $timeout) {
+    this.GeographicalDetail =  GeographicalDetail;
+    this.Notification    =  Notification;
+    this.mdDialog        =  $mdDialog;
+    this.state           =  $state;
+    this.timeout         =  $timeout;
+    this.scope           =  $scope;
+    this.limitOptions    =  [10, 15, 20, 50, 100, 200, 500];
+    this.selected        =  [];
+    this.loadData        =  this.loadData.bind(this);
 
     this.options = {
       rowSelection    : false,
@@ -31,16 +32,21 @@ class StationCategoryController {
   }
 
   $onInit() {
-    this.title = "Station Categories";
-    this.StationCategory.get(this.query, response =>  {
-      this.stationCategory = response.data;
+    this.title = "Geographical Details";
+    this.GeographicalDetail.get(this.query, response =>  {
+      this.attractionSites = response.data;
     });
   }
 
-  loadData(page, limit) {
-    console.log("query: " + this.query);
-    this.StationCategory.get(this.query, response =>  {
-      this.stationCategory = response.data;
+  loadAttractionSites(){
+    this.AttractionSite.get(this.query, response => {
+      this.attractionSites = response.data;
+    });
+  }
+
+  loadData() {
+    this.GeographicalDetail.get(this.query, response =>  {
+      this.details = response.data;
     });
   }
 
@@ -49,10 +55,10 @@ class StationCategoryController {
     this.mdDialog.hide();
   }
 
-  showAddStationCategoryDialog(event){
+  showAddGeographicalDetailDialog(event){
     console.log('the event is', event);
     this.mdDialog.show({
-      controller          : StationCategoryController,
+      controller          : GeographicalDetailController,
       controllerAs        : 'vm',
       template            : require('../views/add-new-geographical-detail.html'),
       clickOutsideToClose : false,
@@ -61,13 +67,12 @@ class StationCategoryController {
     });
   }
 
-  showUpdateStationCategoryDialog(id){
-
-    this.StationCategory.get({id: id}, response => {
+  showUpdateGeographicalDetailDialog(id){
+    this.GeographicalDetail.get({id: id}, response => {
       this.result = response.data;
 
       this.mdDialog.show({
-        ccontroller         : StationCategoryController,
+        controller         : GeographicalDetailController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,
@@ -78,8 +83,8 @@ class StationCategoryController {
     });
   }
 
-  updateStationCategory(StationCategory){
-    this.StationCategory.update(StationCategory, response => {
+  updateGeographicalDetail(GeographicalDetail){
+    this.GeographicalDetail.update(GeographicalDetail, response => {
       let message = response.message;
       if (response.status === 200) {
         this.mdDialog.hide();
@@ -95,13 +100,16 @@ class StationCategoryController {
     });
   }
 
-  createStationCategory(category) {
-    let data, name;
+  createGeographicalDetail(detail) {
+    let data, latitude,longitude, shape_file_path, attraction_site_id;
     data = {
-      name        : category.name,
+      name                : detail.latitude,
+      latitude            : detail.longitude,
+      shape_file_path     : detail.shape_file_path,
+      attraction_site_id  : detail.attraction_site_id
     };
 
-    this.StationCategory.save(data, response => {
+    this.GeographicalDetail.save(data, response => {
       console.log(response);
       var message = response.message;
       if (response.status === 201) {
@@ -118,9 +126,8 @@ class StationCategoryController {
     });
   }
 
-  editStationCategory(id){
-
-    this.StationCategory.get({id: id}, response => {
+  editGeographicalDetail(id){
+    this.GeographicalDetail.get({id: id}, response => {
       this.mdDialog.show({
         controller          : this,
         template            : require('../views/edit-geographical-detail.html'),
@@ -133,14 +140,14 @@ class StationCategoryController {
 
   delete(e, id) {
     let confirm = this.mdDialog.confirm()
-      .title('Deleting Station Category')
-      .content('The Station Category Will Be Deleted')
+      .title('Deleting Geographical Detail')
+      .content('The Geographical Detail Will Be Deleted')
       .ok('Delete!')
       .cancel('Cancel')
       .targetEvent(e);
 
     this.mdDialog.show(confirm).then(() =>  {
-      this.StationCategory.remove({id: id}, response => {
+      this.GeographicalDetail.remove({id: id}, response => {
         let message = response.message;
         if (response.status === 200) {
           this.state.reload();
@@ -157,5 +164,5 @@ class StationCategoryController {
   }
 }
 
-StationCategoryController.$inject = ['StationCategory', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
-export default StationCategoryController;
+GeographicalDetailController.$inject = ['GeographicalDetail', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
+export default GeographicalDetailController;
