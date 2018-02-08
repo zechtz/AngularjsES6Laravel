@@ -41,7 +41,6 @@ class LocationController {
   }
 
   loadData(page, limit) {
-    console.log("query: " + this.query);
     this.Location.get(this.query, response =>  {
       this.location = response.data;
     });
@@ -75,7 +74,9 @@ class LocationController {
 
   showUpdateLocationDialog(id){
 
-    this.Location.get({id: id}, response => {
+    console.log(`the id is ${id}`);
+
+    this.Location.edit({id: id}, response => {
       this.result = response.data;
 
       this.mdDialog.show({
@@ -90,8 +91,8 @@ class LocationController {
     });
   }
 
-  updateLocation(Location){
-    this.Location.update(Location, response => {
+  updateLocation(location){
+    this.Location.update(location, response => {
       let message = response.message;
       if (response.status === 200) {
         this.mdDialog.hide();
