@@ -11,8 +11,8 @@ class LocationController {
     this.timeout           =  $timeout;
     this.limitOptions      =  [10, 15, 20, 50, 100, 200, 500];
     this.selected          =  [];
-    this.scope.onPaginate  =  () => this.loadData();
     this.result            =  [];
+    this.loadData         =  this.loadData.bind(this);
 
     this.options = {
       rowSelection    : false,

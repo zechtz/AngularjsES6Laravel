@@ -2,14 +2,14 @@
 
 class StationCategoryController {
   constructor(StationCategory, Notification, $mdDialog, $state, $scope, $timeout) {
-    this.StationCategory      =  StationCategory;
-    this.Notification     =  Notification;
-    this.mdDialog         =  $mdDialog;
-    this.state            =  $state;
-    this.scope            =  $scope;
-    this.limitOptions     =  [10, 15, 20, 50, 100, 200, 500];
-    this.selected         =  [];
-    this.scope.onPaginate =  () => this.loadData();
+    this.StationCategory =  StationCategory;
+    this.Notification    =  Notification;
+    this.mdDialog        =  $mdDialog;
+    this.state           =  $state;
+    this.scope           =  $scope;
+    this.limitOptions    =  [10, 15, 20, 50, 100, 200, 500];
+    this.selected        =  [];
+    this.loadData        =  this.loadData.bind(this);
 
     this.options = {
       rowSelection    : false,
