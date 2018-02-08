@@ -30,6 +30,7 @@ class InstitutionController {
     this.result = {};
   }
 
+
   $onInit() {
     this.title = "Institutions Module";
     this.Institution.get(this.query, response =>  {
@@ -38,9 +39,10 @@ class InstitutionController {
   }
 
   loadData() {
-    console.log("query: " + this.options);
-    this.Institution.get(this.query, response =>  {
-      this.institution = response.data;
+    const self = this;
+    console.log(`query: ${self.query}`);
+    self.Institution.get(self.query, response =>  {
+      self.institution = response.data;
     });
   }
 
