@@ -66,9 +66,8 @@ class CountryGroupController {
 
     this.CountryGroup.get({id: id}, response => {
       this.result = response.data;
-//console.log(this.result); 
       this.mdDialog.show({
-        controller         : CountryGroupController,
+        ccontroller         : CountryGroupController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,
@@ -79,8 +78,9 @@ class CountryGroupController {
     });
   }
 
-  updateCountryGroup(CountryGroup){
-    this.CountryGroup.update(CountryGroup, response => {
+
+  updateCountryGroup(countryGroup){
+    this.CountryGroup.update(countryGroup, response => {
       let message = response.message;
       if (response.status === 200) {
         this.mdDialog.hide();
