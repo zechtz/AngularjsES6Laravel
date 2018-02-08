@@ -28,12 +28,6 @@ export default class MainController {
             "icon"  : "launch"
           },
           {
-            "link"  : "/#!/gfs-categories",
-            "title" : "GFS Categories",
-            "state" : "gfs-categories",
-            "icon"  : "flip_to_back"
-          },
-          {
             "link"  : "/#!/station-categories",
             "title" : "Station Categories",
             "state" : "station-categories",
