@@ -13,3 +13,4 @@ yarn-error.log
 .env
 public/bower_components/
 public/src/
+example.js
