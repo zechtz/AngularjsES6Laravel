@@ -65,7 +65,7 @@ class AttractionSiteCategoryController {
     this.AttractionSiteCategory.get({id: id}, response => {
       this.result = response.data;
       this.mdDialog.show({
-        controller         : AttractionSiteCategoryController,
+        ccontroller         : AttractionSiteCategoryController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,
