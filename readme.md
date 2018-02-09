@@ -2,27 +2,34 @@
 
 ## The tech stack
 ### Backend
--PHP /  Laravel Framework(5.5LTS)
+-PHP /  Laravel Framework(~7.xx)
 
 ### FrontEnd
--AngularJS
+-AngularJS (ES6)
 -SASS
 
-All clientside dependencies are managed through bower, so first make sure you have npm and bower installed globally
+## Install Dependencies
 
+First install Nodejs & npm
 [click here for instructions to install npm](http://nodejs.org)
 
-Once you have npm installed then you can just install bower by running the command
+Once you have npm installed then you need toinstall webpack by running the command
+Webpack is needed because all Javascript Code is written using ES6 standard
 
 ```sh
-npm install bower -g
+sudo npm install webpack -g
 ```
 Once you have bower install run the following command in your project's root directory
 
 ```sh
-bower install
+npm install
 ```
-You might have to start by sudoing on linux/macos if you get an error.
+This will install all javascript modules & libraries used in the project
+*Rename the env.example file to .env and then update the new file with your corrent settings
 
-*Rename the appsettings.sample.json file to appsettings.json and then update it with your corrent database context
-settings credentials i.e username, password and database name
+Once you have everything installed, just run
+```sh
+webpack
+```
+
+This will compile all the javascript code and watch for for new changes
