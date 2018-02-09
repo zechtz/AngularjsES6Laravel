@@ -23,13 +23,4 @@ class Institution extends Model
         "name"  => "required|unique:institutions",
         "email" => "required|unique:institutions",
     ];
-
-    /**
-     * return all institution tarrifs
-     * @return Tarrif
-     */
-    function tarrifs()
-    {
-        return $this->hasMany('App\Models\Setup\InstitutionTarrif', 'institution_id', 'tarrif_id');
-    }
 }
