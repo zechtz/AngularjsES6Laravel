@@ -35,21 +35,22 @@
           </md-input-container>
 
           <md-input-container flex>
-              <label>Institution Parent</label>
-              <md-select placeholder="Location Hierarchy"
-                         ng-model="vm.result.location_hierarchy_id"
-                         style="min-width: 200px;">
-                  <md-option ng-value="hierarchy.id" ng-repeat="hierarchy in vm.result.data">{{hierarchy.hierarchy.name}}</md-option>
-              </md-select>
+            <label>Location Hierarchy</label>
+            <md-select placeholder="Location Hierarchy "
+                       ng-model="vm.result.location_hierarchy_id">
+                <md-option ng-value="hierarchy.id"
+                           ng-repeat="hierarchy in vm.hierarchies">
+                    {{ hierarchy.name }}
+                </md-option>
+            </md-select>
           </md-input-container>
-
         </md-content>
-        <pre> {{ vm.result | json }} </pre>
+        <!--<pre> {{ vm.result | json }} </pre>-->
       </md-dialog-content>
       <md-dialog-actions class="row">
-        <md-button ng-disabled="(form.$invalid || isDisabled)"
-                   class="md-raised"
-                   ng-click="vm.updateStationCategory(vm.result)">UPDATE</md-button>
+          <md-button ng-disabled="(form.$invalid || isDisabled)"
+                     class="md-raised"
+                     ng-click="vm.updateLocation(vm.result)">UPDATE</md-button>
       </md-dialog-actions>
     </div>
   </form>
