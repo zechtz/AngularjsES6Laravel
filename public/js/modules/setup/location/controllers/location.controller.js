@@ -11,6 +11,7 @@ class LocationController {
     this.timeout           =  $timeout;
     this.limitOptions      =  [10, 15, 20, 50, 100, 200, 500];
     this.selected          =  [];
+    this.loadData          =  () => this.loadData();
     this.result            =  [];
     this.loadData         =  this.loadData.bind(this);
 
@@ -30,7 +31,8 @@ class LocationController {
       page     : 1
     };
 
-    this.result = {};
+    this.result      =  {};
+    this.hierarchies =  [];
   }
 
   $onInit() {
@@ -38,9 +40,14 @@ class LocationController {
     this.Location.get(this.query, response =>  {
       this.location = response.data;
     });
+
+    this.LocationHierarchy.get({}, response  => {
+      this.hierarchies = response.data.data;
+    });
   }
 
-  loadData(page, limit) {
+  loadData() {
+    console.log("query: " + this.query);
     this.Location.get(this.query, response =>  {
       this.location = response.data;
     });
@@ -74,9 +81,8 @@ class LocationController {
 
   showUpdateLocationDialog(id){
 
-    console.log(`the id is ${id}`);
+    this.Location.get({id: id}, response => {
 
-    this.Location.edit({id: id}, response => {
       this.result = response.data;
 
       this.mdDialog.show({

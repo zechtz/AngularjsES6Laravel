@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model
 {
-    protected $fillable = ['name','location_hierarchy_id'];
+    protected $fillable = ['name','location_hierarchy_id', 'location_id'];
     protected $gurded   = ['id'];
     protected $table    = "locations";
 
     public static $rules = [
         'name'                  => 'required|max:100',
         'location_hierarchy_id' => 'required|integer',
-        'parent_id'             => 'integer',
+        'location_id'           => 'integer',
     ];
 
     public function stations()
@@ -21,8 +21,7 @@ class Location extends Model
         return $this->hasMany(Station::class);
     }
 
-    public function hierarchy()
-    {
-        return $this->belongsTo("App\Models\Setup\LocationHierarchy", 'location_hierarchy_id');
+    public function hierarchy() {
+        return $this->belongsTo('App\Models\Setup\LocationHierarchy', 'location_hierarchy_id');
     }
 }
