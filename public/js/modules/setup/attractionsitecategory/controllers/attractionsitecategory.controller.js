@@ -64,7 +64,6 @@ class AttractionSiteCategoryController {
   showUpdateCategoryDialog(id){
     this.AttractionSiteCategory.get({id: id}, response => {
       this.result = response.data;
-
       this.mdDialog.show({
         controller         : AttractionSiteCategoryController,
         controllerAs        : 'vm',
@@ -101,7 +100,6 @@ class AttractionSiteCategoryController {
     };
 
     this.AttractionSiteCategory.save(data, response => {
-      console.log(response);
       var message = response.message;
       if (response.status === 201) {
         this.mdDialog.hide();

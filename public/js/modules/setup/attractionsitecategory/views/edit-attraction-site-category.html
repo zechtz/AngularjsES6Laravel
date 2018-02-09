@@ -9,20 +9,22 @@
         </md-button>
       </div>
     </md-toolbar>
-
     <div style="padding: 0px 5px;">
       <md-dialog-content>
         <md-content layout-padding layout="column" layout-fill>
-          <md-input-container flex>
-            <label>Category Name</label>
-            <input type="text"
-                   name="name"
-                   ng-model="vm.result.name"
-                   required/>
-            <div ng-messages="form.name.$error">
-              <div ng-message="required">Cannot be blank.</div>
-            </div>
-          </md-input-container>
+            <md-input-container flex>
+                <label>Category Name</label>
+                <input type="text"
+                       name="name"
+                       ng-model="vm.result.name"
+                       required/>
+                <div ng-messages="form.name.$error">
+                    <div ng-message="required">Cannot be blank.</div>
+                </div>
+            </md-input-container>
+        </md-content>
+          <pre>{{vm.result | json}}</pre>
+      </md-dialog-content>
 
       <md-dialog-actions class="row">
         <md-button
@@ -32,6 +34,5 @@
       </md-dialog-actions>
     </div>
   </form>
-  <!--<pre>{{ vm.result | json }}</pre>-->
 </md-dialog>
 
