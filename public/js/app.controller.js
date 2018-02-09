@@ -70,6 +70,12 @@ export default class MainController {
             "icon"  : "flip_to_back"
           },
           {
+            "link"  : "/#!/species",
+            "title" : "Species",
+            "state" : "species",
+            "icon"  : "flip_to_back"
+          },
+          {
             "link"  : "/#!/attraction-site-categories",
             "title" : "Attraction Site Categories",
             "state" : "attraction-site-categories",
@@ -78,7 +84,7 @@ export default class MainController {
           {
             "link"  : "/#!/plots",
             "title" : "Plots",
-            "state" : "plots",
+            "state" : "plots",          
             "icon"  : "flip_to_back"
           }
         ]

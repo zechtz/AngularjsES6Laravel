@@ -1,14 +1,13 @@
 'use strict';
 
-import angular                from 'angular';
-import institution            from './institution';
-import gfscategory            from './gfscategory';
-import stationcategory        from './stationcategory';
-import attractionsitecategory from './attractionsitecategory';
-import locationhierarchy      from './locationhierarchy';
-import location               from './location';
-import speciecategory         from './speciecategory';
-import plot                   from './plot';
+import angular           from 'angular';
+import institution       from './institution';
+import gfscategory       from './gfscategory';
+import stationcategory   from './stationcategory';
+import locationhierarchy from './locationhierarchy';
+import location          from './location';
+import speciecategory    from './speciecategory';
+import specie            from './specie';
 
 export default angular.module('setup', [
   'institution',
@@ -17,5 +16,7 @@ export default angular.module('setup', [
   'attractionsitecategory',
   'locationhierarchy',
   'location',
-  'plot'
+  'plot',
+  'speciecategory',
+  'specie'
 ]);
