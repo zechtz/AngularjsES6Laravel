@@ -1,8 +1,8 @@
 'use strict';
 
-class StationCategoryController {
-  constructor(StationCategory, Notification, $mdDialog, $state, $scope, $timeout) {
-    this.StationCategory      =  StationCategory;
+class PlotController {
+  constructor(Plot, Notification, $mdDialog, $state, $scope, $timeout) {
+    this.Plot             =  Plot;
     this.Notification     =  Notification;
     this.mdDialog         =  $mdDialog;
     this.state            =  $state;
@@ -31,16 +31,15 @@ class StationCategoryController {
   }
 
   $onInit() {
-    this.title = "Station Categories";
-    this.StationCategory.get(this.query, response =>  {
-      this.stationCategory = response.data;
+    this.title = "Plots Module";
+    this.Plot.get(this.query, response =>  {
+      this.plot = response.data;
     });
   }
 
-  loadData(page, limit) {
-    console.log("query: " + this.query);
-    this.StationCategory.get(this.query, response =>  {
-      this.stationCategory = response.data;
+  loadData () {
+    this.Plot.get(this.query, response =>  {
+      this.plot = response.data;
     });
   }
 
@@ -49,60 +48,61 @@ class StationCategoryController {
     this.mdDialog.hide();
   }
 
-  showAddStationCategoryDialog(event){
-    console.log('the event is', event);
+  showAddPlotDialog(event){
     this.mdDialog.show({
-      controller          : StationCategoryController,
+      controller          : PlotController,
       controllerAs        : 'vm',
-      template            : require('../views/add-new-geographical-detail.html'),
+      template            : require('../views/add-new-plot.html'),
       clickOutsideToClose : false,
       preserveScope       : true,
       fullscreen          : true // Only for -xs, -sm breakpoints.
     });
   }
 
-  showUpdateStationCategoryDialog(id){
+  showUpdatePlotDialog(id){
 
-    this.StationCategory.get({id: id}, response => {
+    this.Plot.get({id: id}, response => {
       this.result = response.data;
 
       this.mdDialog.show({
-        ccontroller         : StationCategoryController,
+        ccontroller         : PlotController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,
-        template            : require('../views/edit-geographical-detail.html'),
+        template            : require('../views/edit-plot.html'),
         clickOutsideToClose : false,
         fullscreen          : true // Only for -xs, -sm breakpoints.
       });
     });
   }
 
-  updateStationCategory(StationCategory){
-    this.StationCategory.update(StationCategory, response => {
+  updatePlot(plot){
+    this.Plot.update(plot, response => {
       let message = response.message;
       if (response.status === 200) {
         this.mdDialog.hide();
         this.Notification.status(message);
-        this.state.reload('station-categories');
+        this.state.reload();
       } else {
         this.Notification.status(message);
-        this.state.reload('station-categories');
+        this.state.reload();
       }
     }, response => {
       this.Notification.status(response.data.errors);
-      this.state.reload('station-categories');
+      this.state.reload();
     });
   }
 
-  createStationCategory(category) {
-    let data, name;
+  createPlot(plot) {
+    let data, calendar_event_id, specie_id, attraction_site_id, quantity;
     data = {
-      name        : category.name,
+      calendar_event_id      : plot.name,
+      specie_id              : plot.specie_id,
+      attraction_site_id     : plot.attraction_site_id,
+      quantity               : plot.quantity,
     };
 
-    this.StationCategory.save(data, response => {
-      console.log(response);
+    this.Plot.save(data, response => {
       var message = response.message;
       if (response.status === 201) {
         this.mdDialog.hide();
@@ -118,12 +118,13 @@ class StationCategoryController {
     });
   }
 
-  editStationCategory(id){
+  editPlot(id){
 
-    this.StationCategory.get({id: id}, response => {
+    this.Plot.get({id: id}, response => {
+
       this.mdDialog.show({
         controller          : this,
-        template            : require('../views/edit-geographical-detail.html'),
+        template            : require('../views/edit-plot.html'),
         clickOutsideToClose : false,
         preserveScope       : true,
         fullscreen          : true // Only for -xs, -sm breakpoints.
@@ -133,14 +134,14 @@ class StationCategoryController {
 
   delete(e, id) {
     let confirm = this.mdDialog.confirm()
-      .title('Deleting Station Category')
-      .content('The Station Category Will Be Deleted')
+      .title('Deleting Plot')
+      .content('The Plot Will Be Deleted')
       .ok('Delete!')
       .cancel('Cancel')
       .targetEvent(e);
 
     this.mdDialog.show(confirm).then(() =>  {
-      this.StationCategory.remove({id: id}, response => {
+      this.Plot.remove({id: id}, response => {
         let message = response.message;
         if (response.status === 200) {
           this.state.reload();
@@ -150,12 +151,11 @@ class StationCategoryController {
           this.Notification.status(message);
         }
       }, response  =>  {
-        console.log(response);
         this.Notification.status(response.data.message);
       });
     });
   }
 }
 
-StationCategoryController.$inject = ['StationCategory', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
-export default StationCategoryController;
+PlotController.$inject = ['Plot', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
+export default PlotController;

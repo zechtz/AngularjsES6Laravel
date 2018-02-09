@@ -1,15 +1,17 @@
 'use strict';
 
-class StationCategoryController {
-  constructor(StationCategory, Notification, $mdDialog, $state, $scope, $timeout) {
-    this.StationCategory      =  StationCategory;
+class SpecieController {
+  constructor(Specie,SpecieCategory, Notification, $mdDialog, $state, $scope, $timeout) {
+    this.Specie           =  Specie;
+    this.SpecieCategory   =  SpecieCategory;
     this.Notification     =  Notification;
     this.mdDialog         =  $mdDialog;
     this.state            =  $state;
     this.scope            =  $scope;
+    this.timeout          =  $timeout;
     this.limitOptions     =  [10, 15, 20, 50, 100, 200, 500];
     this.selected         =  [];
-    this.loadData         =  this.loadData.bind(this);
+    this.scope.onPaginate =  () => this.loadData();
 
     this.options = {
       rowSelection    : false,
@@ -31,17 +33,26 @@ class StationCategoryController {
   }
 
   $onInit() {
-    this.title = "Station Categories";
-    this.StationCategory.get(this.query, response =>  {
-      this.stationCategory = response.data;
+    this.title = "Species";
+    this.Specie.get(this.query, response =>  {
+      this.specie = response.data;
     });
   }
 
   loadData(page, limit) {
     console.log("query: " + this.query);
-    this.StationCategory.get(this.query, response =>  {
-      this.stationCategory = response.data;
+    this.Specie.get(this.query, response =>  {
+      this.Specie = response.data;
     });
+  }
+
+  getSpecieCategories() {
+    return this.timeout(() =>  {
+      this.SpecieCategory.get({}, response => {
+        this.specieCategories =  response.data;
+        return this.specieCategories;
+      });
+    }, 650);
   }
 
   closeDialog(e) {
@@ -49,59 +60,62 @@ class StationCategoryController {
     this.mdDialog.hide();
   }
 
-  showAddStationCategoryDialog(event){
+  showAddSpecieDialog(event){
     console.log('the event is', event);
     this.mdDialog.show({
-      controller          : StationCategoryController,
+      controller          : SpecieController,
       controllerAs        : 'vm',
-      template            : require('../views/add-new-geographical-detail.html'),
+      template            : require('../views/add-new-specie.html'),
       clickOutsideToClose : false,
       preserveScope       : true,
       fullscreen          : true // Only for -xs, -sm breakpoints.
     });
   }
 
-  showUpdateStationCategoryDialog(id){
+  showUpdateSpecieDialog(id){
 
-    this.StationCategory.get({id: id}, response => {
+    this.Specie.get({id: id}, response => {
       this.result = response.data;
 
       this.mdDialog.show({
-        ccontroller         : StationCategoryController,
+        ccontroller         : SpecieController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,
-        template            : require('../views/edit-geographical-detail.html'),
+        template            : require('../views/edit-specie.html'),
         clickOutsideToClose : false,
         fullscreen          : true // Only for -xs, -sm breakpoints.
       });
     });
   }
 
-  updateStationCategory(StationCategory){
-    this.StationCategory.update(StationCategory, response => {
+  updateSpecie(Specie){
+    this.Specie.update(Specie, response => {
       let message = response.message;
       if (response.status === 200) {
         this.mdDialog.hide();
         this.Notification.status(message);
-        this.state.reload('station-categories');
+        this.state.reload('species');
       } else {
         this.Notification.status(message);
-        this.state.reload('station-categories');
+        this.state.reload('species');
       }
     }, response => {
       this.Notification.status(response.data.errors);
-      this.state.reload('station-categories');
+      this.state.reload('species');
     });
   }
 
-  createStationCategory(category) {
-    let data, name;
+  createSpecie(specie) {
+    let data, common_name, botanical_name,tags,specie_category_id;
     data = {
-      name        : category.name,
+      common_name:        specie.common_name,
+      botanical_name:     specie.botanical_name,
+      tags:               specie.tags,
+      specie_category_id: specie.specie_category_id,
     };
 
-    this.StationCategory.save(data, response => {
+    this.Specie.save(data, response => {
       console.log(response);
       var message = response.message;
       if (response.status === 201) {
@@ -118,29 +132,16 @@ class StationCategoryController {
     });
   }
 
-  editStationCategory(id){
-
-    this.StationCategory.get({id: id}, response => {
-      this.mdDialog.show({
-        controller          : this,
-        template            : require('../views/edit-geographical-detail.html'),
-        clickOutsideToClose : false,
-        preserveScope       : true,
-        fullscreen          : true // Only for -xs, -sm breakpoints.
-      });
-    });
-  }
-
   delete(e, id) {
     let confirm = this.mdDialog.confirm()
-      .title('Deleting Station Category')
-      .content('The Station Category Will Be Deleted')
+      .title('Deleting Specie')
+      .content('The Specie Will Be Deleted')
       .ok('Delete!')
       .cancel('Cancel')
       .targetEvent(e);
 
     this.mdDialog.show(confirm).then(() =>  {
-      this.StationCategory.remove({id: id}, response => {
+      this.Specie.remove({id: id}, response => {
         let message = response.message;
         if (response.status === 200) {
           this.state.reload();
@@ -157,5 +158,5 @@ class StationCategoryController {
   }
 }
 
-StationCategoryController.$inject = ['StationCategory', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
-export default StationCategoryController;
+SpecieController.$inject = ['Specie', 'SpecieCategory', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
+export default SpecieController;

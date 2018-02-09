@@ -1,15 +1,15 @@
 'use strict';
 
-class StationCategoryController {
-  constructor(StationCategory, Notification, $mdDialog, $state, $scope, $timeout) {
-    this.StationCategory      =  StationCategory;
-    this.Notification     =  Notification;
-    this.mdDialog         =  $mdDialog;
-    this.state            =  $state;
-    this.scope            =  $scope;
-    this.limitOptions     =  [10, 15, 20, 50, 100, 200, 500];
-    this.selected         =  [];
-    this.loadData         =  this.loadData.bind(this);
+class GeographicalDetailController {
+  constructor(GeographicalDetail, Notification, $mdDialog, $state, $scope, $timeout) {
+    this.Detail       =  GeographicalDetail;
+    this.Notification =  Notification;
+    this.mdDialog     =  $mdDialog;
+    this.state        =  $state;
+    this.scope        =  $scope;
+    this.limitOptions =  [10, 15, 20, 50, 100, 200, 500];
+    this.selected     =  [];
+    this.loadData     =  this.loadData.bind(this);
 
     this.options = {
       rowSelection    : false,
@@ -31,16 +31,17 @@ class StationCategoryController {
   }
 
   $onInit() {
-    this.title = "Station Categories";
-    this.StationCategory.get(this.query, response =>  {
-      this.stationCategory = response.data;
+    this.title = "GeographicalDetails Module";
+    this.Detail.get(this.query, response =>  {
+      this.detail = response.data;
     });
   }
 
-  loadData(page, limit) {
-    console.log("query: " + this.query);
-    this.StationCategory.get(this.query, response =>  {
-      this.stationCategory = response.data;
+  loadData () {
+    console.log(`query: ${this.query}`);
+    this.Detail.get(this.query, response =>  {
+      console.log(response);
+      this.detail = response.data;
     });
   }
 
@@ -49,10 +50,9 @@ class StationCategoryController {
     this.mdDialog.hide();
   }
 
-  showAddStationCategoryDialog(event){
-    console.log('the event is', event);
+  showAddGeographicalDetailDialog(event){
     this.mdDialog.show({
-      controller          : StationCategoryController,
+      controller          : GeographicalDetailController,
       controllerAs        : 'vm',
       template            : require('../views/add-new-geographical-detail.html'),
       clickOutsideToClose : false,
@@ -61,13 +61,13 @@ class StationCategoryController {
     });
   }
 
-  showUpdateStationCategoryDialog(id){
+  showUpdateDialog(id){
 
-    this.StationCategory.get({id: id}, response => {
+    this.Detail.get({id: id}, response => {
       this.result = response.data;
 
       this.mdDialog.show({
-        ccontroller         : StationCategoryController,
+        ccontroller         : GeographicalDetailController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,
@@ -78,30 +78,25 @@ class StationCategoryController {
     });
   }
 
-  updateStationCategory(StationCategory){
-    this.StationCategory.update(StationCategory, response => {
+  update(detail){
+    this.Detail.update(detail, response => {
       let message = response.message;
       if (response.status === 200) {
         this.mdDialog.hide();
         this.Notification.status(message);
-        this.state.reload('station-categories');
+        this.state.reload();
       } else {
         this.Notification.status(message);
-        this.state.reload('station-categories');
+        this.state.reload();
       }
     }, response => {
       this.Notification.status(response.data.errors);
-      this.state.reload('station-categories');
+      this.state.reload();
     });
   }
 
-  createStationCategory(category) {
-    let data, name;
-    data = {
-      name        : category.name,
-    };
-
-    this.StationCategory.save(data, response => {
+  create(detail) {
+    this.Detail.save(detail, response => {
       console.log(response);
       var message = response.message;
       if (response.status === 201) {
@@ -118,29 +113,16 @@ class StationCategoryController {
     });
   }
 
-  editStationCategory(id){
-
-    this.StationCategory.get({id: id}, response => {
-      this.mdDialog.show({
-        controller          : this,
-        template            : require('../views/edit-geographical-detail.html'),
-        clickOutsideToClose : false,
-        preserveScope       : true,
-        fullscreen          : true // Only for -xs, -sm breakpoints.
-      });
-    });
-  }
-
   delete(e, id) {
     let confirm = this.mdDialog.confirm()
-      .title('Deleting Station Category')
-      .content('The Station Category Will Be Deleted')
+      .title('Deleting GeographicalDetail')
+      .content('The GeographicalDetail Will Be Deleted')
       .ok('Delete!')
       .cancel('Cancel')
       .targetEvent(e);
 
     this.mdDialog.show(confirm).then(() =>  {
-      this.StationCategory.remove({id: id}, response => {
+      this.Detail.remove({id: id}, response => {
         let message = response.message;
         if (response.status === 200) {
           this.state.reload();
@@ -157,5 +139,5 @@ class StationCategoryController {
   }
 }
 
-StationCategoryController.$inject = ['StationCategory', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
-export default StationCategoryController;
+GeographicalDetailController.$inject = ['GeographicalDetail', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
+export default GeographicalDetailController;
