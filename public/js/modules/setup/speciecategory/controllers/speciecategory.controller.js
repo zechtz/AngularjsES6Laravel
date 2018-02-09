@@ -67,7 +67,7 @@ class SpecieCategoryController {
       this.result = response.data;
 
       this.mdDialog.show({
-        ccontroller         : SpecieCategoryController,
+        controller         : SpecieCategoryController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,
