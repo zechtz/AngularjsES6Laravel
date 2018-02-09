@@ -49,6 +49,8 @@ class PlotController {
   }
 
   showAddPlotDialog(event){
+    console.log(`clicked, the event is: ${event}`);
+
     this.mdDialog.show({
       controller          : PlotController,
       controllerAs        : 'vm',

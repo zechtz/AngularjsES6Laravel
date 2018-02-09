@@ -69,7 +69,7 @@ class InstitutionController {
       this.result = response.data;
 
       this.mdDialog.show({
-        controller         : InstitutionController,
+        ccontroller         : InstitutionController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,

@@ -67,7 +67,7 @@ class LocationHierarchyController {
       this.result = response.data;
 
       this.mdDialog.show({
-        controller         : LocationHierarchyController,
+        ccontroller         : LocationHierarchyController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,

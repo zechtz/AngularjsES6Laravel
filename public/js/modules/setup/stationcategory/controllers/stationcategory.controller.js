@@ -67,7 +67,7 @@ class StationCategoryController {
       this.result = response.data;
 
       this.mdDialog.show({
-        controller         : StationCategoryController,
+        ccontroller         : StationCategoryController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,

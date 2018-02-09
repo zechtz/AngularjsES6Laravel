@@ -67,7 +67,7 @@ class AttractionSiteGradeController {
     this.AttractionSiteGrade.get({id: id}, response => {
       this.result = response.data;
       this.mdDialog.show({
-        controller         : AttractionSiteGradeController,
+        ccontroller         : AttractionSiteGradeController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,
