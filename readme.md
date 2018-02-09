@@ -12,7 +12,7 @@
 
 Install PHP/Laravel Package Dependencies
 
-````sh
+```sh
 composer install
 ```
 
