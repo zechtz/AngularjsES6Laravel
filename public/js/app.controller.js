@@ -74,6 +74,12 @@ export default class MainController {
             "title" : "Attraction Site Categories",
             "state" : "attraction-site-categories",
             "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/plots",
+            "title" : "Plots",
+            "state" : "plots",
+            "icon"  : "flip_to_back"
           }
         ]
       },
