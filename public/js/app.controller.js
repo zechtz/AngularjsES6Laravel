@@ -28,12 +28,6 @@ export default class MainController {
             "icon"  : "launch"
           },
           {
-            "link"  : "/#!/gfs-categories",
-            "title" : "GFS Categories",
-            "state" : "gfs-categories",
-            "icon"  : "flip_to_back"
-          },
-          {
             "link"  : "/#!/station-categories",
             "title" : "Station Categories",
             "state" : "station-categories",
@@ -67,6 +61,42 @@ export default class MainController {
             "link"  : "/#!/countries",
             "title" : "Countries",
             "state" : "countries",
+            "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/specie-categories",
+            "title" : "Specie Categories",
+            "state" : "specie-categories",
+            "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/species",
+            "title" : "Species",
+            "state" : "species",
+            "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/attraction-site-categories",
+            "title" : "Attraction Site Categories",
+            "state" : "attraction-site-categories",
+            "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/plots",
+            "title" : "Plots",
+            "state" : "plots",
+            "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/attraction-site-geographical-details",
+            "title" : "Attraction Site Geographical Details",
+            "state" : "attraction-site-geographical-details",
+            "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/attraction-site-grades",
+            "title" : "Attraction Site Grades",
+            "state" : "attraction-site-grades",
             "icon"  : "flip_to_back"
           }
         ]

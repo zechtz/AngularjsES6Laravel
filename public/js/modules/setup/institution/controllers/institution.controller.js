@@ -9,7 +9,7 @@ class InstitutionController {
     this.scope            =  $scope;
     this.limitOptions     =  [10, 15, 20, 50, 100, 200, 500];
     this.selected         =  [];
-    this.scope.onPaginate =  () => this.loadData();
+    this.loadData         =  this.loadData.bind(this);
 
     this.options = {
       rowSelection    : false,
@@ -30,6 +30,7 @@ class InstitutionController {
     this.result = {};
   }
 
+
   $onInit() {
     this.title = "Institutions Module";
     this.Institution.get(this.query, response =>  {
@@ -37,9 +38,10 @@ class InstitutionController {
     });
   }
 
-  loadData() {
-    console.log("query: " + this.options);
+  loadData () {
+    console.log(`query: ${this.query}`);
     this.Institution.get(this.query, response =>  {
+      console.log(response);
       this.institution = response.data;
     });
   }

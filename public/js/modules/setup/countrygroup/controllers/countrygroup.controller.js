@@ -10,7 +10,7 @@ class CountryGroupController {
     this.timeout          =  $timeout;
     this.limitOptions     =  [10, 15, 20, 50, 100, 200, 500];
     this.selected         =  [];
-    this.scope.onPaginate =  () => this.loadData();
+    this.loadData         =  this.loadData.bind(this);
 
     this.options = {
       rowSelection    : false,
@@ -66,9 +66,8 @@ class CountryGroupController {
 
     this.CountryGroup.get({id: id}, response => {
       this.result = response.data;
-//console.log(this.result); 
       this.mdDialog.show({
-        controller         : CountryGroupController,
+        ccontroller         : CountryGroupController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,

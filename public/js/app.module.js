@@ -13,6 +13,7 @@ import '../../public/css/material-icons.css';
 import '../../public/css/material-indigo-blue.css';
 import '../css/app.css';
 
+import 'jquery';
 import 'angular-material-sidemenu';
 import 'angular-material-icons';
 import 'angular-material';
@@ -21,13 +22,12 @@ import 'checklist-model';
 import '@uirouter/angularjs';
 import 'angular-material-data-table';
 import 'ng-inject';
-import 'angularjs-perfect-scrollbar';
 
-import appRoutes      from './app.routes';
-import MainController from './app.controller';
-import setup          from './modules/setup';
-import directives     from './directives';
-import helpers        from './helpers';
+import appRoutes        from './app.routes';
+import MainController   from './app.controller';
+import setup            from './modules/setup';
+import directives       from './directives';
+import helpers          from './helpers';
 
 angular.module('portal', [
   'ui.router',
