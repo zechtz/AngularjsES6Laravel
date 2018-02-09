@@ -11,6 +11,7 @@ import speciecategory    from './speciecategory';
 import geographicaldetail from './attractionsitegeographicaldetail';
 import specie            from './specie';
 import plot from './plot';
+import attractionsitegrade from './attractionsitegrade';
 
 export default angular.module('setup', [
   'institution',
@@ -22,5 +23,6 @@ export default angular.module('setup', [
   'plot',
   'speciecategory',
   'specie',
-  'geographicaldetail'
+  'geographicaldetail',
+  'attractionsitegrade'
 ]);

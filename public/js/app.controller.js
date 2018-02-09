@@ -92,6 +92,12 @@ export default class MainController {
             "title" : "Attraction Site Geographical Details",
             "state" : "attraction-site-geographical-details",
             "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/attraction-site-grades",
+            "title" : "Attraction Site Grades",
+            "state" : "attraction-site-grades",
+            "icon"  : "flip_to_back"
           }
         ]
       },
