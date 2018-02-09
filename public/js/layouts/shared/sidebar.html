@@ -3,10 +3,10 @@
     <app-header></app-header>
   </div>
 </md-toolbar>
-<perfect-scrollbar class="scroller" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
   <md-toolbar class="md-tall md-hue-2">
     <avatar></avatar>
   </md-toolbar>
+<div layout="column" flex style="overflow-y: scroll;">
   <md-list>
     <md-sidemenu locked="true">
       <div ng-repeat="item in ctrl.menu">
@@ -29,5 +29,5 @@
       </div>
     </md-sidemenu>
   </md-list>
-</perfect-scrollbar>
+</div>
 <!--<pre>{{ ctrl.menu | json }}</pre>-->
