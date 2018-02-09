@@ -42,14 +42,14 @@
                      ng-disabled="false"
                      ng-repeat="location in vm.location.data">
             <td md-cell> {{location.name}} </td>
-            <td md-cell> {{location.location_hierarchy_id}} </td>
+            <td md-cell> {{location.hierarchy.name}} </td>
             <td md-cell class="action-td">
               <div layout="row">
                 <a ng-click="vm.delete($event, location.id)" aria-label="Delete" class="delete">
                   <ng-md-icon icon="close"</ng-md-icon>
                   <md-tooltip md-direction="top" md-visible="false" autohide="true">Delete Category</md-tooltip>
                 </a>
-                <a ng-click="vm.showUpdateStationCategoryDialog(location.id)" aria-label="Edit" class="edit">
+                <a ng-click="vm.showUpdateLocationDialog(location.id)" aria-label="Edit" class="edit">
                   <ng-md-icon icon="mode_edit"</ng-md-icon>
                   <md-tooltip md-direction="top" md-visible="false" autohide="true">Edit</md-tooltip>
                 </a>
@@ -69,4 +69,4 @@
     </md-table-pagination>
   </md-card>
 </md-content>
-<!--<pre> {{ vm.query | json }} </pre>-->
+<!--<pre> {{ vm.location | json }} </pre>-->

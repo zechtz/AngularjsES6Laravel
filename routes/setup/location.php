@@ -17,9 +17,10 @@ Route::group(["prefix" => "v1"]              , function(){
     Route::put('location-hierarchies/{id}'    , 'Setup\LocationHierarchiesController@update');
     Route::delete('location-hierarchies/{id}' , 'Setup\LocationHierarchiesController@destroy');
 
-    Route::get('locations'                    , 'Setup\LocationsController@index');
-    Route::post('locations'                   , 'Setup\LocationsController@create');
-    Route::get('locations/{id}'               , 'Setup\LocationsController@show');
-    Route::put('locations/{id}'               , 'Setup\LocationsController@update');
-    Route::delete('locations/{id}'            , 'Setup\LocationsController@destroy');
+    Route::get('locations'           , 'Setup\LocationsController@index');
+    Route::post('locations'          , 'Setup\LocationsController@create');
+    Route::get('locations/{id}/edit' , 'Setup\LocationsController@edit');
+    Route::get('locations/{id}'      , 'Setup\LocationsController@show');
+    Route::put('locations/{id}'      , 'Setup\LocationsController@update');
+    Route::delete('locations/{id}'   , 'Setup\LocationsController@destroy');
 });

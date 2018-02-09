@@ -53,6 +53,21 @@ class InstitutionsController extends Controller
     {
         $institution = Institution::find($id);
         if ($institution == null) {
+            $institution->hierarchy;
+            return customApiResponse($institution, 'Institution Not Found', 404, 'Institution Not Found');
+        }
+        return customApiResponse($institution, 'SUCCESSFULL');
+    }
+
+    /**
+     * get an institution.
+     * @param  int  $id
+     * @return customApiResponse
+     */
+    public function edit($id)
+    {
+        $institution = Institution::find($id);
+        if ($institution == null) {
             return customApiResponse($institution, 'Institution Not Found', 404, 'Institution Not Found');
         }
         return customApiResponse($institution, 'SUCCESSFULL');

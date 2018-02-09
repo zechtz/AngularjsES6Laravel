@@ -1,15 +1,17 @@
 'use strict';
 
-class InstitutionController {
-  constructor(Institution, Notification, $mdDialog, $state, $scope, $timeout) {
-    this.Institution      =  Institution;
+class SpecieController {
+  constructor(Specie,SpecieCategory, Notification, $mdDialog, $state, $scope, $timeout) {
+    this.Specie           =  Specie;
+    this.SpecieCategory   =  SpecieCategory;
     this.Notification     =  Notification;
     this.mdDialog         =  $mdDialog;
     this.state            =  $state;
     this.scope            =  $scope;
+    this.timeout          =  $timeout;
     this.limitOptions     =  [10, 15, 20, 50, 100, 200, 500];
     this.selected         =  [];
-    this.loadData         =  this.loadData.bind(this);
+    this.scope.onPaginate =  () => this.loadData();
 
     this.options = {
       rowSelection    : false,
@@ -30,20 +32,27 @@ class InstitutionController {
     this.result = {};
   }
 
-
   $onInit() {
-    this.title = "Institutions Module";
-    this.Institution.get(this.query, response =>  {
-      this.institution = response.data;
+    this.title = "Species";
+    this.Specie.get(this.query, response =>  {
+      this.specie = response.data;
     });
   }
 
-  loadData () {
-    console.log(`query: ${this.query}`);
-    this.Institution.get(this.query, response =>  {
-      console.log(response);
-      this.institution = response.data;
+  loadData(page, limit) {
+    console.log("query: " + this.query);
+    this.Specie.get(this.query, response =>  {
+      this.Specie = response.data;
     });
+  }
+
+  getSpecieCategories() {
+    return this.timeout(() =>  {
+      this.SpecieCategory.get({}, response => {
+        this.specieCategories =  response.data;
+        return this.specieCategories;
+      });
+    }, 650);
   }
 
   closeDialog(e) {
@@ -51,65 +60,62 @@ class InstitutionController {
     this.mdDialog.hide();
   }
 
-  showAddInstitutionDialog(event){
+  showAddSpecieDialog(event){
     console.log('the event is', event);
     this.mdDialog.show({
-      controller          : InstitutionController,
+      controller          : SpecieController,
       controllerAs        : 'vm',
-      template            : require('../views/add-new-institution.html'),
+      template            : require('../views/add-new-specie.html'),
       clickOutsideToClose : false,
       preserveScope       : true,
       fullscreen          : true // Only for -xs, -sm breakpoints.
     });
   }
 
-  showUpdateInstitutionDialog(id){
+  showUpdateSpecieDialog(id){
 
-    this.Institution.get({id: id}, response => {
+    this.Specie.get({id: id}, response => {
       this.result = response.data;
 
       this.mdDialog.show({
-        controller         : InstitutionController,
+        ccontroller         : SpecieController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,
-        template            : require('../views/edit-institution.html'),
+        template            : require('../views/edit-specie.html'),
         clickOutsideToClose : false,
         fullscreen          : true // Only for -xs, -sm breakpoints.
       });
     });
   }
 
-  updateInstitution(institution){
-    this.Institution.update(institution, response => {
+  updateSpecie(Specie){
+    this.Specie.update(Specie, response => {
       let message = response.message;
       if (response.status === 200) {
         this.mdDialog.hide();
         this.Notification.status(message);
-        this.state.reload();
+        this.state.reload('species');
       } else {
         this.Notification.status(message);
-        this.state.reload();
+        this.state.reload('species');
       }
     }, response => {
       this.Notification.status(response.data.errors);
-      this.state.reload();
+      this.state.reload('species');
     });
   }
 
-  createInstitution(institution) {
-    let data, name, institution_id, phone, code, address, additional, email;
+  createSpecie(specie) {
+    let data, common_name, botanical_name,tags,specie_category_id;
     data = {
-      name                   : institution.name,
-      institution_id         : institution.institution_id,
-      phone_number           : institution.phone,
-      sp_code                : institution.code,
-      email                  : institution.email,
-      address                : institution.address,
-      additional_information : institution.additional,
+      common_name:        specie.common_name,
+      botanical_name:     specie.botanical_name,
+      tags:               specie.tags,
+      specie_category_id: specie.specie_category_id,
     };
 
-    this.Institution.save(data, response => {
+    this.Specie.save(data, response => {
       console.log(response);
       var message = response.message;
       if (response.status === 201) {
@@ -126,30 +132,16 @@ class InstitutionController {
     });
   }
 
-  editInstitution(id){
-
-    this.Institution.get({id: id}, response => {
-
-      this.mdDialog.show({
-        controller          : this,
-        template            : require('../views/edit-institution.html'),
-        clickOutsideToClose : false,
-        preserveScope       : true,
-        fullscreen          : true // Only for -xs, -sm breakpoints.
-      });
-    });
-  }
-
   delete(e, id) {
     let confirm = this.mdDialog.confirm()
-      .title('Deleting Institution')
-      .content('The Institution Will Be Deleted')
+      .title('Deleting Specie')
+      .content('The Specie Will Be Deleted')
       .ok('Delete!')
       .cancel('Cancel')
       .targetEvent(e);
 
     this.mdDialog.show(confirm).then(() =>  {
-      this.Institution.remove({id: id}, response => {
+      this.Specie.remove({id: id}, response => {
         let message = response.message;
         if (response.status === 200) {
           this.state.reload();
@@ -166,5 +158,5 @@ class InstitutionController {
   }
 }
 
-InstitutionController.$inject = ['Institution', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
-export default InstitutionController;
+SpecieController.$inject = ['Specie', 'SpecieCategory', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
+export default SpecieController;

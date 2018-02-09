@@ -13,6 +13,11 @@ class LocationsController extends Controller
         $data      = $request->all();
         $per_page  = isset($data['per_page'])?$data['per_page']:15;
         $locations = Location::all();
+
+        foreach ($locations as $location) {
+            $location->hierarchy;
+        }
+
         $locations = customPaginate($locations,$per_page);
         return customApiResponse($locations);
     }
@@ -40,6 +45,15 @@ class LocationsController extends Controller
         if($location == null){
             return customApiResponse($id,'Location Not Found',404);
         }
+        return customApiResponse($location,'SUCCESSFULL');
+    }
+
+    public function edit($id){
+        $location = Location::find($id);
+        if($location == null){
+            return customApiResponse($id,'Location Not Found',404);
+        }
+        $location->hierarchy;
         return customApiResponse($location,'SUCCESSFULL');
     }
 
