@@ -30,6 +30,7 @@ class InstitutionController {
     this.result = {};
   }
 
+
   $onInit() {
     this.title = "Institutions Module";
     this.Institution.get(this.query, response =>  {

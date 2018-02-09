@@ -48,6 +48,15 @@ class LocationsController extends Controller
         return customApiResponse($location,'SUCCESSFULL');
     }
 
+    public function edit($id){
+        $location = Location::find($id);
+        if($location == null){
+            return customApiResponse($id,'Location Not Found',404);
+        }
+        $location->hierarchy;
+        return customApiResponse($location,'SUCCESSFULL');
+    }
+
     public function update(Request $request,$id){
         $data      = $request->all();
         $validator = Validator::make($data,Location::$rules);
