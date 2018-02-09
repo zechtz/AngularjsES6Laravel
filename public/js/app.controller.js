@@ -74,6 +74,12 @@ export default class MainController {
             "title" : "Specie Categories",
             "state" : "specie-categories",
             "icon"  : "flip_to_back"
+          },
+          {
+            "link"  : "/#!/species",
+            "title" : "Species",
+            "state" : "species",
+            "icon"  : "flip_to_back"
           }
         ]
       },

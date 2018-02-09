@@ -7,6 +7,7 @@ import stationcategory   from './stationcategory';
 import locationhierarchy from './locationhierarchy';
 import location          from './location';
 import speciecategory    from './speciecategory';
+import specie            from './specie';
 
 export default angular.module('setup', [
   'institution',
@@ -14,5 +15,6 @@ export default angular.module('setup', [
   'stationcategory',
   'locationhierarchy',
   'location',
-  'speciecategory'
+  'speciecategory',
+  'specie'
 ]);

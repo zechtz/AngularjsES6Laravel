@@ -1,6 +1,6 @@
 <ul class="breadcrumb">
        <li><a ui-sref="home">HOME</a></li>
-       <li><a href="">Specie Category</a></li>
+       <li><a href="">Specie</a></li>
      </ul>
      
      <div layout="row" layout-align="space-around">
@@ -9,7 +9,7 @@
      </div>
      <div layout="row" layout-align="space-between end">
        <h4 set-head-title>{{ vm.title }}</h4>
-       <md-button class="md-raised md-primary add-balance" ng-click="vm.showAddSpecieCategoryDialog($event)">Add New Specie Category</md-button>
+       <md-button class="md-raised md-primary add-balance" ng-click="vm.showAddSpecieDialog($event)">Add New Specie</md-button>
      </div>
      
      <md-content laout="column" flex md-progress="loading">
@@ -18,7 +18,7 @@
          <md-table-pagination md-limit="vm.query.per_page"
                               md-limit-options="vm.limitOptions"
                               md-page="vm.query.page"
-                              md-total="{{vm.SpecieCategory.total}}"
+                              md-total="{{vm.Specie.total}}"
                               md-page-select="vm.options.pageSelect"
                               md-boundary-links="vm.options.boundaryLinks"
                               md-on-paginate="vm.loadData">
@@ -31,23 +31,29 @@
                   md-progress-linear ng-if="!vm.promise">
              <thead ng-if="!options.decapitate" md-head md-order="vm.query.order" md-on-reorder="vm.logOrder">
              <tr md-row>
-               <th style="text-align: left;"><span style="padding-left: 20px;">Name</span></th>
+               <th style="text-align: left;"><span style="padding-left: 20px;">Common Name</span></th>
+               <th style="text-align: left;"><span style="padding-left: 20px;">Botanical Name</span></th>
+               <th style="text-align: left;"><span style="padding-left: 20px;">Category</span></th>
+               <th style="text-align: left;"><span style="padding-left: 20px;">Tags</span></th>
              </tr>
              </thead>
              <tbody md-body>
-             <tr md-row md-select="specieCategory"
-                 md-on-select="vm.logItem(specieCategory)"
+             <tr md-row md-select="specie"
+                 md-on-select="vm.logItem(specie)"
                  md-auto-select="vm.options.autoSelect"
                  ng-disabled="false"
-                 ng-repeat="specieCategory in vm.specieCategory.data">
-               <td md-cell> {{specieCategory.name}} </td>
+                 ng-repeat="specie in vm.specie.data">
+               <td md-cell> {{specie.common_name}} </td>
+               <td md-cell> {{specie.botanical_name}} </td>
+               <td md-cell> {{specie.specie_category_id}} </td>
+               <td md-cell> {{specie.tags}} </td>
                <td md-cell class="action-td">
                  <div layout="row">
-                   <a ng-click="vm.delete($event, specieCategory.id)" aria-label="Delete" class="delete">
+                   <a ng-click="vm.delete($event, specie.id)" aria-label="Delete" class="delete">
                      <ng-md-icon icon="close"</ng-md-icon>
-                     <md-tooltip md-direction="top" md-visible="false" autohide="true">Delete Specie Category</md-tooltip>
+                     <md-tooltip md-direction="top" md-visible="false" autohide="true">Delete Specie</md-tooltip>
                    </a>
-                   <a ng-click="vm.showUpdateSpecieCategoryDialog(specieCategory.id)" aria-label="Edit" class="edit">
+                   <a ng-click="vm.showUpdateSpecieDialog(specie.id)" aria-label="Edit" class="edit">
                      <ng-md-icon icon="mode_edit"</ng-md-icon>
                      <md-tooltip md-direction="top" md-visible="false" autohide="true">Edit</md-tooltip>
                    </a>
@@ -60,7 +66,7 @@
          <md-table-pagination md-limit="vm.query.per_page"
                               md-limit-options="vm.limitOptions"
                               md-page="vm.query.page"
-                              md-total="{{vm.specieCategory.total}}"
+                              md-total="{{vm.specie.total}}"
                               md-page-select="vm.options.pageSelect"
                               md-boundary-links="vm.options.boundaryLinks"
                               md-on-paginate="vm.loadData">
