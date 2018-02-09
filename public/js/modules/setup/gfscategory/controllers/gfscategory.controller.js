@@ -67,7 +67,7 @@ class GfsCategoryController {
       this.result = response.data;
 
       this.mdDialog.show({
-        ccontroller         : GfsCategoryController,
+        controller         : GfsCategoryController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,

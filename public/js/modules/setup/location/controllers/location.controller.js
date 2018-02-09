@@ -86,7 +86,7 @@ class LocationController {
       this.result = response.data;
 
       this.mdDialog.show({
-        ccontroller         : LocationController,
+        controller         : LocationController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,

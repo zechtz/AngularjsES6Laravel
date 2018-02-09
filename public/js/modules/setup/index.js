@@ -10,6 +10,8 @@ import location          from './location';
 import speciecategory    from './speciecategory';
 import geographicaldetail from './attractionsitegeographicaldetail';
 import specie            from './specie';
+import attractionsitecategory from './attractionsitecategory';
+import plot from './plot';
 
 export default angular.module('setup', [
   'institution',
