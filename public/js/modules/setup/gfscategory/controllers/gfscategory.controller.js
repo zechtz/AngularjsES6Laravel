@@ -9,7 +9,7 @@ class GfsCategoryController {
     this.scope            =  $scope;
     this.limitOptions     =  [10, 15, 20, 50, 100, 200, 500];
     this.selected         =  [];
-    this.scope.onPaginate =  () => this.loadData();
+    this.loadData         =  this.loadData.bind(this);
 
     this.options = {
       rowSelection    : false,
@@ -67,7 +67,7 @@ class GfsCategoryController {
       this.result = response.data;
 
       this.mdDialog.show({
-        ccontroller         : GfsCategoryController,
+        controller         : GfsCategoryController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,

@@ -1,8 +1,8 @@
-<md-dialog aria-label="Add New Institution" style="width: 640px; height: auto;" ng-cloak>
+<md-dialog aria-label="Add New Specie Category" style="width: 640px; height: auto;" ng-cloak>
   <form name="form" class="simple-form" layout="column" layout-fill novalidate ng-show="!loading">
     <md-toolbar class="md-dialog-header">
       <div class="md-toolbar-tools">
-        <h6>CREATE CATEGORY</h6>
+        <h6>CREATE SPECIE CATEGORY</h6>
         <span flex></span>
         <md-button class="md-icon-button" ng-click="vm.closeDialog($event)">
           <ng-md-icon icon="close" aria-label="Close dialog"></ng-md-icon>
@@ -24,10 +24,14 @@
             </div>
           </md-input-container>
 
+         
+        </md-content>
+      </md-dialog-content>
+
       <md-dialog-actions class="row">
         <md-button ng-disabled="(form.$invalid || isDisabled)"
                    class="md-raised"
-                   ng-click="vm.createCategory(category)">Create </md-button>
+                   ng-click="vm.createSpecieCategory(category)">Create </md-button>
       </md-dialog-actions>
     </div>
   </form>

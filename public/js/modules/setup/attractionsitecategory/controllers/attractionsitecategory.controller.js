@@ -9,7 +9,7 @@ class AttractionSiteCategoryController {
     this.scope            =  $scope;
     this.limitOptions     =  [10, 15, 20, 50, 100, 200, 500];
     this.selected         =  [];
-    this.scope.onPaginate =  () => this.loadData();
+    this.loadData         =  this.loadData.bind(this);
 
     this.options = {
       rowSelection    : false,
@@ -31,16 +31,16 @@ class AttractionSiteCategoryController {
   }
 
   $onInit() {
-    this.title = "Attraction Site Categories Module";
+    this.title = "Attraction Site Categories";
     this.AttractionSiteCategory.get(this.query, response =>  {
-      this.attractionaitecategory = response.data;
+      this.attractionasitecategory = response.data;
     });
   }
 
   loadData() {
     console.log("query: " + this.options);
     this.AttractionSiteCategory.get(this.query, response =>  {
-      this.attractionaitecategory = response.data;
+      this.attractionasitecategory = response.data;
     });
   }
 
@@ -49,7 +49,7 @@ class AttractionSiteCategoryController {
     this.mdDialog.hide();
   }
 
-  showAddICategoryDialog(event){
+  showAddCategoryDialog(event){
     console.log('the event is', event);
     this.mdDialog.show({
       controller          : AttractionSiteCategoryController,
@@ -62,12 +62,11 @@ class AttractionSiteCategoryController {
   }
 
   showUpdateCategoryDialog(id){
-
-    this.Institution.get({id: id}, response => {
+    this.AttractionSiteCategory.get({id: id}, response => {
       this.result = response.data;
 
       this.mdDialog.show({
-        ccontroller         : AttractionSiteCategoryController,
+        controller         : AttractionSiteCategoryController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,
@@ -78,7 +77,7 @@ class AttractionSiteCategoryController {
     });
   }
 
-  updateAttractionSiteCategory(attractionSiteCategory){
+  updateCategory(attractionSiteCategory){
     this.AttractionSiteCategory.update(attractionSiteCategory, response => {
       let message = response.message;
       if (response.status === 200) {
@@ -119,9 +118,7 @@ class AttractionSiteCategoryController {
   }
 
   editCategory(id){
-
-    this.Institution.get({id: id}, response => {
-
+    this.AttractionSiteCategory.get({id: id}, response => {
       this.mdDialog.show({
         controller          : this,
         template            : require('../views/edit-attraction-site-category.html'),

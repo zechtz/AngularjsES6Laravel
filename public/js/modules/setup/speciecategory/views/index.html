@@ -1,0 +1,71 @@
+<ul class="breadcrumb">
+       <li><a ui-sref="home">HOME</a></li>
+       <li><a href="">Specie Category</a></li>
+     </ul>
+     
+     <div layout="row" layout-align="space-around">
+       <md-progress-circular ng-if="loading" class="md-hue-3 loader" md-mode="indeterminate">
+       </md-progress-circular>
+     </div>
+     <div layout="row" layout-align="space-between end">
+       <h4 set-head-title>{{ vm.title }}</h4>
+       <md-button class="md-raised md-primary add-balance" ng-click="vm.showAddSpecieCategoryDialog($event)">Add New Specie Category</md-button>
+     </div>
+     
+     <md-content laout="column" flex md-progress="loading">
+       <md-progress-linear ng-if="loading" class="md-hue-3 loader" md-mode="indeterminate"></md-progress-linear>
+       <md-card>
+         <md-table-pagination md-limit="vm.query.per_page"
+                              md-limit-options="vm.limitOptions"
+                              md-page="vm.query.page"
+                              md-total="{{vm.SpecieCategory.total}}"
+                              md-page-select="vm.options.pageSelect"
+                              md-boundary-links="vm.options.boundaryLinks"
+                              md-on-paginate="vm.loadData">
+         </md-table-pagination>
+     
+         <md-table-container>
+           <table md-table md-row-select="true"
+                  multiple="{{vm.options.multiSelect}}"
+                  ng-model="vm.selected"
+                  md-progress-linear ng-if="!vm.promise">
+             <thead ng-if="!options.decapitate" md-head md-order="vm.query.order" md-on-reorder="vm.logOrder">
+             <tr md-row>
+               <th style="text-align: left;"><span style="padding-left: 20px;">Name</span></th>
+             </tr>
+             </thead>
+             <tbody md-body>
+             <tr md-row md-select="specieCategory"
+                 md-on-select="vm.logItem(specieCategory)"
+                 md-auto-select="vm.options.autoSelect"
+                 ng-disabled="false"
+                 ng-repeat="specieCategory in vm.specieCategory.data">
+               <td md-cell> {{specieCategory.name}} </td>
+               <td md-cell class="action-td">
+                 <div layout="row">
+                   <a ng-click="vm.delete($event, specieCategory.id)" aria-label="Delete" class="delete">
+                     <ng-md-icon icon="close"</ng-md-icon>
+                     <md-tooltip md-direction="top" md-visible="false" autohide="true">Delete Specie Category</md-tooltip>
+                   </a>
+                   <a ng-click="vm.showUpdateSpecieCategoryDialog(specieCategory.id)" aria-label="Edit" class="edit">
+                     <ng-md-icon icon="mode_edit"</ng-md-icon>
+                     <md-tooltip md-direction="top" md-visible="false" autohide="true">Edit</md-tooltip>
+                   </a>
+                 </div>
+               </td>
+             </tr>
+             </tbody>
+           </table>
+         </md-table-container>
+         <md-table-pagination md-limit="vm.query.per_page"
+                              md-limit-options="vm.limitOptions"
+                              md-page="vm.query.page"
+                              md-total="{{vm.specieCategory.total}}"
+                              md-page-select="vm.options.pageSelect"
+                              md-boundary-links="vm.options.boundaryLinks"
+                              md-on-paginate="vm.loadData">
+         </md-table-pagination>
+       </md-card>
+     </md-content>
+     <!--<pre> {{ vm.query | json }} </pre>-->
+     

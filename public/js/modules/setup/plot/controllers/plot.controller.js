@@ -1,13 +1,12 @@
 'use strict';
 
-class CountryGroupController {
-  constructor(CountryGroup, Notification, $mdDialog, $state, $scope, $timeout) {
-    this.CountryGroup      =  CountryGroup;
+class PlotController {
+  constructor(Plot, Notification, $mdDialog, $state, $scope, $timeout) {
+    this.Plot             =  Plot;
     this.Notification     =  Notification;
     this.mdDialog         =  $mdDialog;
     this.state            =  $state;
     this.scope            =  $scope;
-    this.timeout          =  $timeout;
     this.limitOptions     =  [10, 15, 20, 50, 100, 200, 500];
     this.selected         =  [];
     this.loadData         =  this.loadData.bind(this);
@@ -32,16 +31,15 @@ class CountryGroupController {
   }
 
   $onInit() {
-    this.title = "Country Groups";
-    this.CountryGroup.get(this.query, response =>  {
-      this.countryGroup = response.data;
+    this.title = "Plots Module";
+    this.Plot.get(this.query, response =>  {
+      this.plot = response.data;
     });
   }
 
-  loadData(page, limit) {
-    console.log("query: " + this.query);
-    this.CountryGroup.get(this.query, response =>  {
-      this.countryGroup = response.data;
+  loadData () {
+    this.Plot.get(this.query, response =>  {
+      this.plot = response.data;
     });
   }
 
@@ -50,37 +48,36 @@ class CountryGroupController {
     this.mdDialog.hide();
   }
 
-  showAddCountryGroupDialog(event){
-    console.log('the event is', event);
+  showAddPlotDialog(event){
     this.mdDialog.show({
-      controller          : CountryGroupController,
+      controller          : PlotController,
       controllerAs        : 'vm',
-      template            : require('../views/add-new-countrygroup.html'),
+      template            : require('../views/add-new-plot.html'),
       clickOutsideToClose : false,
       preserveScope       : true,
       fullscreen          : true // Only for -xs, -sm breakpoints.
     });
   }
 
-  showUpdateCountryGroupDialog(id){
+  showUpdatePlotDialog(id){
 
-    this.CountryGroup.get({id: id}, response => {
+    this.Plot.get({id: id}, response => {
       this.result = response.data;
+
       this.mdDialog.show({
-        ccontroller         : CountryGroupController,
+        ccontroller         : PlotController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,
-        template            : require('../views/edit-countrygroup.html'),
+        template            : require('../views/edit-plot.html'),
         clickOutsideToClose : false,
         fullscreen          : true // Only for -xs, -sm breakpoints.
       });
     });
   }
 
-
-  updateCountryGroup(countryGroup){
-    this.CountryGroup.update(countryGroup, response => {
+  updatePlot(plot){
+    this.Plot.update(plot, response => {
       let message = response.message;
       if (response.status === 200) {
         this.mdDialog.hide();
@@ -96,14 +93,16 @@ class CountryGroupController {
     });
   }
 
-  createCountryGroup(countryGroup) {
-    let data, name;
+  createPlot(plot) {
+    let data, calendar_event_id, specie_id, attraction_site_id, quantity;
     data = {
-      name        : countryGroup.name,
+      calendar_event_id      : plot.name,
+      specie_id              : plot.specie_id,
+      attraction_site_id     : plot.attraction_site_id,
+      quantity               : plot.quantity,
     };
 
-    this.CountryGroup.save(data, response => {
-      console.log(response);
+    this.Plot.save(data, response => {
       var message = response.message;
       if (response.status === 201) {
         this.mdDialog.hide();
@@ -119,12 +118,13 @@ class CountryGroupController {
     });
   }
 
-  editCountryGroup(id){
+  editPlot(id){
 
-    this.CountryGroup.get({id: id}, response => {
+    this.Plot.get({id: id}, response => {
+
       this.mdDialog.show({
         controller          : this,
-        template            : require('../views/edit-countrygroup.html'),
+        template            : require('../views/edit-plot.html'),
         clickOutsideToClose : false,
         preserveScope       : true,
         fullscreen          : true // Only for -xs, -sm breakpoints.
@@ -134,14 +134,14 @@ class CountryGroupController {
 
   delete(e, id) {
     let confirm = this.mdDialog.confirm()
-      .title('Deleting Station Category')
-      .content('The Country Group Will Be Deleted')
+      .title('Deleting Plot')
+      .content('The Plot Will Be Deleted')
       .ok('Delete!')
       .cancel('Cancel')
       .targetEvent(e);
 
     this.mdDialog.show(confirm).then(() =>  {
-      this.CountryGroup.remove({id: id}, response => {
+      this.Plot.remove({id: id}, response => {
         let message = response.message;
         if (response.status === 200) {
           this.state.reload();
@@ -151,12 +151,11 @@ class CountryGroupController {
           this.Notification.status(message);
         }
       }, response  =>  {
-        console.log(response);
         this.Notification.status(response.data.message);
       });
     });
   }
 }
 
-CountryGroupController.$inject = ['CountryGroup', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
-export default CountryGroupController;
+PlotController.$inject = ['Plot', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
+export default PlotController;

@@ -1,8 +1,9 @@
 'use strict';
 
-class CountryGroupController {
-  constructor(CountryGroup, Notification, $mdDialog, $state, $scope, $timeout) {
-    this.CountryGroup      =  CountryGroup;
+class SpecieController {
+  constructor(Specie,SpecieCategory, Notification, $mdDialog, $state, $scope, $timeout) {
+    this.Specie           =  Specie;
+    this.SpecieCategory   =  SpecieCategory;
     this.Notification     =  Notification;
     this.mdDialog         =  $mdDialog;
     this.state            =  $state;
@@ -10,7 +11,7 @@ class CountryGroupController {
     this.timeout          =  $timeout;
     this.limitOptions     =  [10, 15, 20, 50, 100, 200, 500];
     this.selected         =  [];
-    this.loadData         =  this.loadData.bind(this);
+    this.scope.onPaginate =  () => this.loadData();
 
     this.options = {
       rowSelection    : false,
@@ -32,17 +33,26 @@ class CountryGroupController {
   }
 
   $onInit() {
-    this.title = "Country Groups";
-    this.CountryGroup.get(this.query, response =>  {
-      this.countryGroup = response.data;
+    this.title = "Species";
+    this.Specie.get(this.query, response =>  {
+      this.specie = response.data;
     });
   }
 
   loadData(page, limit) {
     console.log("query: " + this.query);
-    this.CountryGroup.get(this.query, response =>  {
-      this.countryGroup = response.data;
+    this.Specie.get(this.query, response =>  {
+      this.Specie = response.data;
     });
+  }
+
+  getSpecieCategories() {
+    return this.timeout(() =>  {
+      this.SpecieCategory.get({}, response => {
+        this.specieCategories =  response.data;
+        return this.specieCategories;
+      });
+    }, 650);
   }
 
   closeDialog(e) {
@@ -50,59 +60,62 @@ class CountryGroupController {
     this.mdDialog.hide();
   }
 
-  showAddCountryGroupDialog(event){
+  showAddSpecieDialog(event){
     console.log('the event is', event);
     this.mdDialog.show({
-      controller          : CountryGroupController,
+      controller          : SpecieController,
       controllerAs        : 'vm',
-      template            : require('../views/add-new-countrygroup.html'),
+      template            : require('../views/add-new-specie.html'),
       clickOutsideToClose : false,
       preserveScope       : true,
       fullscreen          : true // Only for -xs, -sm breakpoints.
     });
   }
 
-  showUpdateCountryGroupDialog(id){
+  showUpdateSpecieDialog(id){
 
-    this.CountryGroup.get({id: id}, response => {
+    this.Specie.get({id: id}, response => {
       this.result = response.data;
+
       this.mdDialog.show({
-        ccontroller         : CountryGroupController,
+        ccontroller         : SpecieController,
         controllerAs        : 'vm',
         scope               : this.scope,
         preserveScope       : true,
-        template            : require('../views/edit-countrygroup.html'),
+        template            : require('../views/edit-specie.html'),
         clickOutsideToClose : false,
         fullscreen          : true // Only for -xs, -sm breakpoints.
       });
     });
   }
 
-
-  updateCountryGroup(countryGroup){
-    this.CountryGroup.update(countryGroup, response => {
+  updateSpecie(Specie){
+    this.Specie.update(Specie, response => {
       let message = response.message;
       if (response.status === 200) {
         this.mdDialog.hide();
         this.Notification.status(message);
-        this.state.reload();
+        this.state.reload('species');
       } else {
         this.Notification.status(message);
-        this.state.reload();
+        this.state.reload('species');
       }
     }, response => {
       this.Notification.status(response.data.errors);
-      this.state.reload();
+      this.state.reload('species');
     });
   }
 
-  createCountryGroup(countryGroup) {
-    let data, name;
+  createSpecie(specie) {
+    let data, common_name, botanical_name,tags,specie_category_id;
     data = {
-      name        : countryGroup.name,
+      common_name:        specie.common_name,
+      botanical_name:     specie.botanical_name,
+      tags:               specie.tags,
+      specie_category_id: specie.specie_category_id,
     };
 
-    this.CountryGroup.save(data, response => {
+    this.Specie.save(data, response => {
       console.log(response);
       var message = response.message;
       if (response.status === 201) {
@@ -119,29 +132,16 @@ class CountryGroupController {
     });
   }
 
-  editCountryGroup(id){
-
-    this.CountryGroup.get({id: id}, response => {
-      this.mdDialog.show({
-        controller          : this,
-        template            : require('../views/edit-countrygroup.html'),
-        clickOutsideToClose : false,
-        preserveScope       : true,
-        fullscreen          : true // Only for -xs, -sm breakpoints.
-      });
-    });
-  }
-
   delete(e, id) {
     let confirm = this.mdDialog.confirm()
-      .title('Deleting Station Category')
-      .content('The Country Group Will Be Deleted')
+      .title('Deleting Specie')
+      .content('The Specie Will Be Deleted')
       .ok('Delete!')
       .cancel('Cancel')
       .targetEvent(e);
 
     this.mdDialog.show(confirm).then(() =>  {
-      this.CountryGroup.remove({id: id}, response => {
+      this.Specie.remove({id: id}, response => {
         let message = response.message;
         if (response.status === 200) {
           this.state.reload();
@@ -158,5 +158,5 @@ class CountryGroupController {
   }
 }
 
-CountryGroupController.$inject = ['CountryGroup', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
-export default CountryGroupController;
+SpecieController.$inject = ['Specie', 'SpecieCategory', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
+export default SpecieController;
