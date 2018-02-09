@@ -4,15 +4,15 @@ import angular                from 'angular';
 import institution            from './institution';
 import gfscategory            from './gfscategory';
 import stationcategory        from './stationcategory';
-import attractionsitecategory from './attractionsitecategory';
 import locationhierarchy      from './locationhierarchy';
 import location               from './location';
+import countrygroup           from './countrygroup';
 import speciecategory         from './speciecategory';
-import geographicaldetail     from './attractionsitegeographicaldetail';
 import specie                 from './specie';
+import attractionsitecategory from './attractionsitecategory';
 import plot                   from './plot';
 import attractionsitegrade    from './attractionsitegrade';
-import countrygroup           from './countrygroup';
+import geographicaldetail     from './attractionsitegeographicaldetail';
 
 export default angular.module('setup', [
   'institution',
@@ -26,5 +26,9 @@ export default angular.module('setup', [
   'speciecategory',
   'specie',
   'geographicaldetail',
-  'attractionsitegrade'
+  'attractionsitegrade',
+  'countrygroup',
+  'plot',
+  'speciecategory',
+  'specie'
 ]);

@@ -78,8 +78,9 @@ class CountryGroupController {
     });
   }
 
-  updateCountryGroup(CountryGroup){
-    this.CountryGroup.update(CountryGroup, response => {
+
+  updateCountryGroup(countryGroup){
+    this.CountryGroup.update(countryGroup, response => {
       let message = response.message;
       if (response.status === 200) {
         this.mdDialog.hide();
