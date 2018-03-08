@@ -1,6 +1,6 @@
 'use strict';
 
-export default class MainController {
+export default  class /**@ngInject*/ MainController {
 
   constructor($mdSidenav, $mdMedia) {
     this.$mdSidenav        =  $mdSidenav;

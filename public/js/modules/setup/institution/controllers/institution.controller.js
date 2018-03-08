@@ -1,6 +1,6 @@
 'use strict';
 
-class InstitutionController {
+export default class /**@ngInject*/ InstitutionController {
   constructor(Institution, Notification, $mdDialog, $state, $scope, $timeout) {
     this.Institution      =  Institution;
     this.Notification     =  Notification;
@@ -165,6 +165,3 @@ class InstitutionController {
     });
   }
 }
-
-InstitutionController.$inject = ['Institution', 'Notification', '$mdDialog', '$state', '$scope', '$timeout'];
-export default InstitutionController;

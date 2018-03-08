@@ -40,4 +40,5 @@ angular.module('portal', [
   'directives',
   'helpers',
   'setup'
-]).controller('MainController', MainController).config(appRoutes);
+]).config(appRoutes)
+  .controller('MainController', MainController);
