@@ -20,6 +20,6 @@
       <img src="../../images/preload.svg"/>
       .</div>
     <ui-view layout="row" flex></ui-view>
-    <script src="/src/js/app.bundle.js"></script>
+    <script src="/src/app.bundle.js"></script>
   </body>
 </html>
